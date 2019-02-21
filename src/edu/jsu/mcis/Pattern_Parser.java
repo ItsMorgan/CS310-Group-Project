@@ -18,10 +18,22 @@ public class Pattern_Parser {
         
         /* Create precompiled pattern matchers (for AIs 01, 17, and 10) */
         
-        Pattern p01 = Pattern.compile("^01[0-9]{14}");         // AI #01
-        Pattern p17 = Pattern.compile("^17[0-9]{6}");          // AI #17        
+        Pattern p01 = Pattern.compile("^01[0-9]{14}");         // AI #01      
         Pattern p10 = Pattern.compile("^10(.){1,20}[%\\x1D]"); // AI #10
         Pattern p10eol = Pattern.compile("^10(.){1,20}$");     // AI #10 (eol)
+        Pattern p11 = Pattern.compile("^11[0-9]{6}");            // AI #11
+        Pattern p12 = Pattern.compile("^12[0-9]{6}");            // AI #12
+        Pattern p13 = Pattern.compile("^13[0-9]{6}");            // AI #13
+        Pattern p15 = Pattern.compile("^15[0-9]{6}");            // AI #15
+        Pattern p16 = Pattern.compile("^16[0-9]{6}");            // AI #16
+        Pattern p17 = Pattern.compile("^17[0-9]{6}");            // AI #17
+        Pattern p20 = Pattern.compile("^20[0-9]{2}");            // AI #20
+        Pattern p21 = Pattern.compile("^21(.){1,20}[%\\x1D]");    // AI #21
+        Pattern p21eol = Pattern.compile("^21(.){1,20}$");       // AI #21 (eol)
+        Pattern p22 = Pattern.compile("^22(.){1,20}[%\\x1D]");    // AI #22
+        Pattern p22eol = Pattern.compile("^22(.){1,20}$");       // AI #22 (eol)
+        Pattern p240 = Pattern.compile("^240(.){1,20}[%\\x1D]");  // AI #240
+        Pattern p240eol = Pattern.compile("^240(.){1,30}$");     // AI #240 (eol)
         Pattern p243 = Pattern.compile("^243(.){1,20}[%\\x1D]");
         Pattern p243eol = Pattern.compile("^243(.){1,20}$");
         Pattern p250 = Pattern.compile("^250(.){1,30}[%\\x1D]");
@@ -35,7 +47,7 @@ public class Pattern_Parser {
         Pattern p255 = Pattern.compile("^255[0-9]{13}[0-9]{1,12}[%\\x1D]");
         Pattern p255eol = Pattern.compile("^255[0-9]{13}[0-9]{1,12}$");
         Pattern p30 = Pattern.compile("^30[0-9]{1,8}[%\\x1D]");
-        Pattern p30eol = Pattern.compile("^30[0-9]{1,8}$");
+        Pattern p30eol = Pattern.compile("^30[0-9]{1,8}$");        
         
         /* Add pattern matchers to iterable collection */
         
