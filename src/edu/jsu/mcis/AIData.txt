@@ -1,0 +1,23 @@
+00	SSCC	Serial Shipping Container Code (SSCC)
+01	GTIN	Global Trade ITem Number (GTIN)
+02	CONTENT
+10	BATCH/LOT
+11	PROD DATE
+12	DUE DATE
+13	PACK DATE
+15	BEST BEFORE or BEST BY
+16	SELL BY
+17	USE BY OR EXPIRY
+20	VARIANT
+21	SERIAL
+22	CPV
+240	ADDITIONAL ID
+241	CUST. PART NO.
+242	MTO VARIANT	Made-to-Order variation number
+243	PCN	Packaging component number
+250	SECONDARY SERIAL	Secondary serial number
+251	REF. TO SOURCE	Reference to source entity
+253	GDTI	Global Document Type Identifier (GDTI)
+254	GLN EXTENSION COMPONENT	GLN extension component
+255	GCN	Global Coupon Number (GCN)
+30	VAR. COUNT	Variable count of items (variable measure trade item)

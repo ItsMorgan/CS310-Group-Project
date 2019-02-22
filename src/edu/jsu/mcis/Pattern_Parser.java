@@ -5,12 +5,13 @@ import java.util.regex.*;
 
 public class Pattern_Parser {
     
-    public String parse(String input) {
+    public ArrayList<Matcher> parse(String input) {
         
         String code = input;
         boolean matched = true;
         
         ArrayList<Pattern> patterns = new ArrayList<>();
+        ArrayList<Matcher> matches = new ArrayList();
         
         /* Echo input string */
         
@@ -53,8 +54,9 @@ public class Pattern_Parser {
                     int end = m.end();
 
                     /* Print matched code */
-                    System.out.println("Found Code: " + m.group());
-
+                    
+                    matches.add(m);
+                    
                     /* Strip matched code from the input string */
                     code = code.substring(end).trim();
 
@@ -65,12 +67,10 @@ public class Pattern_Parser {
         }
         
         /* Print original input string */
-        
-        System.out.println("\nFinished Parsing: " + input);
-        
+                
         /* Replace this with a JSON string containing the parsed code data */
         
-        return ( "" );
+        return matches;
         
     }
     
