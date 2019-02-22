@@ -94,7 +94,13 @@ public class Pattern_Parser {
         Pattern p360n = Pattern.compile("^360n[0-9]{6}");               // AI #360n
         Pattern p361n = Pattern.compile("^361n[0-9]{6}");               // AI #361n
         Pattern p362n = Pattern.compile("^362n[0-9]{6}");               // AI #362n
-        
+        Pattern p363n = Pattern.compile("^363n[0-9]{6}");               // AI #363n
+        Pattern p364n = Pattern.compile("^364n[0-9]{6}");               // AI #364n
+        Pattern p365n = Pattern.compile("^365n[0-9]{6}");               // AI #365n
+        Pattern p366n = Pattern.compile("^366n[0-9]{6}");               // AI #366n
+        Pattern p367n = Pattern.compile("^367n[0-9]{6}");               // AI #367n
+        Pattern p368n = Pattern.compile("^368n[0-9]{6}");               // AI #368n
+        Pattern p369n = Pattern.compile("^369n[0-9]{6}");               // AI #369n
         
         
         
