@@ -1,0 +1,155 @@
+00  SSCC    Serial Shipping Container Code (SSCC)
+01  GTIN    Global Trade Item Number (GTIN)
+02  CONTENT GTIN of contained trade items
+10  BATCH/LOT   Batch or lot number
+11  PROD DATE   Product date (YYMMDD)
+12  DUE DATE    Due date (YYMMDD)
+13  PACK DATE   Packaging date (YYMMDD)
+15  BEST BEFORE or BEST BY  Best before date (YYMMDD)
+16  SELL BY Sell by date (YYMMDD)
+17  USE BY OR EXPIRY    Expiration date (YYMMDD)
+20  VARIANT Internal product variant
+21  SERIAL  Serial number
+22  CPV Consumer product variant
+240 ADDITIONAL ID   Additional product identification assigned by the manufacturer
+241 CUST. PART NO.  Custom part number
+242 MTO VARIANT Made-to-Order variation number
+243 PCN Packaging component number
+250 SECONDARY SERIAL    Secondary serial number
+251 REF. TO SOURCE  Reference to source entity
+253 GDTI    Global Document Type Identifier (GDTI)
+254 GLN EXTENSION COMPONENT	GLN extension component
+255 GCN Global Coupon Number (GCN)
+30  VAR. COUNT  Variable count of items (variable measure trade item)
+310n    NET WEIGHT(kg)  Net weight, kilograms (variable measure trade item)
+311n	LENGTH (m)  Length or first dimension, metres (variable measure trade item)
+312n	WIDTH (m)   Width, diameter, or second dimension, metres (variable measure trade item)
+313n 	HEIGHT (m)  Depth, thickness, height, or third dimension, metres (variable measure trade item)
+314n	AREA (m^2)  Area, square metres (variable measure trade item)
+315n	NET VOLUME (l)  Net volume, litres (variable measure trade item)
+316n	NET VOLUME (m^3)    Net volume, cubic metres (variable measure trade item)
+320n	NET WEIGHT (lb) Net weight, pounds (variable measure trade item)
+321n	LENGTH (i)  Length or first dimension, inches (variable measure trade item)
+322n	LENGTH (f)  Length or first dimension, feet (variable measure trade item)
+323n	LENGTH (y)  Length or first dimension, yards (variable measure trade item)
+324n	WIDTH (i)   Width, diameter, or second dimension, inches (variable measure trade item)
+325n	WIDTH (f)   Width, diameter, or second dimension, feet (variable measure trade item)
+326n	WIDTH (y)   Width, diameter, or second dimension, yards (variable measure trade item)
+327n	HEIGHT (i)  Depth, thickness, height, or third dimension, inches (variable measure trade item)
+328n	HEIGHT (f)  Depth, thickness, height, or third dimension, feet (variable measure trade item)
+329n	HEIGHT (y)  Depth, thickness, height, or third dimension, yards (variable measure trade item)
+330n	GROSS WEIGHT (kg)   Logistic weight, kilograms
+331n	LENGTH (m), log Length or first dimension, metres
+332n	WIDTH (m), log  Width, diameter, or second dimension, metres
+333n	HEIGHT (m), log Depth, thickness, height, or third dimension, metres
+334n	AREA (m^2), log Area, square metres
+335n	VOLUME (l), log Logistic volume, litres
+336n	VOLUME (m^3),log    Logistic volume, cubic metres
+337n	KG PER m^2  Kilograms per square metre
+340n	GROSS WEIGHT (lb)	logistic weight, pounds
+341n	LENGTH (i), log Length, or first dimension, inches
+342n	LENGTH (f), log	Length, or first dimension, feet
+343n	LENGTH (y), log	Length, or first dimension, yards
+344n	WIDTH (i), log	Width, diameter, or second dimension, inches
+345n	WIDTH (f), log	Width, diameter, or second dimension, feet
+346n	WIDTH (y), log	Width, diameter, or second dimension, yards
+347n	HEIGHT (i), log	Depth, thickness, height, or third dimension, inches
+348n	HEIGHT (f), log	Depth, thickness, height, or third dimension, feet
+349n	HEIGHT (y), log	Depth, thickness, height, or third dimension, yards
+350n	AREA (i^2)  Area, square inches (variable measure trade item)
+351n	AREA (f^2)  Area, square feet (variable measure trade item)
+352n	AREA (y^2)  Area, square yards (variable measure trade item)
+353n	AREA (i^2), log Area, square inches 
+354n	AREA (f^2), log	Area, square feet
+355n	AREA (y^2), log	Area, square yards
+356n	NET WEIGHT (t)	Net weight, troy ounces (variable measure trade item)
+357n	NET VOLUME (oz)	Net weight (or volume), ounces (variable measure trade item)
+360n	NET VOLUME (q)	Net volume, quarts (variable measure trade item)
+361n	NEW VOLUME (g)	Net volume, gallons U.S. (variable measure trade item)
+362n	VOLUME (q), log Logistic volume, quarts
+363n	VOLUME (g), log	Logistic volume, gallons U.S.
+364n	VOLUME (i^3)	Net volume, cubic inches (variable measure trade item)
+365n	VOLUME (f^3)	Net volume, cubic feet (variable measure trade item)
+366n	VOLUME (y^3)	Net volume, cubic yards (variable measure trade item)
+367n	VOLUME (i^3)	Net volume, cubic inches
+368n	VOLUME (f^3)	Net volume, cubic feet
+369n    VOLUME (y^3)	Net volume, cubic yards
+37  COUNT   Count of trade items or trade item pieces contained in a logistic unit
+390n	AMOUNT	Applicable amount payable or Coupon value, local currency
+391n	AMOUNT	Applicable amount payable with ISO currency code
+392n	PRICE	Applicable amount payable, single monetary area (variable measure trade item)
+393n    PRICE   Applicable amount payable with ISO currency code (variable measure trade item)
+394n    PRCNT OFF   Percentage discount of a coupon
+400 ORDER NUMBER    Customer's purchase order number
+401 GINC    Global Identification Number Number for Consignment (GINC)
+402 GSIN    Global Shipment Identification Number (GSIN)
+403 ROUTE   Routing Code
+410 SHIP TO LOC Ship to - Deliver to Global Location Number
+411 BILL TO Bill to - Invoice to Global Location Number 
+412 PURCHASE FROM	Purchased from Global Location Number
+413 SHIP FOR LOC	Ship for - Deliver - Forward to Global Location Number
+414 LOC No  Identification of a physical location - Global Location Number
+415 PAY TO	Global Location Number of invoicing party
+416 PROD/SERV LOC	GLN of the production or service location
+420 SHIP TO POST	Ship to - Deliver to postal code within a single postal authority
+421 SHIP TO POST	Ship to - Deliver to postal code with ISO country code
+422 ORIGIN  Country of origin of a trade item
+423 COUNTRY - INITIAL PROCESS.  Country of origin of a trade item
+424 COUNTRY - PROCESS.  Country of processing
+425 COUNTRY - DISASSEMBLY   Country of disassembly
+426 COUNTRY - FULL PROCESS  Country covering full process chain
+427 ORIGIN SUBDIVISION  Country subdivision of origin
+7001    NSN NATO Stock Number (NSN)
+7002	MEAT CUT    UN/ECE meat carcasses and cuts classification
+7003	EXPIRY TIME Expiration date and time
+7004	ACTIVE POTENCY  Active potency
+7005	CATCH AREA  Catch area
+7006	FIRST FREEZE DATE   First freeze date
+7007	HARVEST DATE    Harvest date
+7008	AQUATIC SPECIES Species for fishery purposes
+7009	FISHING GEAR TYPE   Fishing gear type
+7010	PROD METHOD Production method
+7020	REFURB LOT  Refurbishment lot ID
+7021	FUNC STAT   Functional status
+7022	REV STAT    Revision status
+7023	GIAI - ASSEMBLY Global Individual Asset Identifier (GIAI) of an assembly
+703s	PROCESSOR # s   Number of processor with ISO Country Code
+710	NHRN PZN    National Healthcare Reimbursement Number (NHRN) - Germany PZN
+711	NHRN CIP    National Healthcare Reimbursement Number (NHRN) - France CIP
+712	NHRN CN National Healthcare Reimbursement Number (NHRN) - Spain CN
+713	NHRN DRN    National Healthcare Reimbursement Number (NHRN) - Brasil DRN
+714	NHRN AIM    National Healthcare Reimbursement Number (NHRN) - Portugal AIM
+...	NHRN xxx    National Healthcare Reimbursement Number (NHRN) - Country "A" NHRN
+723s	CERT # s    Certification reference
+8001	DIMENSIONS  Roll products (width, length, core diameter, direction, splices)
+8002	CMT No  Cellular mobile telephone identifier
+8003	GRAI    Global Returnable Asset Identifier (GRAI)
+8004	GIAI    Global Individual Asset Identifier (GIAI)
+8005	PRICE PER UNIT  Price per unit of measure
+8006	ITIP or GCTIN   Identification of an individual trade item piece
+8007	IBAN    International Bank Account Number (IBAN)
+8008	PROD TIME   Date and time of production
+8009	OPTSEN  Optically Readable Sensor Indicator
+8010	CPID    Component/Part Identifier (CPID)
+8011	CPID SERIAL Component/Part Identifier serial number (CPID SERIAL)
+8012	VERSION Software Version
+8013	GMN or BUDI-DI  Global Model Number (GMN)
+8017	GSRN - PROVIDER Global Service Relation Number to identify the relationship between an organisation offering services and the provider of services
+8018	GSRN - RECIPIENT    Global Service Relation Number to identify the relationship between an organisation offering services and the recipient of services
+8019	SRIN    Service Relation Instance Number (SRIN)
+8020	REF No  Payment slip reference number
+8110	-   Coupon code identification for use in North America
+8026	ITIP CONTENT    Identification of pieces of a trade item (ITIP) contained in a logistic unit
+8111	POINTS  Loyalty points of a coupon
+8112    -   Positive offer file coupon code identification for use in North America
+8200    PRODUCT URL Extended Packaging URL
+90  INTERNAL    Information mutually agreed between trading partners
+91  INTERNAL    Company internal information
+92  INTERNAL    Company internal information
+93  INTERNAL    Company internal information
+94  INTERNAL    Company internal information
+95  INTERNAL    Company internal information
+96  INTERNAL    Company internal information
+97  INTERNAL    Company internal information
+98  INTERNAL    Company internal information
+99  INTERNAL    Company internal information
