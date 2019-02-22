@@ -19,7 +19,9 @@ public class Pattern_Parser {
         
         /* Create precompiled pattern matchers (for AIs 01, 17, and 10) */
         
-        Pattern p01 = Pattern.compile("^01[0-9]{14}");         // AI #01      
+        Pattern p00 = Pattern.compile("^01[0-9]{18}");         // AI #00
+        Pattern p01 = Pattern.compile("^01[0-9]{14}");         // AI #01 
+        Pattern p02 = Pattern.compile("^02[0-9]{14}");         // AI #02
         Pattern p10 = Pattern.compile("^10(.){1,20}[%\\x1D]"); // AI #10
         Pattern p10eol = Pattern.compile("^10(.){1,20}$");     // AI #10 (eol)
         Pattern p11 = Pattern.compile("^11[0-9]{6}");            // AI #11
@@ -42,7 +44,7 @@ public class Pattern_Parser {
         Pattern p251 = Pattern.compile("^251(.){1,30}[%\\x1D]"); // AI #243
         Pattern p251eol = Pattern.compile("^251(.){1,30}$");     // AI #243
         Pattern p253 = Pattern.compile("^253[0-9]{13}(.){1,17}[%\\x1D]"); // AI #243
-        Pattern p253eol = Pattern.compile("^253[0-9]{13](.){1,17}$"); // AI #243
+        Pattern p253eol = Pattern.compile("^253[0-9]{13}(.){1,17}$"); // AI #243
         Pattern p254 = Pattern.compile("^254(.){1,20}[%\\x1D]"); // AI #243
         Pattern p254eol = Pattern.compile("^254(.){1,20}[%\\x1D]"); // AI #243
         Pattern p255 = Pattern.compile("^255[0-9]{13}[0-9]{1,12}[%\\x1D]"); // AI #243
@@ -109,10 +111,91 @@ public class Pattern_Parser {
         
         /* Add pattern matchers to iterable collection */
         
+        patterns.add(p00);
         patterns.add(p01);
-        patterns.add(p17);
+        patterns.add(p02);
         patterns.add(p10);
         patterns.add(p10eol);
+        patterns.add(p11);
+        patterns.add(p12);
+        patterns.add(p13);
+        patterns.add(p15);
+        patterns.add(p16);
+        patterns.add(p17);
+        patterns.add(p20);
+        patterns.add(p21);
+        patterns.add(p21eol);
+        patterns.add(p22);
+        patterns.add(p22eol);
+        patterns.add(p240);
+        patterns.add(p240eol);
+        patterns.add(p243);
+        patterns.add(p243eol);
+        patterns.add(p250);
+        patterns.add(p250eol);
+        patterns.add(p251);
+        patterns.add(p251eol);
+        patterns.add(p253);
+        patterns.add(p253eol);
+        patterns.add(p254);
+        patterns.add(p254eol);
+        patterns.add(p255);
+        patterns.add(p255eol);
+        patterns.add(p30);
+        patterns.add(p30eol);
+        patterns.add(p310n);
+        patterns.add(p311n);
+        patterns.add(p312n);
+        patterns.add(p313n);
+        patterns.add(p314n);
+        patterns.add(p315n);
+        patterns.add(p316n);
+        patterns.add(p320n);
+        patterns.add(p321n);
+        patterns.add(p322n);
+        patterns.add(p323n);
+        patterns.add(p324n);
+        patterns.add(p325n);
+        patterns.add(p326n);
+        patterns.add(p327n);
+        patterns.add(p328n);
+        patterns.add(p329n);
+        patterns.add(p330n);
+        patterns.add(p331n);
+        patterns.add(p332n);
+        patterns.add(p333n);
+        patterns.add(p334n);
+        patterns.add(p335n);
+        patterns.add(p336n);
+        patterns.add(p337n);
+        patterns.add(p340n);
+        patterns.add(p341n);
+        patterns.add(p342n);
+        patterns.add(p343n);
+        patterns.add(p344n);
+        patterns.add(p345n);
+        patterns.add(p346n);
+        patterns.add(p347n);
+        patterns.add(p348n);
+        patterns.add(p349n);
+        patterns.add(p350n);
+        patterns.add(p351n);
+        patterns.add(p352n);
+        patterns.add(p353n);
+        patterns.add(p354n);
+        patterns.add(p355n);
+        patterns.add(p356n);
+        patterns.add(p357n);
+        patterns.add(p360n);
+        patterns.add(p361n);
+        patterns.add(p362n);
+        patterns.add(p363n);
+        patterns.add(p364n);
+        patterns.add(p365n);
+        patterns.add(p366n);
+        patterns.add(p367n);
+        patterns.add(p368n);
+        patterns.add(p369n);
         
         /* Loop until input is fully processed, or an unknown code is found */
         
