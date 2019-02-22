@@ -35,7 +35,10 @@ public class Pattern_Parser {
         Pattern p22 = Pattern.compile("^22(.){1,20}[%\\x1D]");    // AI #22
         Pattern p22eol = Pattern.compile("^22(.){1,20}$");       // AI #22 (eol)
         Pattern p240 = Pattern.compile("^240(.){1,20}[%\\x1D]");  // AI #240
-        Pattern p240eol = Pattern.compile("^240(.){1,30}$");     // AI #240 (eol)
+        Pattern p240eol = Pattern.compile("^240(.){1,20}$");     // AI #240 (eol)
+        Pattern p241 = Pattern.compile("^240(.){1,30}[%\\x1D]");  // AI #241
+        Pattern p241eol = Pattern.compile("^240(.){1,30}$");     // AI #241 (eol)
+        
         
         
         /* Add pattern matchers to iterable collection */
