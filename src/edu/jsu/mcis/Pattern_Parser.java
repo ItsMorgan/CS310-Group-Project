@@ -18,11 +18,9 @@ public class Pattern_Parser {
         
         /* Create precompiled pattern matchers (for AIs 01, 17, and 10) */
         
-        Pattern p00 = Pattern.compile("^00[0-9]{18}");           // AI #00
-        Pattern p01 = Pattern.compile("^01[0-9]{14}");           // AI #01
-        Pattern p02= Pattern.compile("^02[0-9]{14}");            // AI #02       
-        Pattern p10 = Pattern.compile("^10(.){1,20}[%\\x1D]");   // AI #10
-        Pattern p10eol = Pattern.compile("^10(.){1,20}$");       // AI #10 (eol)
+        Pattern p01 = Pattern.compile("^01[0-9]{14}");         // AI #01      
+        Pattern p10 = Pattern.compile("^10(.){1,20}[%\\x1D]"); // AI #10
+        Pattern p10eol = Pattern.compile("^10(.){1,20}$");     // AI #10 (eol)
         Pattern p11 = Pattern.compile("^11[0-9]{6}");            // AI #11
         Pattern p12 = Pattern.compile("^12[0-9]{6}");            // AI #12
         Pattern p13 = Pattern.compile("^13[0-9]{6}");            // AI #13
@@ -35,9 +33,70 @@ public class Pattern_Parser {
         Pattern p22 = Pattern.compile("^22(.){1,20}[%\\x1D]");    // AI #22
         Pattern p22eol = Pattern.compile("^22(.){1,20}$");       // AI #22 (eol)
         Pattern p240 = Pattern.compile("^240(.){1,20}[%\\x1D]");  // AI #240
-        Pattern p240eol = Pattern.compile("^240(.){1,20}$");     // AI #240 (eol)
-        Pattern p241 = Pattern.compile("^240(.){1,30}[%\\x1D]");  // AI #241
-        Pattern p241eol = Pattern.compile("^240(.){1,30}$");     // AI #241 (eol)
+        Pattern p240eol = Pattern.compile("^240(.){1,30}$");     // AI #240 (eol)
+        Pattern p243 = Pattern.compile("^243(.){1,20}[%\\x1D]"); // AI #243
+        Pattern p243eol = Pattern.compile("^243(.){1,20}$");     // AI #243
+        Pattern p250 = Pattern.compile("^250(.){1,30}[%\\x1D]"); // AI #243
+        Pattern p250eol = Pattern.compile("^250(.){1,30}$");     // AI #243
+        Pattern p251 = Pattern.compile("^251(.){1,30}[%\\x1D]"); // AI #243
+        Pattern p251eol = Pattern.compile("^251(.){1,30}$");     // AI #243
+        Pattern p253 = Pattern.compile("^253[0-9]{13}(.){1,17}[%\\x1D]"); // AI #243
+        Pattern p253eol = Pattern.compile("^253[0-9]{13](.){1,17}$"); // AI #243
+        Pattern p254 = Pattern.compile("^254(.){1,20}[%\\x1D]"); // AI #243
+        Pattern p254eol = Pattern.compile("^254(.){1,20}[%\\x1D]"); // AI #243
+        Pattern p255 = Pattern.compile("^255[0-9]{13}[0-9]{1,12}[%\\x1D]"); // AI #243
+        Pattern p255eol = Pattern.compile("^255[0-9]{13}[0-9]{1,12}$"); // AI #243
+        Pattern p30 = Pattern.compile("^30[0-9]{1,8}[%\\x1D]");         // AI #30
+        Pattern p30eol = Pattern.compile("^30[0-9]{1,8}$");             // AI #30eol
+        Pattern p310n = Pattern.compile("^310n[0-9]{6}");               // AI #310n
+        Pattern p311n = Pattern.compile("^311n[0-9]{6}");               // AI #311n
+        Pattern p312n = Pattern.compile("^312n[0-9]{6}");               // AI #312n
+        Pattern p313n = Pattern.compile("^313n[0-9]{6}");               // AI #313n
+        Pattern p314n = Pattern.compile("^314n[0-9]{6}");               // AI #314n
+        Pattern p315n = Pattern.compile("^315n[0-9]{6}");               // AI #315n
+        Pattern p316n = Pattern.compile("^316n[0-9]{6}");               // AI #316n
+        Pattern p320n = Pattern.compile("^320n[0-9]{6}");               // AI #320n
+        Pattern p321n = Pattern.compile("^321n[0-9]{6}");               // AI #321n
+        Pattern p322n = Pattern.compile("^322n[0-9]{6}");               // AI #322n
+        Pattern p323n = Pattern.compile("^323n[0-9]{6}");               // AI #323n
+        Pattern p324n = Pattern.compile("^324n[0-9]{6}");               // AI #324n
+        Pattern p325n = Pattern.compile("^325n[0-9]{6}");               // AI #325n
+        Pattern p326n = Pattern.compile("^326n[0-9]{6}");               // AI #326n
+        Pattern p327n = Pattern.compile("^327n[0-9]{6}");               // AI #327n
+        Pattern p328n = Pattern.compile("^328n[0-9]{6}");               // AI #328n
+        Pattern p329n = Pattern.compile("^329n[0-9]{6}");               // AI #329n
+        Pattern p330n = Pattern.compile("^330n[0-9]{6}");               // AI #330n
+        Pattern p331n = Pattern.compile("^331n[0-9]{6}");               // AI #331n
+        Pattern p332n = Pattern.compile("^332n[0-9]{6}");               // AI #332n
+        Pattern p333n = Pattern.compile("^333n[0-9]{6}");               // AI #333n
+        Pattern p334n = Pattern.compile("^334n[0-9]{6}");               // AI #334n
+        Pattern p335n = Pattern.compile("^335n[0-9]{6}");               // AI #335n
+        Pattern p336n = Pattern.compile("^336n[0-9]{6}");               // AI #336n
+        Pattern p337n = Pattern.compile("^337n[0-9]{6}");               // AI #337n
+        Pattern p340n = Pattern.compile("^340n[0-9]{6}");               // AI #340n
+        Pattern p341n = Pattern.compile("^341n[0-9]{6}");               // AI #341n
+        Pattern p342n = Pattern.compile("^342n[0-9]{6}");               // AI #342n
+        Pattern p343n = Pattern.compile("^343n[0-9]{6}");               // AI #342n
+        Pattern p344n = Pattern.compile("^344n[0-9]{6}");               // AI #344n
+        Pattern p345n = Pattern.compile("^345n[0-9]{6}");               // AI #345n
+        Pattern p346n = Pattern.compile("^346n[0-9]{6}");               // AI #346n
+        Pattern p347n = Pattern.compile("^347n[0-9]{6}");               // AI #347n
+        Pattern p348n = Pattern.compile("^348n[0-9]{6}");               // AI #348n
+        Pattern p349n = Pattern.compile("^349n[0-9]{6}");               // AI #349n
+        Pattern p350n = Pattern.compile("^350n[0-9]{6}");               // AI #350n
+        Pattern p351n = Pattern.compile("^351n[0-9]{6}");               // AI #351n
+        Pattern p352n = Pattern.compile("^352n[0-9]{6}");               // AI #352n
+        Pattern p353n = Pattern.compile("^353n[0-9]{6}");               // AI #353n
+        Pattern p354n = Pattern.compile("^354n[0-9]{6}");               // AI #353n
+        Pattern p355n = Pattern.compile("^355n[0-9]{6}");               // AI #355n
+        Pattern p356n = Pattern.compile("^356n[0-9]{6}");               // AI #356n
+        Pattern p357n = Pattern.compile("^357n[0-9]{6}");               // AI #357n
+        Pattern p360n = Pattern.compile("^360n[0-9]{6}");               // AI #360n
+        Pattern p361n = Pattern.compile("^361n[0-9]{6}");               // AI #361n
+        Pattern p362n = Pattern.compile("^362n[0-9]{6}");               // AI #362n
+        
+        
+        
         
         
         
