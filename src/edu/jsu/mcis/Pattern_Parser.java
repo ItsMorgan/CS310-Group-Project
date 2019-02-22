@@ -12,11 +12,7 @@ public class Pattern_Parser {
         
         ArrayList<Pattern> patterns = new ArrayList<>();
         ArrayList<Matcher> matches = new ArrayList();
-        
-        /* Echo input string */
-        
-        System.out.println("Parsing: " + input + "\n");
-        
+                
         /* Create precompiled pattern matchers (for AIs 01, 17, and 10) */
         
         Pattern p00 = Pattern.compile("^01[0-9]{18}");         // AI #00
