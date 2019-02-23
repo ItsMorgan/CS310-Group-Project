@@ -41,7 +41,7 @@ public class Pattern_Parser {
         Pattern p251 = Pattern.compile("^251(.){1,30}[%\\x1D]"); // AI #243
         Pattern p251eol = Pattern.compile("^251(.){1,30}$");     // AI #243
         Pattern p253 = Pattern.compile("^253[0-9]{13}(.){1,17}[%\\x1D]"); // AI #243
-        Pattern p253eol = Pattern.compile("^253[0-9]{13](.){1,17}$"); // AI #243
+        Pattern p253eol = Pattern.compile("^253[0-9]{13}(.){1,17}$"); // AI #243
         Pattern p254 = Pattern.compile("^254(.){1,20}[%\\x1D]"); // AI #243
         Pattern p254eol = Pattern.compile("^254(.){1,20}[%\\x1D]"); // AI #243
         Pattern p255 = Pattern.compile("^255[0-9]{13}[0-9]{1,12}[%\\x1D]"); // AI #243
@@ -101,6 +101,17 @@ public class Pattern_Parser {
         Pattern p367n = Pattern.compile("^367n[0-9]{6}");               // AI #367n
         Pattern p368n = Pattern.compile("^368n[0-9]{6}");               // AI #368n
         Pattern p369n = Pattern.compile("^369n[0-9]{6}");               // AI #369n
+        Pattern p37 = Pattern.compile("^37(.){1,8}[%\\x1D]");           // AI #37
+        Pattern p37eol = Pattern.compile("^37(.){1,8}$");               // AI #37eol
+        Pattern p390n = Pattern.compile("^390n(.){1,15}[%\\x1D]");      // AI #390n
+        Pattern p390neol = Pattern.compile("^390n(.){1,15}$");          // AI #390neol
+        Pattern p391n = Pattern.compile("^390n[0-9]{3}(.){1,15}[%\\x1D]");      // AI #390n
+        Pattern p391neol = Pattern.compile("^390n[0-9]{3}(.){1,15}}$");          // AI #390neol
+        Pattern p392n = Pattern.compile("^392n(.){1,15}[%\\x1D]");      // AI #392n
+        Pattern p392neol = Pattern.compile("^392n(.){1,15}$");          // AI #392neol
+        Pattern p393n = Pattern.compile("^393n[0-9]{3}(.){1,15}[%\\x1D]");      // AI #393n
+        Pattern p393neol = Pattern.compile("^393n[0-9]{3}(.){1,15}}$");          // AI #393neol
+        
         
         
         
