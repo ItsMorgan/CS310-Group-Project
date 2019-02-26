@@ -152,8 +152,10 @@ public class Pattern_Parser {
         Pattern p8110eol = Pattern.compile("^8110(.){1,70}$");
         Pattern p8026 = Pattern.compile("^8026[0-9]{14}[0-9]{2}[0-9]{2}[%\\x1D]");
         Pattern p8026eol = Pattern.compile("^8026[0-9]{14}[0-9]{2}[0-9]{2}$");
-        Pattern p8111 = Pattern.compile("^8112(.){1,70}[%\\1xD]");
-        Pattern p8111eol = Pattern.compile("^8112(.){1,70}$"); 
+        Pattern p8111 = Pattern.compile("^8111(.){1,70}[%\\1xD]");
+        Pattern p8111eol = Pattern.compile("^8111(.){1,70}$"); 
+        Pattern p8112 = Pattern.compile("^8112(.){1,70}[%\\1xD]");
+        Pattern p8112eol = Pattern.compile("^8112(.){1,70}$"); 
         Pattern p8200 = Pattern.compile("^8200(.){1,70}[%\\1xD]");
         Pattern p8200eol = Pattern.compile("^8200(.){1,70}$");
         Pattern p90 = Pattern.compile("^90(.){1,30}[%\\1xD]");
