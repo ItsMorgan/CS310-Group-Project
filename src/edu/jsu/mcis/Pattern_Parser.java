@@ -116,7 +116,7 @@ public class Pattern_Parser {
         Pattern p393neol = Pattern.compile("^393n[0-9]{3}(.){1,15}}$");          // AI #393neol
         
         
-        Pattern p7230n = Pattern.compile("^723[0-9]{1}(.){2}(.){1,28}[%\\1xD]");
+        Pattern p723n = Pattern.compile("^723[0-9]{1}(.){2}(.){1,28}[%\\1xD]");
 
         
         
