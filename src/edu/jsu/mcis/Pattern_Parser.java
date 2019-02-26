@@ -13,12 +13,6 @@ public class Pattern_Parser {
         ArrayList<Pattern> patterns = new ArrayList<>();
         ArrayList<Matcher> matches = new ArrayList();
         
-        /* Echo input string */
-        
-        System.out.println("Parsing: " + input + "\n");
-        
-        /* Create precompiled pattern matchers (for AIs 01, 17, and 10) */
-        
         Pattern p00 = Pattern.compile("^01[0-9]{18}");         
         Pattern p01 = Pattern.compile("^01[0-9]{14}");          
         Pattern p02 = Pattern.compile("^02[0-9]{14}");         
@@ -109,11 +103,11 @@ public class Pattern_Parser {
         Pattern p390n = Pattern.compile("^390[0-9]{1}[0-9]{1,15}[%\\x1D]");      
         Pattern p390neol = Pattern.compile("^390[0-9]{1}[0-9]{1,15}$");          
         Pattern p391n = Pattern.compile("^390[0-9]{1}[0-9]{3}[0-9]{1,15}[%\\x1D]");
-        Pattern p391neol = Pattern.compile("^390[0-9]{1}[0-9]{3}[0-9]{1,15}}$"); 
+        Pattern p391neol = Pattern.compile("^390[0-9]{1}[0-9]{3}[0-9]{1,15}$"); 
         Pattern p392n = Pattern.compile("^392[0-9]{1}[0-9]{1,15}[%\\x1D]");      
         Pattern p392neol = Pattern.compile("^392[0-9]{1}[0-9]{1,15}$");          
         Pattern p393n = Pattern.compile("^393[0-9]{1}[0-9]{3}[0-9]{1,15}[%\\x1D]");
-        Pattern p393neol = Pattern.compile("^393[0-9]{1}[0-9]{3}[0-9]{1,15}}$");
+        Pattern p393neol = Pattern.compile("^393[0-9]{1}[0-9]{3}[0-9]{1,15}$");
         Pattern p394n = Pattern.compile("^394[0-9]{1}[0-9]{6}[%\\x1D]");        
         Pattern p394neol = Pattern.compile("^394[0-9]{1}[0-9]{4}$");         
         Pattern p400 = Pattern.compile("^400(.){1,30}[%\\x1D]");    
@@ -137,12 +131,12 @@ public class Pattern_Parser {
         Pattern p421eol = Pattern.compile("^421[0,9]{3}(.){1,9}$");
         Pattern p422 = Pattern.compile("^422[0-9]{3}[%\\x1D]");
         Pattern p422eol = Pattern.compile("^422[0-9]{3}$");
-        Pattern p423 = Pattern.compile("^423[0-9]{3}[0-9]{1,12)[%\\x1D]");
-        Pattern p423eol = Pattern.compile("^423[0-9]{3}[0-9]{1,12)$");
+        Pattern p423 = Pattern.compile("^423[0-9]{3}[0-9]{1,12}[%\\x1D]");
+        Pattern p423eol = Pattern.compile("^423[0-9]{3}[0-9]{1,12}$");
         Pattern p424 = Pattern.compile("^424[0-9]{3}[%\\x1D]");
         Pattern p424eol = Pattern.compile("^424[0-9]{3}$");
-        Pattern p425 = Pattern.compile("^425[0-9]{3}[0-9]{1,12)[%\\x1D]");
-        Pattern p425eol = Pattern.compile("^425[0-9]{3}[0-9]{1,12)$");
+        Pattern p425 = Pattern.compile("^425[0-9]{3}[0-9]{1,12}[%\\x1D]");
+        Pattern p425eol = Pattern.compile("^425[0-9]{3}[0-9]{1,12}$");
         Pattern p426 = Pattern.compile("^426[0-9]{3}[%\\x1D]");
         Pattern p426eol = Pattern.compile("^426[0-9]{3}$");
         Pattern p427 = Pattern.compile("^427(.){1,3}[%\\x1D]");
@@ -153,84 +147,89 @@ public class Pattern_Parser {
         Pattern p7002eol = Pattern.compile("^7002(.){1,30}$");
         Pattern p7003 = Pattern.compile("^7003[0-9]{10}[%\\x1D]");
         Pattern p7003eol = Pattern.compile("^7003[0-9]{10}$");
-        
-        
-        
-        Pattern p723n = Pattern.compile("^723[0-9]{1}(.){2}(.){1,28}[%\\1xD]");
-
-        Pattern p7004 = Pattern.compile("^7004[0-9](.){1,4}");    //AI 7004
-        Pattern p7004eol = Pattern.compile("^7004[0-9](.){1,4}}$"); //AI 7004eol
-        Pattern p7005 = Pattern.compile("^7005(.){1,12}[%\\x1D]");   //AI 7005
-        Pattern p7005eol = Pattern.compile("^7005(.){1,12}}$"); //AI 7005eol
-        Pattern p7006 = Pattern.compile("^7006[0-9](.){1,6}");   //AI 7006
-        Pattern p7006eol = Pattern.compile("^7006[0-9](.){1,6}}$");  //AI 7006eol
-        Pattern p7007 = Pattern.compile("^7007[0-9](.){6,12}");   //AI 7007
-        Pattern p7007eol = Pattern.compile("^7007[0-9]{4}(.){6,12}}$");  //AI 7007eol
-        Pattern p7008 = Pattern.compile("^7008(.){1,3}[%\\x1D]");   //AI 7008
-        Pattern p7008eol = Pattern.compile("^7008(.){1,3}}$");  //AI 7008eol
-        Pattern p7009 = Pattern.compile("^7009[0-9](.){1,10}[%\\x1D]");   //AI 7009
-        Pattern p7009eol = Pattern.compile("^7009[0-9](.){1,10}}$");  //AI 7009eol
-        Pattern p7010 = Pattern.compile("^7010(.){1,2}[%\\x1D]");   //AI 7010
-        Pattern p7010eol = Pattern.compile("^7010(.){1,2}}$");  //AI 7010eol
-        Pattern p7020 = Pattern.compile("^7020(.){1,20}[%\\x1D]");   //AI 7020
-        Pattern p7020eol = Pattern.compile("^7020(.){1,20}}$");  //AI 7020eol
-        Pattern p7021 = Pattern.compile("^7021(.){1,20}[%\\x1D]");   //AI 7021
-        Pattern p7021eol = Pattern.compile("^7021(.){1,20}}$");  //AI 7021eol
-        Pattern p7022 = Pattern.compile("^7022(.){1,20}[%\\x1D]");   //AI 7022
-        Pattern p7022eol = Pattern.compile("^7022(.){1,20}}$");  //AI 7022eol
-        Pattern p7023 = Pattern.compile("^7023(.){1,30}[%\\x1D]");   //AI 7023
-        Pattern p7023eol = Pattern.compile("^7023(.){1,30}}$");  //AI 7023eol
-        Pattern p7030s = Pattern.compile("^703[0-9]{1}[0-9]{3}(.){1,27}[%\\x1D]");  //AI 703s
-        Pattern p703seol = Pattern.compile("^703[0-9]{1}[0-9]{3}(.){1,27}}$"); //AI 703seol
-        Pattern p710 = Pattern.compile("^710(.){1,20}[%\\x1D]");    //AI 710
-        Pattern p710eol = Pattern.compile("^710(.){1,20}}$");    //AI 710eol
-        Pattern p711 = Pattern.compile("^711(.){1,20}[%\\x1D]"); //AI 711
-        Pattern p711eol = Pattern.compile("^711(.){1,20}}$");   //AI 711eol
-        Pattern p712 = Pattern.compile("^712(.){1,20}[%\\1xD]");    //AI 712
-        Pattern p712eol = Pattern.compile("^712(.){1,20}}$");   //AI 712eol
-        Pattern p713 = Pattern.compile("^713(.){1,20}[%\\1xD]");    //AI 713
-        Pattern p713eol = Pattern.compile("^713(.){1,20}}$");   //AI 713eol
-        Pattern p714 = Pattern.compile("^714(.){1,20}[%\\1xD]");    //AI 714
-        Pattern p714eol = Pattern.compile("^714(.){1,20}}$");  //AI 714eol
-        Pattern p8001 = Pattern.compile("^8001[0-9](.){1,14}");    //AI 8001
-        Pattern p8001eol = Pattern.compile("^8001[0-9](.){1,14}}$");   //AI 8001eol
-        Pattern p8002 = Pattern.compile("^8002(.){1,20}[%\\1xD]");  //AI 8002
-        Pattern p8002eol = Pattern.compile("^8002(.){1,20}}$"); //AI 8002eol
-        Pattern p8003 = Pattern.compile("^8003[0-9]{14}(.){1,16}[%\\1xD]"); //AI 8003
-        Pattern p8003eol = Pattern.compile("^8003[0-9]{14}(.){1,16}}$"); //AI 8003eol
-        Pattern p8004 = Pattern.compile("^8004(.){1,30}[%\\1xD]");  //AI 8004
-        Pattern p8004eol = Pattern.compile("^8004(.){1,30}}$"); //AI 8004eol
-        Pattern p8005 = Pattern.compile("^8005[0-9](.){6}");   //AI 8005
-        Pattern p8005eol = Pattern.compile("^8005[0-9](.){6}}$");  //AI 8005eol
-        Pattern p8006 = Pattern.compile("^8006[0-9]{14}(.)[0-9]{2}(.)[0-9]{2}"); //AI 8006
-        Pattern p8006eol = Pattern.compile("^8006[0-9]{14}(.)[0-9]{2}(.)[0-9]{2}}$");    //AI 8006eol
-        Pattern p8007 = Pattern.compile("^8007(.){1,34}[%\\1xD]");  //AI 8007
-        Pattern p8007eol = Pattern.compile("^8007(.){1,34}}$"); //AI 8007eol
-        Pattern p8008 = Pattern.compile("^8008[0-9]{8}(.)[0-9]{1,4}");  //AI 8008
-        Pattern p8008eol = Pattern.compile("^8008[0-9]{8}(.)[0-9]{1,4}}$"); //AI 8008eol
-        Pattern p8009 = Pattern.compile("^8009(.){1,50}[%\\1xD]"); //AI 8009
-        Pattern p8009eol = Pattern.compile("^8009(.){1,50}}$");    //AI 8009eol
-        Pattern p8010 = Pattern.compile("^8010(.){1,30}[%//1xD]"); //AI 8010
-        Pattern p8010eol = Pattern.compile("^8010(.){1,30}}$"); //AI 8010
-        Pattern p8011 = Pattern.compile("^8011[0-9]{1,12}");    //AI 8011
-        Pattern p8011eol = Pattern.compile("^8011[0-9]{1,12}}$");   //AI 8011eol
-        Pattern p8012 = Pattern.compile("^8012(.){1,20}[%//1xD]");  //AI 8012
-        Pattern p8012eol = Pattern.compile("^8012(.){1,20}}$"); //AI 8012eol
-        
-        
+        Pattern p723s = Pattern.compile("^723[0-9]{1}(.){2}(.){1,28}[%\\x1D]");
+        Pattern p723seol = Pattern.compile("^723[0-9]{1}(.){2}(.){1,28}$");
+        Pattern p7004 = Pattern.compile("^7004[0-9](.){1,4}");
+        Pattern p7004eol = Pattern.compile("^7004[0-9](.){1,4}$");
+        Pattern p7005 = Pattern.compile("^7005(.){1,12}[%\\x1D]"); 
+        Pattern p7005eol = Pattern.compile("^7005(.){1,12}$"); 
+        Pattern p7006 = Pattern.compile("^7006[0-9](.){1,6}");   
+        Pattern p7006eol = Pattern.compile("^7006[0-9](.){1,6}$");  
+        Pattern p7007 = Pattern.compile("^7007[0-9](.){6,12}");  
+        Pattern p7007eol = Pattern.compile("^7007[0-9]{4}(.){6,12}$"); 
+        Pattern p7008 = Pattern.compile("^7008(.){1,3}[%\\x1D]");  
+        Pattern p7008eol = Pattern.compile("^7008(.){1,3}$"); 
+        Pattern p7009 = Pattern.compile("^7009[0-9](.){1,10}[%\\x1D]"); 
+        Pattern p7009eol = Pattern.compile("^7009[0-9](.){1,10}$");
+        Pattern p7010 = Pattern.compile("^7010(.){1,2}[%\\x1D]");
+        Pattern p7010eol = Pattern.compile("^7010(.){1,2}$"); 
+        Pattern p7020 = Pattern.compile("^7020(.){1,20}[%\\x1D]");
+        Pattern p7020eol = Pattern.compile("^7020(.){1,20}$"); 
+        Pattern p7021 = Pattern.compile("^7021(.){1,20}[%\\x1D]"); 
+        Pattern p7021eol = Pattern.compile("^7021(.){1,20}$"); 
+        Pattern p7022 = Pattern.compile("^7022(.){1,20}[%\\x1D]"); 
+        Pattern p7022eol = Pattern.compile("^7022(.){1,20}$"); 
+        Pattern p7023 = Pattern.compile("^7023(.){1,30}[%\\x1D]"); 
+        Pattern p7023eol = Pattern.compile("^7023(.){1,30}$"); 
+        Pattern p703s = Pattern.compile("^703[0-9]{1}[0-9]{3}(.){1,27}[%\\x1D]");
+        Pattern p703seol = Pattern.compile("^703[0-9]{1}[0-9]{3}(.){1,27}$");
+        Pattern p710 = Pattern.compile("^710(.){1,20}[%\\x1D]");
+        Pattern p710eol = Pattern.compile("^710(.){1,20}$"); 
+        Pattern p711 = Pattern.compile("^711(.){1,20}[%\\x1D]");
+        Pattern p711eol = Pattern.compile("^711(.){1,20}$");
+        Pattern p712 = Pattern.compile("^712(.){1,20}[%\\x1D]"); 
+        Pattern p712eol = Pattern.compile("^712(.){1,20}$"); 
+        Pattern p713 = Pattern.compile("^713(.){1,20}[%\\x1D]"); 
+        Pattern p713eol = Pattern.compile("^713(.){1,20}$");
+        Pattern p714 = Pattern.compile("^714(.){1,20}[%\\x1D]"); 
+        Pattern p714eol = Pattern.compile("^714(.){1,20}$");
+        Pattern p8001 = Pattern.compile("^8001[0-9](.){1,14}"); 
+        Pattern p8001eol = Pattern.compile("^8001[0-9](.){1,14}$");  
+        Pattern p8002 = Pattern.compile("^8002(.){1,20}[%\\x1D]");  
+        Pattern p8002eol = Pattern.compile("^8002(.){1,20}$"); 
+        Pattern p8003 = Pattern.compile("^8003[0-9]{14}(.){1,16}[%\\x1D]"); 
+        Pattern p8003eol = Pattern.compile("^8003[0-9]{14}(.){1,16}$"); 
+        Pattern p8004 = Pattern.compile("^8004(.){1,30}[%\\x1D]"); 
+        Pattern p8004eol = Pattern.compile("^8004(.){1,30}$"); 
+        Pattern p8005 = Pattern.compile("^8005[0-9](.){6}");  
+        Pattern p8005eol = Pattern.compile("^8005[0-9](.){6}$");
+        Pattern p8006 = Pattern.compile("^8006[0-9]{14}(.)[0-9]{2}(.)[0-9]{2}");
+        Pattern p8006eol = Pattern.compile("^8006[0-9]{14}(.)[0-9]{2}(.)[0-9]{2}$"); 
+        Pattern p8007 = Pattern.compile("^8007(.){1,34}[%\\x1D]"); 
+        Pattern p8007eol = Pattern.compile("^8007(.){1,34}$"); 
+        Pattern p8008 = Pattern.compile("^8008[0-9]{8}(.)[0-9]{1,4}"); 
+        Pattern p8008eol = Pattern.compile("^8008[0-9]{8}(.)[0-9]{1,4}$"); 
+        Pattern p8009 = Pattern.compile("^8009(.){1,50}[%\\x1D]"); 
+        Pattern p8009eol = Pattern.compile("^8009(.){1,50}$");  
+        Pattern p8010 = Pattern.compile("^8010(.){1,30}[%//x1D]");
+        Pattern p8010eol = Pattern.compile("^8010(.){1,30}$"); 
+        Pattern p8011 = Pattern.compile("^8011[0-9]{1,12}");  
+        Pattern p8011eol = Pattern.compile("^8011[0-9]{1,12}$");   
+        Pattern p8012 = Pattern.compile("^8012(.){1,20}[%//x1D]");
+        Pattern p8012eol = Pattern.compile("^8012(.){1,20}$");
+        Pattern p8013 = Pattern.compile("^8013(.){1,30}[%//x1D]");
+        Pattern p8013eol = Pattern.compile("^8013(.){1,30}$");
+        Pattern p8017 = Pattern.compile("^8017[0-9]{1,18}[%//x1D]");
+        Pattern p8017eol = Pattern.compile("^8017[0-9]{1,18}$");
+        Pattern p8018 = Pattern.compile("^8018[0-9]{1,18}[%//x1D]");
+        Pattern p8018eol = Pattern.compile("^8018[0-9]{1,18}$");
+        Pattern p8019 = Pattern.compile("^8019(.){1,10}[%//x1D]");
+        Pattern p8019eol = Pattern.compile("^8019(.){1,10}$");
+        Pattern p8020 = Pattern.compile("^8020(.){1,25}[%//x1D]");
+        Pattern p8020eol = Pattern.compile("^8020(.){1,25}$");
         Pattern p8110 = Pattern.compile("^8110(.){1,70}[%\\x1D]");
         Pattern p8110eol = Pattern.compile("^8110(.){1,70}$");
         Pattern p8026 = Pattern.compile("^8026[0-9]{14}[0-9]{2}[0-9]{2}[%\\x1D]");
         Pattern p8026eol = Pattern.compile("^8026[0-9]{14}[0-9]{2}[0-9]{2}$");
-        Pattern p8111 = Pattern.compile("^8111(.){1,70}[%\\1xD]");
+        Pattern p8111 = Pattern.compile("^8111(.){1,70}[%\\x1D]");
         Pattern p8111eol = Pattern.compile("^8111(.){1,70}$"); 
-        Pattern p8112 = Pattern.compile("^8112(.){1,70}[%\\1xD]");
+        Pattern p8112 = Pattern.compile("^8112(.){1,70}[%\\x1D]");
         Pattern p8112eol = Pattern.compile("^8112(.){1,70}$"); 
-        Pattern p8200 = Pattern.compile("^8200(.){1,70}[%\\1xD]");
+        Pattern p8200 = Pattern.compile("^8200(.){1,70}[%\\x1D]");
         Pattern p8200eol = Pattern.compile("^8200(.){1,70}$");
-        Pattern p90 = Pattern.compile("^90(.){1,30}[%\\1xD]");
+        Pattern p90 = Pattern.compile("^90(.){1,30}[%\\x1D]");
         Pattern p90eol = Pattern.compile("^90(.){1,30}$");        
-        Pattern p9N = Pattern.compile("^9[1-9]{1}(.){1,90}[%\\1xD]");
+        Pattern p9N = Pattern.compile("^9[1-9]{1}(.){1,90}[%\\x1D]");
         Pattern p9Neol = Pattern.compile("^9[1-9]{1}(.){1,90}$");        
        
         /* Add pattern matchers to iterable collection */
@@ -348,67 +347,112 @@ public class Pattern_Parser {
         patterns.add(p415);
         patterns.add(p416);
         patterns.add(p420);
+        patterns.add(p420eol);
         patterns.add(p421);
+        patterns.add(p421eol);
         patterns.add(p422);
+        patterns.add(p422eol);
         patterns.add(p423);
+        patterns.add(p423eol);
         patterns.add(p424);
+        patterns.add(p424eol);
         patterns.add(p425);
+        patterns.add(p425eol);
         patterns.add(p426);
+        patterns.add(p426eol);
         patterns.add(p427);
+        patterns.add(p427eol);
         patterns.add(p7001);
+        patterns.add(p7001eol);
         patterns.add(p7002);
+        patterns.add(p7002eol);
         patterns.add(p7003);
+        patterns.add(p7003eol);
         patterns.add(p7004);
+        patterns.add(p7004eol);
         patterns.add(p7005);
+        patterns.add(p7005eol);
         patterns.add(p7006);
+        patterns.add(p7006eol);
         patterns.add(p7007);
+        patterns.add(p7007eol);
         patterns.add(p7008);
+        patterns.add(p7008eol);
         patterns.add(p7009);
+        patterns.add(p7009eol);
         patterns.add(p7010);
+        patterns.add(p7010eol);
         patterns.add(p7020);
+        patterns.add(p7020eol);
         patterns.add(p7021);
+        patterns.add(p7021eol);
         patterns.add(p7022);
+        patterns.add(p7022eol);
         patterns.add(p7023);
+        patterns.add(p7023eol);
         patterns.add(p703s);
+        patterns.add(p703seol);
         patterns.add(p710);
+        patterns.add(p710eol);
         patterns.add(p711);
+        patterns.add(p711eol);
         patterns.add(p712);
+        patterns.add(p712eol);
         patterns.add(p713);
+        patterns.add(p713eol);
         patterns.add(p714);
+        patterns.add(p714eol);
         patterns.add(p723s);
+        patterns.add(p723seol);
         patterns.add(p8001);
+        patterns.add(p8001eol);
         patterns.add(p8002);
+        patterns.add(p8002eol);
         patterns.add(p8003);
+        patterns.add(p8003eol);
         patterns.add(p8004);
+        patterns.add(p8004eol);
         patterns.add(p8005);
+        patterns.add(p8005eol);
         patterns.add(p8006);
+        patterns.add(p8006eol);
         patterns.add(p8007);
+        patterns.add(p8007eol);
         patterns.add(p8008);
+        patterns.add(p8008eol);
         patterns.add(p8009);
+        patterns.add(p8009eol);
         patterns.add(p8010);
+        patterns.add(p8010eol);
         patterns.add(p8011);
+        patterns.add(p8011eol);
         patterns.add(p8012);
+        patterns.add(p8012eol);
         patterns.add(p8013);
+        patterns.add(p8013eol);
         patterns.add(p8017);
+        patterns.add(p8017eol);
         patterns.add(p8018);
+        patterns.add(p8018eol);
         patterns.add(p8019);
+        patterns.add(p8019eol);
         patterns.add(p8020);
+        patterns.add(p8020eol);
         patterns.add(p8110);
+        patterns.add(p8110eol);
         patterns.add(p8026);
+        patterns.add(p8026eol);
         patterns.add(p8111);
+        patterns.add(p8111eol);
         patterns.add(p8112);
+        patterns.add(p8112eol);
         patterns.add(p8200);
+        patterns.add(p8200eol);
         patterns.add(p90);
-        patterns.add(p91);
-        patterns.add(p92);
-        patterns.add(p93);
-        patterns.add(p94);
-        patterns.add(p95);
-        patterns.add(p96);
-        patterns.add(p97);
-        patterns.add(p98);
-        patterns.add(p99);
-        
+        patterns.add(p90eol);
+        patterns.add(p9N);
+        patterns.add(p9Neol);
+
         /* Loop until input is fully processed, or an unknown code is found */
         
         while ( !code.isEmpty() && matched ) {
