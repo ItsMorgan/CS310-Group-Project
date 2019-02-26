@@ -156,26 +156,8 @@ public class Pattern_Parser {
         
         
         
-        Pattern p7230 = Pattern.compile("^7230(.){2}(.){1,28}[%\\1xD]");
-        Pattern p7230eol = Pattern.compile("^7230(.){2}(.){1,28}$");
-        Pattern p7231 = Pattern.compile("^7231(.){2}(.){1,28}[%\\1xD]");
-        Pattern p7231eol = Pattern.compile("^7231(.){2}(.){1,28}$");
-        Pattern p7232 = Pattern.compile("^7232(.){2}(.){1,28}[%\\1xD]");
-        Pattern p7232eol = Pattern.compile("^7232(.){2}(.){1,28}$");
-        Pattern p7233 = Pattern.compile("^7233(.){2}(.){1,28}[%\\1xD]");
-        Pattern p7233eol = Pattern.compile("^7233(.){2}(.){1,28}$");
-        Pattern p7234 = Pattern.compile("^7234(.){2}(.){1,28}[%\\1xD]");
-        Pattern p7234eol = Pattern.compile("^7234(.){2}(.){1,28}$");
-        Pattern p7235 = Pattern.compile("^7235(.){2}(.){1,28}[%\\1xD]");
-        Pattern p7235eol = Pattern.compile("^7235(.){2}(.){1,28}$");
-        Pattern p7236 = Pattern.compile("^7236(.){2}(.){1,28}[%\\1xD]");
-        Pattern p7236eol = Pattern.compile("^7236(.){2}(.){1,28}$");
-        Pattern p7237 = Pattern.compile("^7237(.){2}(.){1,28}[%\\1xD]");
-        Pattern p7237eol = Pattern.compile("^7237(.){2}(.){1,28}$");
-        Pattern p7238 = Pattern.compile("^7238(.){2}(.){1,28}[%\\1xD]");
-        Pattern p7238eol = Pattern.compile("^7238(.){2}(.){1,28}$");
-        Pattern p7239 = Pattern.compile("^7239(.){2}(.){1,28}[%\\1xD]");
-        Pattern p7239eol = Pattern.compile("^7239(.){2}(.){1,28}$");
+        Pattern p723n = Pattern.compile("^723[0-9]{1}(.){2}(.){1,28}[%\\1xD]");
+
         
         
         Pattern p8001 = Pattern.compile("^8001[0-9]{14}[%\\1xD]");
@@ -200,24 +182,9 @@ public class Pattern_Parser {
         Pattern p8200eol = Pattern.compile("^8200(.){1,70}$");
         Pattern p90 = Pattern.compile("^90(.){1,30}[%\\1xD]");
         Pattern p90eol = Pattern.compile("^90(.){1,30}$");        
-        Pattern p91 = Pattern.compile("^90(.){1,90}[%\\1xD]");
-        Pattern p91eol = Pattern.compile("^90(.){1,90}$");        
-        Pattern p92 = Pattern.compile("^90(.){1,90}[%\\1xD]");
-        Pattern p92eol = Pattern.compile("^90(.){1,90}$");        
-        Pattern p93 = Pattern.compile("^90(.){1,90}[%\\1xD]");
-        Pattern p93eol = Pattern.compile("^90(.){1,90}$");
-        Pattern p94 = Pattern.compile("^90(.){1,90}[%\\1xD]");
-        Pattern p94eol = Pattern.compile("^90(.){1,90}$");
-        Pattern p95 = Pattern.compile("^90(.){1,90}[%\\1xD]");
-        Pattern p95eol = Pattern.compile("^90(.){1,90}$");
-        Pattern p96 = Pattern.compile("^90(.){1,90}[%\\1xD]");
-        Pattern p96eol = Pattern.compile("^90(.){1,90}$");
-        Pattern p97 = Pattern.compile("^90(.){1,90}[%\\1xD]");
-        Pattern p97eol = Pattern.compile("^90(.){1,90}$");
-        Pattern p98 = Pattern.compile("^90(.){1,90}[%\\1xD]");
-        Pattern p98eol = Pattern.compile("^90(.){1,90}$");
-        Pattern p99 = Pattern.compile("^90(.){1,90}[%\\1xD]");
-        Pattern p99eol = Pattern.compile("^90(.){1,90}$");        
+        Pattern p9N = Pattern.compile("^9[1-9]{1}(.){1,90}[%\\1xD]");
+        Pattern p9Neol = Pattern.compile("^9[1-9]{1}(.){1,90}$");        
+       
         /* Add pattern matchers to iterable collection */
         
         patterns.add(p00);
