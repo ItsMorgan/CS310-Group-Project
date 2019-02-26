@@ -116,26 +116,8 @@ public class Pattern_Parser {
         Pattern p393neol = Pattern.compile("^393n[0-9]{3}(.){1,15}}$");          // AI #393neol
         
         
-        Pattern p7230 = Pattern.compile("^7230(.){2}(.){1,28}[%\\1xD]");
-        Pattern p7230eol = Pattern.compile("^7230(.){2}(.){1,28}$");
-        Pattern p7231 = Pattern.compile("^7231(.){2}(.){1,28}[%\\1xD]");
-        Pattern p7231eol = Pattern.compile("^7231(.){2}(.){1,28}$");
-        Pattern p7232 = Pattern.compile("^7232(.){2}(.){1,28}[%\\1xD]");
-        Pattern p7232eol = Pattern.compile("^7232(.){2}(.){1,28}$");
-        Pattern p7233 = Pattern.compile("^7233(.){2}(.){1,28}[%\\1xD]");
-        Pattern p7233eol = Pattern.compile("^7233(.){2}(.){1,28}$");
-        Pattern p7234 = Pattern.compile("^7234(.){2}(.){1,28}[%\\1xD]");
-        Pattern p7234eol = Pattern.compile("^7234(.){2}(.){1,28}$");
-        Pattern p7235 = Pattern.compile("^7235(.){2}(.){1,28}[%\\1xD]");
-        Pattern p7235eol = Pattern.compile("^7235(.){2}(.){1,28}$");
-        Pattern p7236 = Pattern.compile("^7236(.){2}(.){1,28}[%\\1xD]");
-        Pattern p7236eol = Pattern.compile("^7236(.){2}(.){1,28}$");
-        Pattern p7237 = Pattern.compile("^7237(.){2}(.){1,28}[%\\1xD]");
-        Pattern p7237eol = Pattern.compile("^7237(.){2}(.){1,28}$");
-        Pattern p7238 = Pattern.compile("^7238(.){2}(.){1,28}[%\\1xD]");
-        Pattern p7238eol = Pattern.compile("^7238(.){2}(.){1,28}$");
-        Pattern p7239 = Pattern.compile("^7239(.){2}(.){1,28}[%\\1xD]");
-        Pattern p7239eol = Pattern.compile("^7239.){2}(.){1,28}$");
+        Pattern p7230n = Pattern.compile("^723[0-9]{1}(.){2}(.){1,28}[%\\1xD]");
+
         
         
         Pattern p8001 = Pattern.compile("^8001[0-9]{14}[%\\1xD]");
