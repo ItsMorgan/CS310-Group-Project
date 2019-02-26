@@ -114,6 +114,46 @@ public class Pattern_Parser {
         Pattern p392neol = Pattern.compile("^392n(.){1,15}$");          // AI #392neol
         Pattern p393n = Pattern.compile("^393n[0-9]{3}(.){1,15}[%\\x1D]");      // AI #393n
         Pattern p393neol = Pattern.compile("^393n[0-9]{3}(.){1,15}}$");          // AI #393neol
+        Pattern p394n = Pattern.compile("^394n[0-9]{6}[%\\x1D]");        //AI #394n
+        Pattern p394neol = Pattern.compile("^394n[0-9]{4}$");         //AI #394n eol
+        Pattern p400 = Pattern.compile("^400[0,9]{1,30}[%\\x1D]");    //AI #400
+        Pattern p400eol = Pattern.compile("^400[0,9]{1,30}$");        //AI #400eol
+        Pattern p401 = Pattern.compile("^401[0,9]{1,30}[%\\x1D]");    //AI #401
+        Pattern p401eol = Pattern.compile("^401[0,9]{1,30}$");        //AI #401eol
+        Pattern p402 = Pattern.compile("^402[0,9]{17}[%\\x1D]");      //AI #402
+        Pattern p402eol = Pattern.compile("^402[0,9]{17}$");          //AI #402eol
+        Pattern p403 = Pattern.compile("^403[0,9]{1,30}[%\\x1D]");    //AI #403
+        Pattern p403eol = Pattern.compile("^403[0,9]{1,30}$");        //AI #403eol
+        Pattern p410 = Pattern.compile("^410[0,9]{13}");              //AI #410
+        Pattern p411 = Pattern.compile("^411[0,9]{13}");              //AI #411
+        Pattern p412 = Pattern.compile("^412[0,9]{13}");              //AI #412
+        Pattern p413 = Pattern.compile("^413[0,9]{13}");              //AI #413
+        Pattern p414 = Pattern.compile("^414[0,9]{13}");              //AI #414
+        Pattern p415 = Pattern.compile("^415[0,9]{13}");              //AI #415
+        Pattern p416 = Pattern.compile("^416[0,9]{13}");              //AI #416
+        Pattern p420 = Pattern.compile("^420[0-9]{1,20}[%\\x1D]");    //AI #420
+        Pattern p420eol = Pattern.compile("^420[0-9]{1,20}$");        //AI #420eol
+        Pattern p421 = Pattern.compile("^421[0,9]{3}(.){1,9}[%\\x1D]"); 
+        Pattern p421eol = Pattern.compile("^421[0,9]{3}(.){1,9}$");
+        Pattern p422 = Pattern.compile("^422[0,9]{3}[%\\x1D]");
+        Pattern p422eol = Pattern.compile("^422[0,9]{3}$");
+        Pattern p423 = Pattern.compile("^423[0,9]{3}(.){1,12)[%\\x1D]");
+        Pattern p423eol = Pattern.compile("^423[0,9]{3}(.){1,12)$");
+        Pattern p424 = Pattern.compile("^424[0,9]{3}[%\\x1D]");
+        Pattern p424eol = Pattern.compile("^424[0,9]{3}$");
+        Pattern p425 = Pattern.compile("^425[0,9]{3}(.){1,12)[%\\x1D]");
+        Pattern p425eol = Pattern.compile("^425[0,9]{3}(.){1,12)$");
+        Pattern p426 = Pattern.compile("^426[0,9]{3}[%\\x1D]");
+        Pattern p426eol = Pattern.compile("^426[0,9]{3}$");
+        Pattern p427 = Pattern.compile("^427[0,9]{1,3}[%\\x1D]");
+        Pattern p427eol = Pattern.compile("^427[0,9]{1,3}$");
+        Pattern p7001 = Pattern.compile("^7001[0,9]{13}[%\\x1D]");
+        Pattern p7001eol = Pattern.compile("^7001[0,9]{13}[%\\x1D]");
+        Pattern p7002 = Pattern.compile("^7002[0,9]{1,30}[%\\x1D]");
+        Pattern p7002eol = Pattern.compile("^7002[0,9]{1,30}$");
+        Pattern p7003 = Pattern.compile("^7003[0,9]{10}[%\\x1D]");
+        Pattern p7003eol = Pattern.compile("^7003[0,9]{10}$");
+        
         
         
         
@@ -207,6 +247,16 @@ public class Pattern_Parser {
         patterns.add(p367n);
         patterns.add(p368n);
         patterns.add(p369n);
+        patterns.add(p37);
+        patterns.add(p37eol);
+        patterns.add(p390n);
+        patterns.add(p390neol);
+        patterns.add(p391n);
+        patterns.add(p391neol);
+        patterns.add(p392n);
+        patterns.add(p392neol);
+        patterns.add(p393n);
+        patterns.add(p393neol);
         
         /* Loop until input is fully processed, or an unknown code is found */
         
