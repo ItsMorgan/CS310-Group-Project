@@ -142,24 +142,9 @@ public class Pattern_Parser {
         Pattern p8200eol = Pattern.compile("^8200(.){1,70}$");
         Pattern p90 = Pattern.compile("^90(.){1,30}[%\\1xD]");
         Pattern p90eol = Pattern.compile("^90(.){1,30}$");        
-        Pattern p91 = Pattern.compile("^90(.){1,90}[%\\1xD]");
-        Pattern p91eol = Pattern.compile("^90(.){1,90}$");        
-        Pattern p92 = Pattern.compile("^90(.){1,90}[%\\1xD]");
-        Pattern p92eol = Pattern.compile("^90(.){1,90}$");        
-        Pattern p93 = Pattern.compile("^90(.){1,90}[%\\1xD]");
-        Pattern p93eol = Pattern.compile("^90(.){1,90}$");
-        Pattern p94 = Pattern.compile("^90(.){1,90}[%\\1xD]");
-        Pattern p94eol = Pattern.compile("^90(.){1,90}$");
-        Pattern p95 = Pattern.compile("^90(.){1,90}[%\\1xD]");
-        Pattern p95eol = Pattern.compile("^90(.){1,90}$");
-        Pattern p96 = Pattern.compile("^90(.){1,90}[%\\1xD]");
-        Pattern p96eol = Pattern.compile("^90(.){1,90}$");
-        Pattern p97 = Pattern.compile("^90(.){1,90}[%\\1xD]");
-        Pattern p97eol = Pattern.compile("^90(.){1,90}$");
-        Pattern p98 = Pattern.compile("^90(.){1,90}[%\\1xD]");
-        Pattern p98eol = Pattern.compile("^90(.){1,90}$");
-        Pattern p99 = Pattern.compile("^90(.){1,90}[%\\1xD]");
-        Pattern p99eol = Pattern.compile("^90(.){1,90}$");        
+        Pattern p9N = Pattern.compile("^9[1-9]{1}(.){1,90}[%\\1xD]");
+        Pattern p9Neol = Pattern.compile("^9[1-9]{1}(.){1,90}$");        
+       
         /* Add pattern matchers to iterable collection */
         
         patterns.add(p00);
