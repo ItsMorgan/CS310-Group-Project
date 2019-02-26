@@ -27,10 +27,10 @@ public class AI_Parser {
             String line;
             
             while ((line = reader.readLine()) != null) {
-                String key = line.split("\t")[0];
+                String key = line.split(" &# ")[0];
                 String[] data = new String[2];
-                data[0] = line.split("\t")[1];
-                data[1] = line.split("\t")[2];
+                data[0] = line.split(" &# ")[1];
+                data[1] = line.split(" &# ")[2];
                 allAiAndData.put(key, data);
             }
 
