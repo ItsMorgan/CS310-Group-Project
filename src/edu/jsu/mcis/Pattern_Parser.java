@@ -29,8 +29,12 @@ public class Pattern_Parser {
         Pattern p21eol = Pattern.compile("^21(.){1,20}$");       
         Pattern p22 = Pattern.compile("^22(.){1,20}[%\\x1D]");   
         Pattern p22eol = Pattern.compile("^22(.){1,20}$");       
-        Pattern p240 = Pattern.compile("^240(.){1,20}[%\\x1D]"); 
-        Pattern p240eol = Pattern.compile("^240(.){1,30}$");     
+        Pattern p240 = Pattern.compile("^240(.){1,30}[%\\x1D]"); 
+        Pattern p240eol = Pattern.compile("^240(.){1,30}$");
+        Pattern p241 = Pattern.compile("^241(.){1,30}[%\\x1D]");
+        Pattern p241eol = Pattern.compile("^241(.){1,30}}$");
+        Pattern p242 = Pattern.compile("^242[0-9]{1,6}");
+        Pattern p242eol = Pattern.compile("^242[0-9]{1,6}}$");
         Pattern p243 = Pattern.compile("^243(.){1,20}[%\\x1D]"); 
         Pattern p243eol = Pattern.compile("^243(.){1,20}$");     
         Pattern p250 = Pattern.compile("^250(.){1,30}[%\\x1D]"); 
