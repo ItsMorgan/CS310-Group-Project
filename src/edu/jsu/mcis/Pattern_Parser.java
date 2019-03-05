@@ -19,11 +19,37 @@ public class Pattern_Parser {
     
     public ArrayList<LinkedHashMap> parse(String code) {
                         
-        while ( !code.isEmpty() ) {
+        this.code = code;
+        while ( !this.code.isEmpty() ) {
+            int firstDigitAi= code.charAt(0);
             
-            if (code.charAt(0) == 0) {
-                Parse_Digit_1 parse1 = new Parse_Digit_1();
+            switch (firstDigitAi) {
+                case 0:
+                    parse0 = new Parse_Digit_0();
+                    break;
+                case 1:
+                    parse1 = new Parse_Digit_1();
+                    break;
+                case 2:
+                    parse2 = new Parse_Digit_2();
+                    break;
+                case 3:
+                    parse3 = new Parse_Digit_3();
+                    break;
+                case 4:
+                    parse4 = new Parse_Digit_4();
+                    break;
+                case 7:
+                    parse7 = new Parse_Digit_7();
+                    break;
+                case 8:
+                    parse8 = new Parse_Digit_8();
+                    break;
+                case 9:
+                    parse9 = new Parse_Digit_9();
+                break;
             }
+
         }
         
         return fields;
