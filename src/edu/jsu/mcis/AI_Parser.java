@@ -15,6 +15,8 @@ public class AI_Parser {
     
     private LinkedHashMap<String, String[]> allAiAndData = new LinkedHashMap<>();
     private LinkedHashMap<String, JSONArray> currentAiAndData = new LinkedHashMap<>();
+    private ArrayList<String> codes = new ArrayList<>();
+    private ArrayList<String> ais = new ArrayList<>();
     
     private void addAiToHeaders() {
         BufferedReader reader = null;
@@ -45,38 +47,8 @@ public class AI_Parser {
         }
     }
     
-    String parse(ArrayList<Matcher> matchers) {
+    ArrayList<Matcher> parse(String matchers) {
         addAiToHeaders();
-                
-        StringBuilder ai = new StringBuilder();
-        String[] ais = new String[matchers.size()];
-        
-        for (int matcherIndex = 0; matcherIndex < matchers.size(); matcherIndex++) {
-            
-            Matcher matcher = matchers.get(matcherIndex);
-            
-            char[] aiPattern = matcher.pattern().toString().toCharArray();
-            boolean isAiNumber = true;
-            for (Character character : aiPattern) {
-                if (!Character.isDigit(character) && !character.equals("^"))
-                    isAiNumber = false;
-                if (isAiNumber && !character.equals("^")) {
-                    ai.append(character);
-                }
-            }
-            
-            ais[matcherIndex] = ai.toString();
-        }
-        
-        for (int aisIndex = 0; aisIndex < ais.length; aisIndex++) {
-                
-            JSONArray jsonData = new JSONArray();
-            for (String data : allAiAndData.get(ais[aisIndex])) {
-                jsonData.add(data);
-            }
-            currentAiAndData.put(ais[aisIndex], jsonData);
-        }
-        
-        return JSONValue.toJSONString(currentAiAndData);
+        return new ArrayList<Matcher>();   
     }
 }

@@ -1,60 +1,31 @@
 package edu.jsu.mcis;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.regex.*;
 
 public class Pattern_Parser {
     
-    public ArrayList<Matcher> parse(String input) {
-        
-        String code = input;
-        boolean matched = true;
-        
-        ArrayList<Pattern> patterns = new ArrayList<>();
-        ArrayList<Matcher> matches = new ArrayList();
-        
-        /* Loop until input is fully processed, or an unknown code is found */
-        
-        while ( !code.isEmpty() && matched ) {
+    String code = "";
+    Parse_Digit_0 parse0;
+    Parse_Digit_1 parse1;
+    Parse_Digit_2 parse2;
+    Parse_Digit_3 parse3;
+    Parse_Digit_4 parse4;
+    Parse_Digit_7 parse7;
+    Parse_Digit_8 parse8;
+    Parse_Digit_9 parse9;
+    ArrayList<LinkedHashMap> fields;
+    
+    public ArrayList<LinkedHashMap> parse(String code) {
+                        
+        while ( !code.isEmpty() ) {
             
-            matched = false;
-            
-            /* Run input string against recognized pattern matchers */
-            
-            for (Pattern p : patterns) {
-                
-                /* Run next pattern matcher */
-                Matcher m = p.matcher(code);
-                
-                /* Was it a match? */
-                if (m.find()) {
-                    
-                    /* Flip "matched" flag */
-                    matched = true;
-
-                    /* Get string offset of the end of the matched code */
-                    int end = m.end();
-
-                    /* Print matched code */
-                    
-                    matches.add(m);
-                    
-                    /* Strip matched code from the input string */
-                    code = code.substring(end).trim();
-
-                }
-
+            if (code.charAt(0) == 0) {
+                Parse_Digit_1 parse1 = new Parse_Digit_1();
             }
-            
         }
         
-        /* Print original input string */
-                
-        /* Replace this with a JSON string containing the parsed code data */
-        
-        return matches;
-        
+        return fields;
     }
-    
-     
 }
