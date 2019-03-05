@@ -6,7 +6,7 @@ public class CS310GroupProject {
         
         String input = "";
         
-        Pattern_Parser patternParser = new Pattern_Parser();
+        Pattern_Parser patternParser = new Pattern_Parser() {};
         AI_Parser aiParser = new AI_Parser();
         
         aiParser.parse(patternParser.parse(input));
