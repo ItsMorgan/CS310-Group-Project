@@ -6,11 +6,9 @@ import java.util.regex.*;
 
 public class Parse_Digit_1 extends Pattern_Parser {
     
-    public Parse_Digit_1() {
+    public Parse_Digit_1(String code) {
         
         super();
-        
-        String code = super.code;
         String batchNum = "";
         String year = "";
         String month = "";
@@ -37,46 +35,28 @@ public class Parse_Digit_1 extends Pattern_Parser {
         patterns.add(p15);
         patterns.add(p16);
         patterns.add(p17);
-        
-        boolean matched = false;
-        Matcher m = null;
-        
-        for (Pattern p : patterns) {
-            
-            if (!matched) {
-                
-                m = p.matcher(code);
 
-                if (m.find()) {
-
-                    matched = true;
-                    int end = m.end();
-                    super.code = code.substring(end).trim();
-                }
-            }
-        }
+        String aiAndData = super.parsePattern(patterns, code).group();
         
-        String aiAndData = m.group();
-        
-        if (aiAndData.charAt(1) == 0) {
+        if (aiAndData.substring(0, 1).equals("0")) {
             batchNum = aiAndData.substring(2);
-            ai = aiAndData.substring(0, 1);
+            ai = aiAndData.substring(0, 2);
             data = new LinkedHashMap<>();
             data.put("number:", batchNum);
             data.put("ai:", ai);
             data.put("title:", "BATCH/LOT");
             data.put("element:", aiAndData);
         } else {
-            ai = aiAndData.substring(0, 1);
-            year = aiAndData.substring(2, 3);
-            month = code.substring(4, 5);
-            day = code.substring(6, 7);
+            ai = aiAndData.substring(0, 2);
+            year = aiAndData.substring(2, 4);
+            month = code.substring(4, 6);
+            day = code.substring(6, 8);
             data = new LinkedHashMap<>();
             data.put("month:", month);
             data.put("year:", year);
             data.put("ai:", ai);
             
-            int secondDigitAi = aiAndData.charAt(1);
+            int secondDigitAi = Integer.parseInt(aiAndData.substring(1, 2));
             
             switch (secondDigitAi) {
                 case 1:
@@ -101,8 +81,8 @@ public class Parse_Digit_1 extends Pattern_Parser {
             
             data.put("day:", day);
             data.put("element:", aiAndData);
-            
-            super.fields.add(data);
+                        
+            fields.add(data);
         }
     }
 }
