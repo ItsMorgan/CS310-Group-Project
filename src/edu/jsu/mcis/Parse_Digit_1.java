@@ -16,8 +16,7 @@ public class Parse_Digit_1 extends Pattern_Parser {
         String month = "";
         String day = "00";
         String ai = "";
-
-        LinkedHashMap<String, Object> match = new LinkedHashMap<>();
+        
         LinkedHashMap<String, String> data;
 
         Pattern p10 = Pattern.compile("^10(.){1,20}[%\\x1D]"); 
@@ -67,8 +66,6 @@ public class Parse_Digit_1 extends Pattern_Parser {
             data.put("ai:", ai);
             data.put("title:", "BATCH/LOT");
             data.put("element:", aiAndData);
-            match.put(data.get("title:"), data);
-            
         } else {
             ai = aiAndData.substring(0, 1);
             year = aiAndData.substring(2, 3);
@@ -104,9 +101,8 @@ public class Parse_Digit_1 extends Pattern_Parser {
             
             data.put("day:", day);
             data.put("element:", aiAndData);
-            match.put(data.get("title:"), data);
             
-            super.fields.add(match);
+            super.fields.add(data);
         }
     }
 }
