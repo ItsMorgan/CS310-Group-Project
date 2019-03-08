@@ -6,9 +6,10 @@ import java.util.regex.*;
 
 public class Parse_Digit_1 extends Pattern_Parser {
     
-    public Parse_Digit_1(String code) {
+    public Parse_Digit_1() {
         
         super();
+        
         String batchNum = "";
         String year = "";
         String month = "";
@@ -36,7 +37,7 @@ public class Parse_Digit_1 extends Pattern_Parser {
         patterns.add(p16);
         patterns.add(p17);
 
-        String aiAndData = super.parsePattern(patterns, code).group();
+        String aiAndData = super.parsePattern(patterns).group();
         
         if (aiAndData.substring(0, 1).equals("0")) {
             batchNum = aiAndData.substring(2);
@@ -49,8 +50,8 @@ public class Parse_Digit_1 extends Pattern_Parser {
         } else {
             ai = aiAndData.substring(0, 2);
             year = aiAndData.substring(2, 4);
-            month = code.substring(4, 6);
-            day = code.substring(6, 8);
+            month = aiAndData.substring(4, 6);
+            day = aiAndData.substring(6, 8);
             data = new LinkedHashMap<>();
             data.put("month:", month);
             data.put("year:", year);
