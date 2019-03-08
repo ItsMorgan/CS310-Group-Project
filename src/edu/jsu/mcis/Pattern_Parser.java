@@ -15,25 +15,20 @@ public class Pattern_Parser {
     Parse_Digit_7 parse7;
     Parse_Digit_8 parse8;
     Parse_Digit_9 parse9;
-    static JSONArray fields;
+    static JSONArray fields = new JSONArray();
     ArrayList<Matcher> matches;
-    
-    public Pattern_Parser() {
-        fields = new JSONArray();
-        code = "";
-    }
-    
+
     public JSONArray parse(String code) {
         fields = new JSONArray();
         this.code = code;
         while ( !this.code.isEmpty() ) {
-            int firstDigitAi= Integer.parseInt(code.substring(0, 1));
+            int firstDigitAi= Integer.parseInt(this.code.substring(0, 1));
             switch (firstDigitAi) {
                 case 0:
                     parse0 = new Parse_Digit_0();
                     break;
                 case 1:
-                    parse1 = new Parse_Digit_1(code);
+                    parse1 = new Parse_Digit_1();
                     break;
                 case 2:
                     parse2 = new Parse_Digit_2();
@@ -60,15 +55,14 @@ public class Pattern_Parser {
         return fields;
     }
     
-    public Matcher parsePattern(ArrayList<Pattern> patterns, String code) {
-               
+    public Matcher parsePattern(ArrayList<Pattern> patterns) {
+
         for (Pattern p : patterns) {
 
             Matcher m = p.matcher(code);
             
             if (m.find()) {
-                
-                this.code = code.substring(m.end()).trim();
+                this.code = this.code.substring(m.end()).trim();
                 return m;
             }
         }

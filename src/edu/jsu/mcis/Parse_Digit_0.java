@@ -8,9 +8,7 @@ public class Parse_Digit_0 extends Pattern_Parser {
     public Parse_Digit_0() {
         
         super();
-        
-        String code = super.code;
-        
+               
         matches = new ArrayList();
 
         Pattern p00 = Pattern.compile("^00[0-9]{18}");         
@@ -22,7 +20,7 @@ public class Parse_Digit_0 extends Pattern_Parser {
         patterns.add(p01);
         patterns.add(p02);
         
-        String aiAndData = super.parsePattern(patterns, code).group();
+        String aiAndData = super.parsePattern(patterns).group();
     }
     
     public String parse() {
