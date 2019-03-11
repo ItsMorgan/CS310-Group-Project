@@ -15,6 +15,7 @@ public class Parse_Digit_1 extends Pattern_Parser {
         String month = "";
         String day = "00";
         String ai = "";
+        String expiration = "";
         
         LinkedHashMap<String, String> data;
 
@@ -39,49 +40,60 @@ public class Parse_Digit_1 extends Pattern_Parser {
 
         String aiAndData = super.parsePattern(patterns).group();
         
-        if (aiAndData.substring(0, 1).equals("0")) {
+        ai = aiAndData.substring(0, 2);
+        
+        if (ai.substring(1).equals("0")) {
             batchNum = aiAndData.substring(2);
-            ai = aiAndData.substring(0, 2);
             data = new LinkedHashMap<>();
-            data.put("number:", batchNum);
-            data.put("ai:", ai);
-            data.put("title:", "BATCH/LOT");
-            data.put("element:", aiAndData);
+            data.put("number", batchNum);
+            data.put("ai", ai);
+            data.put("title", "BATCH/LOT");
+            data.put("element", aiAndData);
         } else {
-            ai = aiAndData.substring(0, 2);
             year = aiAndData.substring(2, 4);
             month = aiAndData.substring(4, 6);
             day = aiAndData.substring(6, 8);
+            expiration = year + month + day;
+            
+            if (year.startsWith("0")) {
+                year = year.substring(1);
+            } if (month.startsWith("0")) {
+                month = month.substring(1);
+            } if (day.startsWith("0")) {
+                day = day.substring(1);
+            }
+            
             data = new LinkedHashMap<>();
-            data.put("month:", month);
-            data.put("year:", year);
-            data.put("ai:", ai);
+            data.put("month", month);
+            data.put("year", year);
+            data.put("ai", ai);
+            data.put("exp_date", expiration);
             
             int secondDigitAi = Integer.parseInt(aiAndData.substring(1, 2));
             
             switch (secondDigitAi) {
                 case 1:
-                    data.put("title:", "PROD DATE");
+                    data.put("title", "PROD DATE");
                     break;
                 case 2:
-                    data.put("title:", "DUE DATE");
+                    data.put("title", "DUE DATE");
                     break;
                 case 3:
-                    data.put("title:", "PACK DATE");
+                    data.put("title", "PACK DATE");
                     break;
                 case 5:
-                    data.put("title:", "BEST BEFORE or BEST BY");
+                    data.put("title", "BEST BEFORE or BEST BY");
                     break;
                 case 6:
-                    data.put("title:", "SELL BY");
+                    data.put("title", "SELL BY");
                     break;
                 case 7:
-                    data.put("title:", "USE BY OR EXPIRY");
+                    data.put("title", "USE BY OR EXPIRY");
                     break;
             }
             
-            data.put("day:", day);
-            data.put("element:", aiAndData);
+            data.put("day", day);
+            data.put("element", aiAndData);
                         
             fields.add(data);
         }
