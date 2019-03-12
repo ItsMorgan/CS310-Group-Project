@@ -5,6 +5,23 @@ import java.util.regex.*;
 
 public class Parse_Digit_4 extends Pattern_Parser {
     
+    public Parse_Digit_4(){
+        
+    super();
+    String Customer_purchase_order_num = "";
+    String ai = "";
+    String GS1_company_prefix = "";
+    String Consignment_reference= "";
+    String GINC = "";
+    String Shipper_ref= "";
+    String GSIN = "";
+    String Check_digit="";
+    String Routing_code="";
+    String Location_ref="";
+    String Postal_code ="";
+    String ISO_country_code ="";
+    String ISO_subdivision_code="";
+    
     ArrayList<Matcher> matches = new ArrayList();
     
     Pattern p400 = Pattern.compile("^400(.){1,30}[%\\x1D]");    
@@ -38,4 +55,43 @@ public class Parse_Digit_4 extends Pattern_Parser {
     Pattern p426eol = Pattern.compile("^426[0-9]{3}$");
     Pattern p427 = Pattern.compile("^427(.){1,3}[%\\x1D]");
     Pattern p427eol = Pattern.compile("^427(.){1,3}$");
+    
+    ArrayList<Pattern> patterns = new ArrayList<>();
+    patterns.add(p400);
+    patterns.add(p400eol);
+    patterns.add(p401);
+    patterns.add(p401eol);
+    patterns.add(p402);
+    patterns.add(p402eol);
+    patterns.add(p403);
+    patterns.add(p403eol);
+    patterns.add(p410);
+    patterns.add(p411);
+    patterns.add(p412);
+    patterns.add(p413);
+    patterns.add(p414);
+    patterns.add(p415);
+    patterns.add(p416);
+    patterns.add(p420);
+    patterns.add(p420eol);
+    patterns.add(p421);
+    patterns.add(p421eol);
+    patterns.add(p422);
+    patterns.add(p422eol);
+    patterns.add(p423);
+    patterns.add(p423eol);
+    patterns.add(p424);
+    patterns.add(p424eol);
+    patterns.add(p425);
+    patterns.add(p425eol);
+    patterns.add(p426);
+    patterns.add(p426eol);
+    patterns.add(p427);
+    patterns.add(p427eol);
+    
+    String aiAndData = super.parsePattern(patterns).group();
+    
+    ai = aiAndData.substring(0, 2);
+}
+  
 }
