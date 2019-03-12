@@ -16,8 +16,6 @@ public class Parse_Digit_1 extends Pattern_Parser {
         String day = "00";
         String ai = "";
         String expiration = "";
-        
-        LinkedHashMap<String, String> data;
 
         Pattern p10 = Pattern.compile("^10(.){1,20}[%\\x1D]"); 
         Pattern p10eol = Pattern.compile("^10(.){1,20}$");     
@@ -28,7 +26,7 @@ public class Parse_Digit_1 extends Pattern_Parser {
         Pattern p16 = Pattern.compile("^16[0-9]{6}");            
         Pattern p17 = Pattern.compile("^17[0-9]{6}");
         
-        ArrayList<Pattern> patterns = new ArrayList<>();
+        patterns = new ArrayList<>();
         patterns.add(p10);
         patterns.add(p10eol);
         patterns.add(p11);
@@ -38,13 +36,13 @@ public class Parse_Digit_1 extends Pattern_Parser {
         patterns.add(p16);
         patterns.add(p17);
 
-        String aiAndData = super.parsePattern(patterns).group();
+        String aiAndData = parsePattern(patterns).group();
+        data = new LinkedHashMap<>();
         
         ai = aiAndData.substring(0, 2);
         
         if (ai.substring(1).equals("0")) {
             batchNum = aiAndData.substring(2);
-            data = new LinkedHashMap<>();
             data.put("number", batchNum);
             data.put("ai", ai);
             data.put("title", "BATCH/LOT");
@@ -63,7 +61,6 @@ public class Parse_Digit_1 extends Pattern_Parser {
                 day = day.substring(1);
             }
             
-            data = new LinkedHashMap<>();
             data.put("month", month);
             data.put("year", year);
             data.put("ai", ai);
