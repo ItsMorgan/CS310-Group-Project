@@ -1,6 +1,7 @@
 package edu.jsu.mcis;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.regex.*;
 
 public class Parse_Digit_4 extends Pattern_Parser {
@@ -8,7 +9,7 @@ public class Parse_Digit_4 extends Pattern_Parser {
     public Parse_Digit_4(){
         
     super();
-    String Customer_purchase_order_num = "";
+    String order_num = "";
     String ai = "";
     String GS1_company_prefix = "";
     String Consignment_reference= "";
@@ -16,7 +17,7 @@ public class Parse_Digit_4 extends Pattern_Parser {
     String Shipper_ref= "";
     String GSIN = "";
     String Check_digit="";
-    String Routing_code="";
+    String ROUTE="";
     String Location_ref="";
     String Postal_code ="";
     String ISO_country_code ="";
@@ -91,7 +92,39 @@ public class Parse_Digit_4 extends Pattern_Parser {
     
     String aiAndData = super.parsePattern(patterns).group();
     
-    ai = aiAndData.substring(0, 2);
+    ai = aiAndData.substring(0, 3);
+    data = new LinkedHashMap();
+    
+    if (ai.substring(1,3).equals("00")) {
+            order_num = aiAndData.substring(3);
+            data.put("order_num", order_num);
+
+        } 
+        else if (ai.substring(1,3).equals("01")) {
+            prefix = aiAndData.substring(2,9);
+            reference = aiAndData.substring(9,14);
+            check = aiAndData.substring(14,15);   
+            GTIN = prefix + reference + check;
+            data.put("title", "GTIN");
+            data.put("ai", ai);
+            data.put("prefix", prefix);
+            data.put("reference", reference);
+            data.put("check", check);
+            data.put("gtin_code", GTIN);
+        } 
+        
+        else if (ai.equals("2")) {
+            prefix = aiAndData.substring(2,9);
+            reference = aiAndData.substring(9,14);
+            check = aiAndData.substring(14,15);          
+            GTIN = prefix + reference + check;
+            data.put("title", "GTIN");
+            data.put("ai", ai);
+            data.put("prefix", prefix);
+            data.put("reference", reference);
+            data.put("check", check);
+            data.put("gtin_code", GTIN);
+        }
 }
   
 }
