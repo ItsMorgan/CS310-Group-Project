@@ -1,6 +1,7 @@
 package edu.jsu.mcis;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.regex.*;
 import org.json.simple.JSONArray;
 
@@ -17,6 +18,8 @@ public class Pattern_Parser {
     Parse_Digit_9 parse9;
     static JSONArray fields = new JSONArray();
     ArrayList<Matcher> matches;
+    LinkedHashMap<String, Object> data;
+    ArrayList<Pattern> patterns;
 
     public JSONArray parse(String code) {
         fields = new JSONArray();
