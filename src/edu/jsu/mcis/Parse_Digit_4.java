@@ -12,12 +12,11 @@ public class Parse_Digit_4 extends Pattern_Parser {
     String order_num = "";
     String ai = "";
     String GS1_company_prefix = "";
-    String Consignment_reference= "";
     String GINC = "";
     String Shipper_ref= "";
     String GSIN = "";
-    String Check_digit="";
-    String ROUTE="";
+    String check ="";
+    String Route="";
     String Location_ref="";
     String Postal_code ="";
     String ISO_country_code ="";
@@ -98,33 +97,176 @@ public class Parse_Digit_4 extends Pattern_Parser {
     if (ai.substring(1,3).equals("00")) {
             order_num = aiAndData.substring(3);
             data.put("order_num", order_num);
+            data.put("ai",ai);
+            data.put("title", "ORDER NUMBER");
+            data.put("element", aiAndData);
 
         } 
         else if (ai.substring(1,3).equals("01")) {
-            prefix = aiAndData.substring(2,9);
-            reference = aiAndData.substring(9,14);
-            check = aiAndData.substring(14,15);   
-            GTIN = prefix + reference + check;
-            data.put("title", "GTIN");
+            GINC = aiAndData.substring(3);
+            data.put("title", "GINC");
             data.put("ai", ai);
-            data.put("prefix", prefix);
-            data.put("reference", reference);
-            data.put("check", check);
-            data.put("gtin_code", GTIN);
+            data.put("ginc_code", GINC);
+            data.put("element",aiAndData);
         } 
         
-        else if (ai.equals("2")) {
-            prefix = aiAndData.substring(2,9);
-            reference = aiAndData.substring(9,14);
-            check = aiAndData.substring(14,15);          
-            GTIN = prefix + reference + check;
-            data.put("title", "GTIN");
+        else if (ai.substring(1,3).equals("02")) {
+            GS1_company_prefix = aiAndData.substring(3,12);
+            Shipper_ref = aiAndData.substring(12,19);
+            check = aiAndData.substring(19);
+            GSIN = GS1_company_prefix + Shipper_ref + check;         
+            data.put("title", "GSIN");
             data.put("ai", ai);
-            data.put("prefix", prefix);
-            data.put("reference", reference);
+            data.put("prefix", GS1_company_prefix);
+            data.put("reference", Shipper_ref);
             data.put("check", check);
-            data.put("gtin_code", GTIN);
+            data.put("gsin_code", GSIN);
+            data.put("element", aiAndData);
         }
+        else if (ai.substring(1,3).equals("03")){
+            Route = aiAndData.substring(3);
+            data.put("title", "ROUTE");
+            data.put("ai",ai);
+            data.put("route", Route);
+            data.put("element", aiAndData);
+        }
+            else if (ai.substring(1,3).equals("10")){
+            GS1_company_prefix = aiAndData.substring(3,9); 
+            Location_ref =aiAndData.substring(9,15); 
+            check = aiAndData.substring(15); 
+            data.put("title", "SHIP TO LOC");
+            data.put("prefix", GS1_company_prefix);
+            data.put("reference", Location_ref);
+            data.put("check",check);
+            data.put("ai",ai);
+            data.put("element", aiAndData);
+        }
+            else if (ai.substring(1,3).equals("11")){
+            GS1_company_prefix = aiAndData.substring(3,9); 
+            Location_ref =aiAndData.substring(9,15); 
+            check = aiAndData.substring(15); 
+            data.put("title", "BILL TO");
+            data.put("prefix", GS1_company_prefix);
+            data.put("reference", Location_ref);
+            data.put("check",check);
+            data.put("ai",ai);
+            data.put("element", aiAndData);
+        }
+            else if (ai.substring(1,3).equals("12")){
+            GS1_company_prefix = aiAndData.substring(3,9); 
+            Location_ref =aiAndData.substring(9,15); 
+            check = aiAndData.substring(15); 
+            data.put("title", "PURCHASE FROM");
+            data.put("prefix", GS1_company_prefix);
+            data.put("reference", Location_ref);
+            data.put("check",check);
+            data.put("ai",ai);
+            data.put("element", aiAndData);
+        }
+            else if (ai.substring(1,3).equals("13")){
+            GS1_company_prefix = aiAndData.substring(3,9); 
+            Location_ref =aiAndData.substring(9,15); 
+            check = aiAndData.substring(15); 
+            data.put("title", "SHIP FOR LOC");
+            data.put("prefix", GS1_company_prefix);
+            data.put("reference", Location_ref);
+            data.put("check",check);
+            data.put("ai",ai);
+            data.put("element", aiAndData);
+        }
+            else if (ai.substring(1,3).equals("14")){
+            GS1_company_prefix = aiAndData.substring(3,9); 
+            Location_ref =aiAndData.substring(9,15); 
+            check = aiAndData.substring(15); 
+            data.put("title", "LOC NO");
+            data.put("prefix", GS1_company_prefix);
+            data.put("reference", Location_ref);
+            data.put("check",check);
+            data.put("ai",ai);
+            data.put("element", aiAndData);
+        }
+            else if (ai.substring(1,3).equals("15")){
+            GS1_company_prefix = aiAndData.substring(3,9); 
+            Location_ref =aiAndData.substring(9,15); 
+            check = aiAndData.substring(15); 
+            data.put("title", "PAY TO");
+            data.put("prefix", GS1_company_prefix);
+            data.put("reference", Location_ref);
+            data.put("check",check);
+            data.put("ai",ai);
+            data.put("element", aiAndData);
+        }
+            else if (ai.substring(1,3).equals("16")){
+            GS1_company_prefix = aiAndData.substring(3,9); 
+            Location_ref =aiAndData.substring(9,15); 
+            check = aiAndData.substring(15); 
+            data.put("title", "PROD/SERV LOC");
+            data.put("prefix", GS1_company_prefix);
+            data.put("reference", Location_ref);
+            data.put("check",check);
+            data.put("ai",ai);
+            data.put("element", aiAndData);
+        }
+            else if (ai.substring(1,3).equals("20")){
+            Postal_code = aiAndData.substring(3);
+            data.put("title", "SHIP TO POST");
+            data.put("postal code", Postal_code);
+            data.put("ai",ai);
+            data.put("element", aiAndData);
+        }
+            else if (ai.substring(1,3).equals("21")){
+            ISO_country_code = aiAndData.substring(3,6);    
+            Postal_code = aiAndData.substring(6);
+            data.put("title", "SHIP TO POST");
+            data.put("iso_country_code",ISO_country_code);
+            data.put("postal_code", Postal_code);
+            data.put("ai",ai);
+            data.put("element", aiAndData);
+        }
+            else if (ai.substring(1,3).equals("22")){
+            ISO_country_code = aiAndData.substring(3);    
+            data.put("title", "ORIGIN");
+            data.put("iso_country_code",ISO_country_code);
+            data.put("ai",ai);
+            data.put("element", aiAndData);
+        }
+            else if (ai.substring(1,3).equals("23")){
+            ISO_country_code = aiAndData.substring(3);    
+            data.put("title", "COUNTRY-INITIAL PROCESS");
+            data.put("iso_country_code",ISO_country_code);
+            data.put("postal_code", Postal_code);
+            data.put("ai",ai);
+            data.put("element", aiAndData);
+        }
+            else if (ai.substring(1,3).equals("24")){
+            ISO_country_code = aiAndData.substring(3);    
+            data.put("title", "COUNTRY - PROCESS");
+            data.put("iso_country_code",ISO_country_code);
+            data.put("ai",ai);
+            data.put("element", aiAndData);
+        }
+            else if (ai.substring(1,3).equals("25")){
+            ISO_country_code = aiAndData.substring(3);    
+            data.put("title", "COUNTRY- DISASSEMBLY");
+            data.put("iso_country_code",ISO_country_code);
+            data.put("ai",ai);
+            data.put("element", aiAndData);
+        }
+            else if (ai.substring(1,3).equals("26")){
+            ISO_country_code = aiAndData.substring(3);    
+            data.put("title", "COUNTRY - FULL PROCESS");
+            data.put("iso_country_code",ISO_country_code);
+            data.put("ai",ai);
+            data.put("element", aiAndData);
+        }
+            else if (ai.substring(1,3).equals("27")){
+            ISO_subdivision_code = aiAndData.substring(3);    
+            data.put("title", "ORIGIN SUBDIVISION");
+            data.put("iso_country_code",ISO_subdivision_code);
+            data.put("ai",ai);
+            data.put("element", aiAndData);
+        }
+    fields.add(data);
 }
   
 }
