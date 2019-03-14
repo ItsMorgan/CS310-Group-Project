@@ -19,6 +19,7 @@ public class Pattern_Parser {
     static JSONArray fields = new JSONArray();
     ArrayList<Matcher> matches;
     LinkedHashMap<String, Object> data;
+    ArrayList<Pattern> patterns;
 
     public JSONArray parse(String code) {
         fields = new JSONArray();
