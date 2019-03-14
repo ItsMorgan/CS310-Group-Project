@@ -93,11 +93,11 @@ public class Parse_Digit_2 extends Pattern_Parser {
             ai = aiAndData.substring(0, 3);
         }
         
-        switch (ai.substring(1)) {
+        switch (ai.substring(1, 2)) {
             case "0":
                 internal_prod_var = aiAndData.substring(2);
                 data = new LinkedHashMap<>();
-                data.put("internal product variant", internal_prod_var);
+                data.put("internal_prod_var", internal_prod_var);
                 data.put("ai", ai);
                 data.put("title", "VARIANT");
                 data.put("element", aiAndData);
@@ -105,7 +105,7 @@ public class Parse_Digit_2 extends Pattern_Parser {
             case "1":
                 serial_num = aiAndData.substring(2);
                 data = new LinkedHashMap<>();
-                data.put("serial number", serial_num);
+                data.put("serial_num", serial_num);
                 data.put("ai", ai);
                 data.put("title", "SERIAL");
                 data.put("element", aiAndData);
@@ -113,18 +113,17 @@ public class Parse_Digit_2 extends Pattern_Parser {
             case "2":
                 con_product_var = aiAndData.substring(2);
                 data = new LinkedHashMap<>();
-                data.put("consumer product variant", con_product_var);
+                data.put("consumer_prod_var", con_product_var);
                 data.put("ai", ai);
                 data.put("title", "CPV");
                 data.put("element", aiAndData);
                 break;
             case "4":
-                /*Something wrong here*/
-                switch (ai.substring(2)) {
+                switch (ai.substring(2, 3)) {
                     case "0":
                         add_item_ident = aiAndData.substring(3);
                         data = new LinkedHashMap<>();
-                        data.put("additional item indetification", add_item_ident);
+                        data.put("additional_item_id", add_item_ident);
                         data.put("ai", ai);
                         data.put("title", "ADDITIONAL ID");
                         data.put("element", aiAndData);
@@ -132,7 +131,7 @@ public class Parse_Digit_2 extends Pattern_Parser {
                     case "1":
                         cust_part_num = aiAndData.substring(3);
                         data = new LinkedHashMap<>();
-                        data.put("customer part number", cust_part_num);
+                        data.put("customer_part_num", cust_part_num);
                         data.put("ai", ai);
                         data.put("title", "CUST. PART NO.");
                         data.put("element", aiAndData);
@@ -140,7 +139,7 @@ public class Parse_Digit_2 extends Pattern_Parser {
                     case "2":
                         madeToOrder_var_num = aiAndData.substring(3);
                         data = new LinkedHashMap<>();
-                        data.put("made-to-order varation number", madeToOrder_var_num);
+                        data.put("made-to-order_var_num", madeToOrder_var_num);
                         data.put("ai", ai);
                         data.put("title", "MTO VARIANT");
                         data.put("element", aiAndData);
@@ -148,7 +147,7 @@ public class Parse_Digit_2 extends Pattern_Parser {
                     case "3":
                         pack_comp_num = aiAndData.substring(3);
                         data = new LinkedHashMap<>();
-                        data.put("packaging component number", pack_comp_num);
+                        data.put("pack_comp_num", pack_comp_num);
                         data.put("ai", ai);
                         data.put("title", "PCN");
                         data.put("element", aiAndData);
@@ -156,18 +155,18 @@ public class Parse_Digit_2 extends Pattern_Parser {
                         break;
                 }   break;
             case "5":
-                switch (ai.substring(2)) {
+                switch (ai.substring(2, 3)) {
                     case "0":
                         second_serial_num = aiAndData.substring(3);
                         data = new LinkedHashMap<>();
-                        data.put("secondary serial number", second_serial_num);
+                        data.put("secondary_serial_num", second_serial_num);
                         data.put("ai", ai);
                         data.put("title", "SECONDARY SERIAL");
                         data.put("element", aiAndData);
                     case "1":
                         ref_to_source = aiAndData.substring(3);
                         data = new LinkedHashMap<>();
-                        data.put("reference to source entity", ref_to_source);
+                        data.put("ref_to_source_entity", ref_to_source);
                         data.put("ai", ai);
                         data.put("title", "REF. TO SOURCE");
                         data.put("element", aiAndData);
@@ -178,18 +177,18 @@ public class Parse_Digit_2 extends Pattern_Parser {
                         check_digit = aiAndData.substring(15, 16);
                         serial_comp = aiAndData.substring(16);
                         data = new LinkedHashMap<>();
-                        data.put("global document type identifier", gdti);
-                        data.put("company prefix", company_prefix);
-                        data.put("document type", doc_type);
-                        data.put("serial component", serial_comp);
+                        data.put("global_doc_type_identifier", gdti);
+                        data.put("company_prefix", company_prefix);
+                        data.put("doc_type", doc_type);
+                        data.put("serial_comp", serial_comp);
                         data.put("ai", ai);
                         data.put("title", "GDTI");
-                        data.put("check digit", check_digit);
+                        data.put("check_digit", check_digit);
                         data.put("element", aiAndData);
                     case "4":
                         gln_ext_comp = aiAndData.substring(3);
                         data = new LinkedHashMap<>();
-                        data.put("gln extension component", gln_ext_comp);
+                        data.put("gln_ext_comp", gln_ext_comp);
                         data.put("ai", ai);
                         data.put("title", "GLN EXTENSION COMPONENT");
                         data.put("element", aiAndData);
@@ -200,12 +199,12 @@ public class Parse_Digit_2 extends Pattern_Parser {
                         check_digit = aiAndData.substring(15, 16);
                         serial_comp = aiAndData.substring(16);
                         data = new LinkedHashMap<>();
-                        data.put("global coupon number", gcn);
-                        data.put("company prefix", company_prefix);
-                        data.put("coupon reference", coupon_ref);
-                        data.put("serial component", serial_comp);
+                        data.put("global_coupon_num", gcn);
+                        data.put("company_prefix", company_prefix);
+                        data.put("coupon_ref", coupon_ref);
+                        data.put("serial_comp", serial_comp);
                         data.put("title", "GCN");
-                        data.put("check digit", check_digit);
+                        data.put("check_digit", check_digit);
                         data.put("element", aiAndData);
                     default:
                         break;
@@ -218,9 +217,3 @@ public class Parse_Digit_2 extends Pattern_Parser {
         
     }
 }
-//p253
-
-//company prefix = 1 - 6
-//doc type = 7 - 12
-//check digit = 13
-//serial component  = x1 - x17
