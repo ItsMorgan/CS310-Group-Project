@@ -11,9 +11,6 @@ public class Parse_Digit_2 extends Pattern_Parser {
         super();
         
         String ai = "";
-        String prefix = "";
-        String element = "";
-        String title = "";
         String company_prefix = "";
         String coupon_ref = "";
         String check_digit = "";
