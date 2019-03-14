@@ -6,7 +6,7 @@ public class CS310GroupProject {
 
     public static void main(String[] args) {
         
-        String input = "93123";
+        String input = "427123";
         
         Pattern_Parser patternParser = new Pattern_Parser();
         JSONArray fields;
