@@ -13,9 +13,9 @@ public class Parse_Digit_0 extends Pattern_Parser {
         String ai = "";
         String extension = "";
         String prefix = "";
-        String serial_ref = "";
+        String serial = "";
         String check = "";
-        String item_ref = "";
+        String reference = "";
         String SSCC = "";
         String GTIN = "";
                
@@ -36,38 +36,38 @@ public class Parse_Digit_0 extends Pattern_Parser {
         if (ai.substring(1).equals("0")) {
             extension = aiAndData.substring(2, 3);
             prefix = aiAndData.substring(3, 11);
-            serial_ref = aiAndData.substring(11,18);
+            serial = aiAndData.substring(11,18);
             check = aiAndData.substring(18,19);    
-            SSCC = extension + prefix + serial_ref + check;
+            SSCC = extension + prefix + serial + check;
             data.put("title", "SSCC");
             data.put("ai", ai);
             data.put("extension", extension);
-            data.put("serial", serial_ref);
+            data.put("serial", serial);
             data.put("check", check);
             data.put("sscc_code", SSCC);
         } 
         else if (ai.substring(1).equals("1")) {
             prefix = aiAndData.substring(2,9);
-            item_ref = aiAndData.substring(9,14);
+            reference = aiAndData.substring(9,14);
             check = aiAndData.substring(14,15);   
-            GTIN = prefix + item_ref + check;
+            GTIN = prefix + reference + check;
             data.put("title", "GTIN");
             data.put("ai", ai);
             data.put("prefix", prefix);
-            data.put("reference", item_ref);
+            data.put("reference", reference);
             data.put("check", check);
             data.put("gtin_code", GTIN);
         } 
         
         else if (ai.substring(0).equals("2")) {
             prefix = aiAndData.substring(2,9);
-            item_ref = aiAndData.substring(9,14);
+            reference = aiAndData.substring(9,14);
             check = aiAndData.substring(14,15);          
-            GTIN = prefix + item_ref + check;
+            GTIN = prefix + reference + check;
             data.put("title", "GTIN");
             data.put("ai", ai);
             data.put("prefix", prefix);
-            data.put("reference", item_ref);
+            data.put("reference", reference);
             data.put("check", check);
             data.put("gtin_code", GTIN);
         }
