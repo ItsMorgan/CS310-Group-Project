@@ -1,5 +1,10 @@
 package edu.jsu.mcis;
 
+import java.math.BigDecimal;
+import java.text.FieldPosition;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.ParsePosition;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.regex.*;
@@ -72,14 +77,14 @@ public class Pattern_Parser {
         return null;
     }
     
-    public Double getDecimalDouble(String ai, String data) {
+    public BigDecimal getDecimalDouble(String ai, String data) {
         int index = data.length() - Integer.parseInt(ai.substring(3, 4));
-        if (index != 5) {
+        if (index != data.length()) {
             String stringOne = data.substring(0, index);
             String stringTwo = data.substring(index);
-            return Double.parseDouble(stringOne + "." + stringTwo);
+            return new BigDecimal(stringOne + "." + stringTwo);
         } else {
-            return Double.parseDouble(data);
+            return new BigDecimal(data);
         }
     }
 }

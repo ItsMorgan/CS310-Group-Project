@@ -77,13 +77,13 @@ public class Parse_Digit_3 extends Pattern_Parser {
         Pattern p37eol = Pattern.compile("^37[0-9]{1,8}$");              
         Pattern p390n = Pattern.compile("^390[0-9]{1}[0-9]{1,15}[%\\x1D]");      
         Pattern p390neol = Pattern.compile("^390[0-9]{1}[0-9]{1,15}$");          
-        Pattern p391n = Pattern.compile("^390[0-9]{1}[0-9]{3}[0-9]{1,15}[%\\x1D]");
-        Pattern p391neol = Pattern.compile("^390[0-9]{1}[0-9]{3}[0-9]{1,15}$"); 
+        Pattern p391n = Pattern.compile("^391[0-9]{1}[0-9]{3}[0-9]{1,15}[%\\x1D]");
+        Pattern p391neol = Pattern.compile("^391[0-9]{1}[0-9]{3}[0-9]{1,15}$"); 
         Pattern p392n = Pattern.compile("^392[0-9]{1}[0-9]{1,15}[%\\x1D]");      
         Pattern p392neol = Pattern.compile("^392[0-9]{1}[0-9]{1,15}$");          
         Pattern p393n = Pattern.compile("^393[0-9]{1}[0-9]{3}[0-9]{1,15}[%\\x1D]");
         Pattern p393neol = Pattern.compile("^393[0-9]{1}[0-9]{3}[0-9]{1,15}$");
-        Pattern p394n = Pattern.compile("^394[0-9]{1}[0-9]{6}[%\\x1D]");        
+        Pattern p394n = Pattern.compile("^394[0-9]{1}[0-9]{4}[%\\x1D]");        
         Pattern p394neol = Pattern.compile("^394[0-9]{1}[0-9]{4}$");
         
         patterns.add(p30);
@@ -408,4 +408,5 @@ public class Parse_Digit_3 extends Pattern_Parser {
         data.put("element", aiAndData);
         fields.add(data);
     }
+
 }
