@@ -89,7 +89,7 @@ public class Parse_Digit_4 extends Pattern_Parser {
     patterns.add(p427);
     patterns.add(p427eol);
     
-    String aiAndData = super.parsePattern(patterns).group();
+    String aiAndData = parsePattern(patterns).group();
     
     ai = aiAndData.substring(0, 3);
     data = new LinkedHashMap();
