@@ -33,7 +33,15 @@ public class Parse_Digit_7 extends Pattern_Parser {
         String Harvest_end_date = "";
         String Fishery_species = "";
         String Fishing_gear_type = "";
-        
+        String Production_method = "";
+        String Refurb_lot = "";
+        String Functional_status = "";
+        String Revision_status = "";
+        String Prefix = "";
+        String Ind_asset_ref = "";
+        String GIAI = "";
+        String National_Healthcare_reimburse_num = "";
+        String Organisation = "";
         
     
         Pattern p7001 = Pattern.compile("^7001[0-9]{13}[%\\x1D]");
@@ -192,6 +200,101 @@ public class Parse_Digit_7 extends Pattern_Parser {
                             break;
                     }
 }
+                else if (thirdpos.equals("1")){
+                    if (fourthpos.equals("0")){
+                        ai = aiAndData.substring(1,5);
+                        Production_method = aiAndData.substring(5);
+                        data.put("ai", ai);
+                        data.put("Production method", Production_method);
+                        data.put("title", "Prod Method");
+                    }             
+                }
+                else if (thirdpos.equals("2")){
+                    if(fourthpos.equals("0")){
+                        ai = aiAndData.substring(1,5);
+                        Refurb_lot = aiAndData.substring(5);
+                        data.put("ai", ai);
+                        data.put("Refurb lot Id", Refurb_lot);
+                        data.put("title", "Refurb Lot");
+                    }
+                    else if(fourthpos.equals("1")){
+                        ai = aiAndData.substring(1,5);
+                        Functional_status = aiAndData.substring(5);
+                        data.put("ai", ai);
+                        data.put("Functional status", Functional_status);
+                        data.put("title", "Func Stat");                        
+                    }
+                    else if(fourthpos.equals("2")){
+                        ai = aiAndData.substring(1,5);
+                        Revision_status = aiAndData.substring(5);
+                        data.put("ai", ai);
+                        data.put("Revision status", Revision_status);
+                        data.put("title", "Rev Stat");                        
+                    }
+                    else if(fourthpos.equals("3")){
+                        ai = aiAndData.substring(1,5);
+                        Prefix = aiAndData.substring(5,9);
+                        Ind_asset_ref = aiAndData.substring(9);
+                        GIAI = Prefix + Ind_asset_ref;
+                        data.put("ai", ai);
+                        data.put("Company Prefix", Prefix);
+                        data.put("Individual asset reference", Ind_asset_ref);
+                        data.put("GIAI", GIAI);
+                        data.put("title", "GIAI-Assembly");                        
+                    }     
+            }
+                else if (thirdpos.equals("3")){
+                    //do 703s here
+                }
+            case"1":
+                if(ai.equals("1")&&thirdpos.equals("0")){
+                    ai = aiAndData.substring(1,4);
+                    National_Healthcare_reimburse_num = aiAndData.substring(4);
+                    Organisation = "Gernmany IFA";
+                    data.put("ai", ai);
+                    data.put("National Healthcare Reiumbursement Number", National_Healthcare_reimburse_num);
+                    data.put("Organisation", Organisation);
+                    data.put("title", "National Healthcare Reiumbursement");          
+                }
+                if(ai.equals("1")&&thirdpos.equals("1")){
+                    ai = aiAndData.substring(1,4);
+                    National_Healthcare_reimburse_num = aiAndData.substring(4);
+                    Organisation = "France CIP";
+                    data.put("ai", ai);
+                    data.put("National Healthcare Reiumbursement Number", National_Healthcare_reimburse_num);
+                    data.put("Organisation", Organisation);
+                    data.put("title", "National Healthcare Reiumbursement");  
+                }
+                if(ai.equals("1")&&thirdpos.equals("2")){
+                    ai = aiAndData.substring(1,4);
+                    National_Healthcare_reimburse_num = aiAndData.substring(4);
+                    Organisation = "Spain National Code";
+                    data.put("ai", ai);
+                    data.put("National Healthcare Reiumbursement Number", National_Healthcare_reimburse_num);
+                    data.put("Organisation", Organisation);
+                    data.put("title", "National Healthcare Reiumbursement"); 
+                }
+                if(ai.equals("1")&&thirdpos.equals("3")){
+                    ai = aiAndData.substring(1,4);
+                    National_Healthcare_reimburse_num = aiAndData.substring(4);
+                    Organisation = "Brazil ANVISA";
+                    data.put("ai", ai);
+                    data.put("National Healthcare Reiumbursement Number", National_Healthcare_reimburse_num);
+                    data.put("Organisation", Organisation);
+                    data.put("title", "National Healthcare Reiumbursement"); 
+                }
+                if(ai.equals("1")&&thirdpos.equals("4")){
+                    ai = aiAndData.substring(1,4);
+                    National_Healthcare_reimburse_num = aiAndData.substring(4);
+                    Organisation = "Porutgal Infarmed";
+                    data.put("ai", ai);
+                    data.put("National Healthcare Reiumbursement Number", National_Healthcare_reimburse_num);
+                    data.put("Organisation", Organisation);
+                    data.put("title", "National Healthcare Reiumbursement"); 
+                }
+            case"2":
+                
+                
 }
 }
 }
