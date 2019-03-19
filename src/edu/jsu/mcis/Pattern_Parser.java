@@ -23,9 +23,9 @@ public class Pattern_Parser {
 
     public JSONArray parse(String code) {
         fields = new JSONArray();
-        this.code = code;
-        while ( !this.code.isEmpty() ) {
-            int firstDigitAi= Integer.parseInt(this.code.substring(0, 1));
+        Pattern_Parser.code = code;
+        while ( !Pattern_Parser.code.isEmpty() ) {
+            int firstDigitAi= Integer.parseInt(Pattern_Parser.code.substring(0, 1));
             switch (firstDigitAi) {
                 case 0:
                     parse0 = new Parse_Digit_0();
@@ -63,13 +63,23 @@ public class Pattern_Parser {
         for (Pattern p : patterns) {
 
             Matcher m = p.matcher(code);
-            
             if (m.find()) {
-                this.code = this.code.substring(m.end()).trim();
+                Pattern_Parser.code = Pattern_Parser.code.substring(m.end()).trim();
                 return m;
             }
         }
         
         return null;
+    }
+    
+    public Double getDecimalDouble(String ai, String data) {
+        int index = data.length() - Integer.parseInt(ai.substring(3, 4));
+        if (index != 5) {
+            String stringOne = data.substring(0, index);
+            String stringTwo = data.substring(index);
+            return Double.parseDouble(stringOne + "." + stringTwo);
+        } else {
+            return Double.parseDouble(data);
+        }
     }
 }

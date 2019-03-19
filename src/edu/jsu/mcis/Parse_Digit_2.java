@@ -93,7 +93,7 @@ public class Parse_Digit_2 extends Pattern_Parser {
             ai = aiAndData.substring(0, 3);
         }
         
-        switch (ai.substring(1)) {
+        switch (ai.substring(1, 2)) {
             case "0":
                 internal_prod_var = aiAndData.substring(2);
                 data = new LinkedHashMap<>();
@@ -119,12 +119,11 @@ public class Parse_Digit_2 extends Pattern_Parser {
                 data.put("element", aiAndData);
                 break;
             case "4":
-                /*Something wrong here*/
-                switch (ai.substring(2)) {
+                switch (ai.substring(2, 3)) {
                     case "0":
                         add_item_ident = aiAndData.substring(3);
                         data = new LinkedHashMap<>();
-                        data.put("additional item indetification", add_item_ident);
+                        data.put("additional_item_id", add_item_ident);
                         data.put("ai", ai);
                         data.put("title", "ADDITIONAL ID");
                         data.put("element", aiAndData);
@@ -156,7 +155,7 @@ public class Parse_Digit_2 extends Pattern_Parser {
                         break;
                 }   break;
             case "5":
-                switch (ai.substring(2)) {
+                switch (ai.substring(2, 3)) {
                     case "0":
                         second_serial_num = aiAndData.substring(3);
                         data = new LinkedHashMap<>();
