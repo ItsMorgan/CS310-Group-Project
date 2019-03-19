@@ -1,9 +1,26 @@
 package edu.jsu.mcis;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.regex.*;
 
 public class Parse_Digit_4 extends Pattern_Parser {
+    
+    public Parse_Digit_4(){
+        
+    super();
+    String order_num = "";
+    String ai = "";
+    String GS1_company_prefix = "";
+    String GINC = "";
+    String Shipper_ref= "";
+    String GSIN = "";
+    String check ="";
+    String Route="";
+    String Location_ref="";
+    String Postal_code ="";
+    String ISO_country_code ="";
+    String ISO_subdivision_code="";
     
     ArrayList<Matcher> matches = new ArrayList();
     
@@ -38,4 +55,222 @@ public class Parse_Digit_4 extends Pattern_Parser {
     Pattern p426eol = Pattern.compile("^426[0-9]{3}$");
     Pattern p427 = Pattern.compile("^427(.){1,3}[%\\x1D]");
     Pattern p427eol = Pattern.compile("^427(.){1,3}$");
+    
+    ArrayList<Pattern> patterns = new ArrayList<>();
+    patterns.add(p400);
+    patterns.add(p400eol);
+    patterns.add(p401);
+    patterns.add(p401eol);
+    patterns.add(p402);
+    patterns.add(p402eol);
+    patterns.add(p403);
+    patterns.add(p403eol);
+    patterns.add(p410);
+    patterns.add(p411);
+    patterns.add(p412);
+    patterns.add(p413);
+    patterns.add(p414);
+    patterns.add(p415);
+    patterns.add(p416);
+    patterns.add(p420);
+    patterns.add(p420eol);
+    patterns.add(p421);
+    patterns.add(p421eol);
+    patterns.add(p422);
+    patterns.add(p422eol);
+    patterns.add(p423);
+    patterns.add(p423eol);
+    patterns.add(p424);
+    patterns.add(p424eol);
+    patterns.add(p425);
+    patterns.add(p425eol);
+    patterns.add(p426);
+    patterns.add(p426eol);
+    patterns.add(p427);
+    patterns.add(p427eol);
+    
+    String aiAndData = super.parsePattern(patterns).group();
+    
+    ai = aiAndData.substring(0, 3);
+    data = new LinkedHashMap();
+    
+        switch (ai.substring(1,3)) {
+            case "00":
+                order_num = aiAndData.substring(3);
+                data.put("order_num", order_num);
+                data.put("ai",ai);
+                data.put("title", "ORDER NUMBER");
+                data.put("element", aiAndData);
+                break;
+            case "01":
+                GINC = aiAndData.substring(3);
+                data.put("title", "GINC");
+                data.put("ai", ai);
+                data.put("ginc_code", GINC);
+                data.put("element",aiAndData);
+                break;
+            case "02":
+                GS1_company_prefix = aiAndData.substring(3,12);
+                Shipper_ref = aiAndData.substring(12,19);
+                check = aiAndData.substring(19);
+                GSIN = GS1_company_prefix + Shipper_ref + check;
+                data.put("title", "GSIN");
+                data.put("ai", ai);
+                data.put("prefix", GS1_company_prefix);
+                data.put("reference", Shipper_ref);
+                data.put("check", check);
+                data.put("gsin_code", GSIN);
+                data.put("element", aiAndData);
+                break;
+            case "03":
+                Route = aiAndData.substring(3);
+                data.put("title", "ROUTE");
+                data.put("ai",ai);
+                data.put("route", Route);
+                data.put("element", aiAndData);
+                break;
+            case "10":
+                GS1_company_prefix = aiAndData.substring(3,9);
+                Location_ref =aiAndData.substring(9,15);
+                check = aiAndData.substring(15);
+                data.put("title", "SHIP TO LOC");
+                data.put("prefix", GS1_company_prefix);
+                data.put("reference", Location_ref);
+                data.put("check",check);
+                data.put("ai",ai);
+                data.put("element", aiAndData);
+                break;
+            case "11":
+                GS1_company_prefix = aiAndData.substring(3,9);
+                Location_ref =aiAndData.substring(9,15);
+                check = aiAndData.substring(15);
+                data.put("title", "BILL TO");
+                data.put("prefix", GS1_company_prefix);
+                data.put("reference", Location_ref);
+                data.put("check",check);
+                data.put("ai",ai);
+                data.put("element", aiAndData);
+                break;
+            case "12":
+                GS1_company_prefix = aiAndData.substring(3,9);
+                Location_ref =aiAndData.substring(9,15);
+                check = aiAndData.substring(15);
+                data.put("title", "PURCHASE FROM");
+                data.put("prefix", GS1_company_prefix);
+                data.put("reference", Location_ref);
+                data.put("check",check);
+                data.put("ai",ai);
+                data.put("element", aiAndData);
+                break;
+            case "13":
+                GS1_company_prefix = aiAndData.substring(3,9);
+                Location_ref =aiAndData.substring(9,15);
+                check = aiAndData.substring(15);
+                data.put("title", "SHIP FOR LOC");
+                data.put("prefix", GS1_company_prefix);
+                data.put("reference", Location_ref);
+                data.put("check",check);
+                data.put("ai",ai);
+                data.put("element", aiAndData);
+                break;
+            case "14":
+                GS1_company_prefix = aiAndData.substring(3,9);
+                Location_ref =aiAndData.substring(9,15);
+                check = aiAndData.substring(15);
+                data.put("title", "LOC NO");
+                data.put("prefix", GS1_company_prefix);
+                data.put("reference", Location_ref);
+                data.put("check",check);
+                data.put("ai",ai);
+                data.put("element", aiAndData);
+                break;
+            case "15":
+                GS1_company_prefix = aiAndData.substring(3,9);
+                Location_ref =aiAndData.substring(9,15);
+                check = aiAndData.substring(15);
+                data.put("title", "PAY TO");
+                data.put("prefix", GS1_company_prefix);
+                data.put("reference", Location_ref);
+                data.put("check",check);
+                data.put("ai",ai);
+                data.put("element", aiAndData);
+                break;
+            case "16":
+                GS1_company_prefix = aiAndData.substring(3,9);
+                Location_ref =aiAndData.substring(9,15);
+                check = aiAndData.substring(15);
+                data.put("title", "PROD/SERV LOC");
+                data.put("prefix", GS1_company_prefix);
+                data.put("reference", Location_ref);
+                data.put("check",check);
+                data.put("ai",ai);
+                data.put("element", aiAndData);
+                break;
+            case "20":
+                Postal_code = aiAndData.substring(3);
+                data.put("title", "SHIP TO POST");
+                data.put("postal code", Postal_code);
+                data.put("ai",ai);
+                data.put("element", aiAndData);
+                break;
+            case "21":
+                ISO_country_code = aiAndData.substring(3,6);
+                Postal_code = aiAndData.substring(6);
+                data.put("title", "SHIP TO POST");
+                data.put("iso_country_code",ISO_country_code);
+                data.put("postal_code", Postal_code);
+                data.put("ai",ai);
+                data.put("element", aiAndData);
+                break;
+            case "22":
+                ISO_country_code = aiAndData.substring(3);
+                data.put("title", "ORIGIN");
+                data.put("iso_country_code",ISO_country_code);
+                data.put("ai",ai);
+                data.put("element", aiAndData);
+                break;
+            case "23":
+                ISO_country_code = aiAndData.substring(3);
+                data.put("title", "COUNTRY-INITIAL PROCESS");
+                data.put("iso_country_code",ISO_country_code);
+                data.put("postal_code", Postal_code);
+                data.put("ai",ai);
+                data.put("element", aiAndData);
+                break;
+            case "24":
+                ISO_country_code = aiAndData.substring(3);
+                data.put("title", "COUNTRY - PROCESS");
+                data.put("iso_country_code",ISO_country_code);
+                data.put("ai",ai);
+                data.put("element", aiAndData);
+                break;
+            case "25":
+                ISO_country_code = aiAndData.substring(3);
+                data.put("title", "COUNTRY- DISASSEMBLY");
+                data.put("iso_country_code",ISO_country_code);
+                data.put("ai",ai);
+                data.put("element", aiAndData);
+                break;
+            case "26":
+                ISO_country_code = aiAndData.substring(3);
+                data.put("title", "COUNTRY - FULL PROCESS");
+                data.put("iso_country_code",ISO_country_code);
+                data.put("ai",ai);
+                data.put("element", aiAndData);
+                break;
+            case "27":
+                ISO_subdivision_code = aiAndData.substring(3);
+                data.put("title", "ORIGIN SUBDIVISION");
+                data.put("iso_country_code",ISO_subdivision_code);
+                data.put("ai",ai);
+                data.put("element", aiAndData);
+                break;
+            default:
+                break;
+        }
+        
+    fields.add(data);
+    
+    }
+  
 }
