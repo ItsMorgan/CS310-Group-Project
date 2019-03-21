@@ -185,8 +185,7 @@ public class Parse_Digit_8 extends Pattern_Parser {
                     data.put("global_ind_asset_id", giai);
                     data.put("ai", ai);
                     data.put("title", "GIAI");
-                    data.put("element", aiAndData);
-                    
+                    data.put("element", aiAndData);    
                 } else if (aiAndData.substring(3, 4).equals("5")){
                     price_per_unit = aiAndData.substring(4);
                     data = new LinkedHashMap<>();
@@ -260,7 +259,7 @@ public class Parse_Digit_8 extends Pattern_Parser {
                     data = new LinkedHashMap<>();
                     data.put("software_ver", software_ver);
                     data.put("ai", ai);
-                    data.put("title", "");
+                    data.put("title", "VERSION");
                     data.put("element", aiAndData);
                 } else if (aiAndData.substring(3, 4).equals("3")){
                     gmn = aiAndData.substring(4);
