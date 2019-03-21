@@ -36,7 +36,7 @@ public class Parse_Digit_1 extends Pattern_Parser {
         patterns.add(p16);
         patterns.add(p17);
 
-        String aiAndData = parsePattern(patterns).group();
+        String aiAndData = parsePattern(patterns).group().replace("%", "");
         data = new LinkedHashMap<>();
         
         ai = aiAndData.substring(0, 2);

@@ -138,7 +138,7 @@ public class Parse_Digit_7 extends Pattern_Parser {
         data = new LinkedHashMap<>();
         
         
-        String aiAndData = parsePattern(patterns).group();
+        String aiAndData = parsePattern(patterns).group().replace("%", "");
         ai = aiAndData.substring(1,2);
         thirdpos = aiAndData.substring(2,3);
         fourthpos = aiAndData.substring(3,4);

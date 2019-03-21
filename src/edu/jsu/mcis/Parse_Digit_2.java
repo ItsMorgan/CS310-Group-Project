@@ -80,7 +80,7 @@ public class Parse_Digit_2 extends Pattern_Parser {
         patterns.add(p255);
         patterns.add(p255eol);
         
-        String aiAndData = super.parsePattern(patterns).group();
+        String aiAndData = super.parsePattern(patterns).group().replace("%", "");
         
         int aiSecondPos = Integer.parseInt(aiAndData.substring(1, 2));
         

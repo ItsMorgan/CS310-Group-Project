@@ -61,7 +61,7 @@ public class Parse_Digit_9 extends Pattern_Parser {
         patterns.add(p99);
         patterns.add(p99eol);
         
-        String aiAndData = super.parsePattern(patterns).group();
+        String aiAndData = super.parsePattern(patterns).group().replace("%", "");
         
         ai = aiAndData.substring(0, 2);
         
