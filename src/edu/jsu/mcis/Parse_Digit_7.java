@@ -42,6 +42,11 @@ public class Parse_Digit_7 extends Pattern_Parser {
         String GIAI = "";
         String National_Healthcare_reimburse_num = "";
         String Organisation = "";
+        String Sequence_identifier = "";
+        String Country_code = "";
+        String Number_of_processor = "";
+        String Certification_scheme = "";
+        String Certification_reference = "";
         
     
         Pattern p7001 = Pattern.compile("^7001[0-9]{13}[%\\x1D]");
@@ -291,7 +296,15 @@ public class Parse_Digit_7 extends Pattern_Parser {
                     }     
             }
                 else if (thirdpos.equals("3")){
-                    //do 703s here
+                    ai = aiAndData.substring(1,5);
+                    Country_code = aiAndData.substring(5,8);
+                    Number_of_processor = aiAndData.substring(8);
+                    Sequence_identifier = fourthpos;
+                    data.put("ai", ai);
+                    data.put("Country Code", Country_code);
+                    data.put("Number of Processors", Number_of_processor);
+                    data.put("Sequence Identifier", Sequence_identifier);
+                    data.put("title", "Processor #'s");
                 }
             case"1":
                 if(ai.equals("1")&&thirdpos.equals("0")){
@@ -340,6 +353,15 @@ public class Parse_Digit_7 extends Pattern_Parser {
                     data.put("title", "National Healthcare Reiumbursement"); 
                 }
             case"2":
+                ai = aiAndData.substring(1,5);
+                Sequence_identifier = fourthpos;
+                Certification_scheme = aiAndData.substring(5,7);
+                Certification_reference = aiAndData.substring(7);
+                data.put("ai", ai);
+                data.put("Sequence Identiifier", Sequence_identifier);
+                data.put("Certification scheme", Certification_scheme);
+                data.put("Certification reference", Certification_reference);
+                data.put("title", "Cert #'s");
                 
                 
 }

@@ -234,57 +234,67 @@ public class Parse_Digit_8 extends Pattern_Parser {
                     data.put("element", aiAndData);
                 }
             } else if (aiAndData.substring(2, 3).equals("1")){
-                if(aiAndData.substring(3, 4).equals("0")){
-                    //another one with variable lengths being split
-                    data = new LinkedHashMap<>();
-                    data.put("ai", ai);
-                    data.put("title", "CPID");
-                    data.put("element", aiAndData);
-                } else if (aiAndData.substring(3, 4).equals("1")){
-                    part_id_serial_num = aiAndData.substring(4);
-                    data = new LinkedHashMap<>();
-                    data.put("part_id_serial_num", part_id_serial_num);
-                    data.put("ai", ai);
-                    data.put("title", "CPID SERIAL");
-                    data.put("element", aiAndData);
-                } else if (aiAndData.substring(3, 4).equals("2")){
-                    software_ver = aiAndData.substring(4);
-                    data = new LinkedHashMap<>();
-                    data.put("software_ver", software_ver);
-                    data.put("ai", ai);
-                    data.put("title", "");
-                    data.put("element", aiAndData);
-                } else if (aiAndData.substring(3, 4).equals("3")){
-                    //another double variable
-                } else if (aiAndData.substring(3, 4).equals("7")){
-                    comp_prefix = aiAndData.substring(4, 12);
-                    service_ref = aiAndData.substring(12, 21);
-                    check_digit = aiAndData.substring(21);
-                    data = new LinkedHashMap<>();
-                    data.put("comp_prefix", comp_prefix);
-                    data.put("service_ref", service_ref);
-                    data.put("check_digit", check_digit);
-                    data.put("ai", ai);
-                    data.put("title", "GSRN - PROVIDER");
-                    data.put("element", aiAndData);
-                } else if (aiAndData.substring(3, 4).equals("8")){
-                    comp_prefix = aiAndData.substring(4, 12);
-                    service_ref = aiAndData.substring(12, 21);
-                    check_digit = aiAndData.substring(21);
-                    data = new LinkedHashMap<>();
-                    data.put("comp_prefix", comp_prefix);
-                    data.put("service_ref", service_ref);
-                    data.put("check_digit", check_digit);
-                    data.put("ai", ai);
-                    data.put("title", "GSRN - RECIPIENT");
-                    data.put("element", aiAndData);
-                } else if (aiAndData.substring(3, 4).equals("9")){
-                    service_rel_inst_num = aiAndData.substring(4);
-                    data = new LinkedHashMap<>();
-                    data.put("service_rel_inst_num", service_rel_inst_num);
-                    data.put("ai", ai);
-                    data.put("title", "SRIN");
-                    data.put("element", aiAndData);
+                switch (aiAndData.substring(3, 4)) {
+                    case "0":
+                        //another one with variable lengths being split
+                        data = new LinkedHashMap<>();
+                        data.put("ai", ai);
+                        data.put("title", "CPID");
+                        data.put("element", aiAndData);
+                        break;
+                    case "1":
+                        part_id_serial_num = aiAndData.substring(4);
+                        data = new LinkedHashMap<>();
+                        data.put("part_id_serial_num", part_id_serial_num);
+                        data.put("ai", ai);
+                        data.put("title", "CPID SERIAL");
+                        data.put("element", aiAndData);
+                        break;
+                    case "2":
+                        software_ver = aiAndData.substring(4);
+                        data = new LinkedHashMap<>();
+                        data.put("software_ver", software_ver);
+                        data.put("ai", ai);
+                        data.put("title", "");
+                        data.put("element", aiAndData);
+                        break;
+                //another double variable
+                    case "3":
+                        break;
+                    case "7":
+                        comp_prefix = aiAndData.substring(4, 12);
+                        service_ref = aiAndData.substring(12, 21);
+                        check_digit = aiAndData.substring(21);
+                        data = new LinkedHashMap<>();
+                        data.put("comp_prefix", comp_prefix);
+                        data.put("service_ref", service_ref);
+                        data.put("check_digit", check_digit);
+                        data.put("ai", ai);
+                        data.put("title", "GSRN - PROVIDER");
+                        data.put("element", aiAndData);
+                        break;
+                    case "8":
+                        comp_prefix = aiAndData.substring(4, 12);
+                        service_ref = aiAndData.substring(12, 21);
+                        check_digit = aiAndData.substring(21);
+                        data = new LinkedHashMap<>();
+                        data.put("comp_prefix", comp_prefix);
+                        data.put("service_ref", service_ref);
+                        data.put("check_digit", check_digit);
+                        data.put("ai", ai);
+                        data.put("title", "GSRN - RECIPIENT");
+                        data.put("element", aiAndData);
+                        break;
+                    case "9":
+                        service_rel_inst_num = aiAndData.substring(4);
+                        data = new LinkedHashMap<>();
+                        data.put("service_rel_inst_num", service_rel_inst_num);
+                        data.put("ai", ai);
+                        data.put("title", "SRIN");
+                        data.put("element", aiAndData);
+                        break;
+                    default:
+                        break;
                 }
             } else if (aiAndData.substring(2, 3).equals("2")){
                 if(aiAndData.substring(3, 4).equals("0")){
