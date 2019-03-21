@@ -6,7 +6,7 @@ public class CS310GroupProject {
 
     public static void main(String[] args) {
         
-        String input = "8200www.youtube.com";
+        String input = "70011234567891011";
         
         Pattern_Parser patternParser = new Pattern_Parser();
         JSONArray fields;
