@@ -383,20 +383,20 @@ public class Parse_Digit_3 extends Pattern_Parser {
                     case "1":
                         data.put("title", "AMOUNT");
                         data.put("iso_code", aiAndData.substring(4, 7));
-                        data.put("amount_payable", getDecimalDouble(ai, aiAndData.substring(7)));
+                        data.put("amt_payable", getDecimalDouble(ai, aiAndData.substring(7)));
                         break;
                     case "2":
                         data.put("title", "PRICE");
-                        data.put("amount_payable", getDecimalDouble(ai, aiAndData.substring(4)));
+                        data.put("amt_payable", getDecimalDouble(ai, aiAndData.substring(4)));
                         break;
                     case "3":
                         data.put("title", "PRICE");
                         data.put("iso_code", aiAndData.substring(4, 7));
-                        data.put("amount_payable", getDecimalDouble(ai, aiAndData.substring(7)));
+                        data.put("amt_payable", getDecimalDouble(ai, aiAndData.substring(7)));
                         break;
                     case "4":
                         data.put("title", "PRCNT OFF");
-                        data.put("discount_prcnt", getDecimalDouble(ai, aiAndData.substring(4)) + "%");
+                        data.put("dscnt_prcnt", getDecimalDouble(ai, aiAndData.substring(4)) + "%");
                         break;
                 }
                 
