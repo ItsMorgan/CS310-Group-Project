@@ -62,7 +62,8 @@ public class Pattern_Parser {
         }
         
         if (!isValid()) {
-            throw new Exception("Invalid Code!");
+            System.out.println("Invalid");
+            //throw new Exception("Invalid Code!");
         }
         
         return fields;
@@ -95,8 +96,11 @@ public class Pattern_Parser {
     }
 
     public boolean isValid() {
-        boolean valid = true;        
-        int counter01 = 0;        
+        int counter01 = 0;
+        boolean valid010 = false;
+        boolean exists010 = false;
+        boolean valid019 = false;
+        boolean exists019 = false;
         for (int i = 0; i < codes.size(); i++) {            
             String code1 = codes.get(i);            
             for (int j = 0; j < codes.size(); j++) {                
@@ -131,11 +135,39 @@ public class Pattern_Parser {
                 if (code1.startsWith("8026") && code2.startsWith("02") || code2.startsWith("8006")){
                     return false;
                 }         
-            }            
+                
+                /* Separator for exclusions (above) and associations (below) */
+                
+                if (code1.startsWith("010")) {
+                    exists010 = true;
+                    if (code2.startsWith("31") || code2.startsWith("32") || code2.startsWith("35") || code2.startsWith("36") || code2.startsWith("30")) {
+                        valid010 = true;
+                    }
+                }
+                
+                if (code1.startsWith("019") || code1.startsWith("029")) {
+                    exists019 = true;
+                    if (code2.startsWith("31") || code2.startsWith("32") || code2.startsWith("35") || code2.startsWith("36") || code2.startsWith("30") || code2.startsWith("8001")) {
+                        valid019 = true;
+                    }
+                }
+            }         
+            
             if (counter01 >= 3) {
                 return false;
-            }            
+            }
+            
+            /* Separator for exclusions (above) and associations (below) */
+            
+            if (!valid010 && exists010) {
+                return false;
+            }
+            
+            if (!valid019 && exists019) {
+                return false;
+            }
         }
-        return valid;
+        
+        return true;
     }
 }
