@@ -40,6 +40,9 @@ public class Parse_Digit_8 extends Pattern_Parser {
         String asag = "";
         String loyalty_points = "";
         String url = "";
+        String giai = "";
+        String part_id = "";
+        String gmn = "";
         
     
         ArrayList<Matcher> matches = new ArrayList();
@@ -54,36 +57,36 @@ public class Parse_Digit_8 extends Pattern_Parser {
         Pattern p8004eol = Pattern.compile("^8004(.){1,30}$"); 
         Pattern p8005 = Pattern.compile("^8005[0-9]{6}");  
         Pattern p8005eol = Pattern.compile("^8005[0-9]{6}$");
-        Pattern p8006 = Pattern.compile("^8006[0-9]{14}(.)[0-9]{2}(.)[0-9]{2}");
-        Pattern p8006eol = Pattern.compile("^8006[0-9]{14}(.)[0-9]{2}(.)[0-9]{2}$"); 
+        Pattern p8006 = Pattern.compile("^8006[0-9]{14}[0-9]{2}[0-9]{2}[%\\x1D]");
+        Pattern p8006eol = Pattern.compile("^8006[0-9]{14}[0-9]{2}[0-9]{2}$"); 
         Pattern p8007 = Pattern.compile("^8007(.){1,34}[%\\x1D]"); 
         Pattern p8007eol = Pattern.compile("^8007(.){1,34}$"); 
-        Pattern p8008 = Pattern.compile("^8008[0-9]{8}(.)[0-9]{1,4}"); 
-        Pattern p8008eol = Pattern.compile("^8008[0-9]{8}(.)[0-9]{1,4}$"); 
+        Pattern p8008 = Pattern.compile("^8008[0-9]{8}[0-9]{1,4}"); 
+        Pattern p8008eol = Pattern.compile("^8008[0-9]{8}[0-9]{1,4}$"); 
         Pattern p8009 = Pattern.compile("^8009(.){1,50}[%\\x1D]"); 
         Pattern p8009eol = Pattern.compile("^8009(.){1,50}$");  
-        Pattern p8010 = Pattern.compile("^8010(.){1,30}[%//x1D]");
+        Pattern p8010 = Pattern.compile("^8010(.){1,30}[%\\x1D]");
         Pattern p8010eol = Pattern.compile("^8010(.){1,30}$"); 
         Pattern p8011 = Pattern.compile("^8011[0-9]{1,12}");  
         Pattern p8011eol = Pattern.compile("^8011[0-9]{1,12}$");   
-        Pattern p8012 = Pattern.compile("^8012(.){1,20}[%//x1D]");
+        Pattern p8012 = Pattern.compile("^8012(.){1,20}[%\\x1D]");
         Pattern p8012eol = Pattern.compile("^8012(.){1,20}$");
-        Pattern p8013 = Pattern.compile("^8013(.){1,30}[%//x1D]");
+        Pattern p8013 = Pattern.compile("^8013(.){1,30}[%\\x1D]");
         Pattern p8013eol = Pattern.compile("^8013(.){1,30}$");
-        Pattern p8017 = Pattern.compile("^8017[0-9]{1,18}[%//x1D]");
+        Pattern p8017 = Pattern.compile("^8017[0-9]{1,18}[%\\x1D]");
         Pattern p8017eol = Pattern.compile("^8017[0-9]{1,18}$");
-        Pattern p8018 = Pattern.compile("^8018[0-9]{1,18}[%//x1D]");
+        Pattern p8018 = Pattern.compile("^8018[0-9]{1,18}[%\\x1D]");
         Pattern p8018eol = Pattern.compile("^8018[0-9]{1,18}$");
-        Pattern p8019 = Pattern.compile("^8019(.){1,10}[%//x1D]");
-        Pattern p8019eol = Pattern.compile("^8019(.){1,10}$");
-        Pattern p8020 = Pattern.compile("^8020(.){1,25}[%//x1D]");
+        Pattern p8019 = Pattern.compile("^8019{1,10}[%\\x1D]");
+        Pattern p8019eol = Pattern.compile("^8019{1,10}$");
+        Pattern p8020 = Pattern.compile("^8020(.){1,25}[%\\x1D]");
         Pattern p8020eol = Pattern.compile("^8020(.){1,25}$");
         Pattern p8110 = Pattern.compile("^8110(.){1,70}[%\\x1D]");
         Pattern p8110eol = Pattern.compile("^8110(.){1,70}$");
         Pattern p8026 = Pattern.compile("^8026[0-9]{14}[0-9]{2}[0-9]{2}[%\\x1D]");
         Pattern p8026eol = Pattern.compile("^8026[0-9]{14}[0-9]{2}[0-9]{2}$");
-        Pattern p8111 = Pattern.compile("^8111(.){1,70}[%\\x1D]");
-        Pattern p8111eol = Pattern.compile("^8111(.){1,70}$"); 
+        Pattern p8111 = Pattern.compile("^8111{1,70}[%\\x1D]");
+        Pattern p8111eol = Pattern.compile("^8111{1,70}$"); 
         Pattern p8112 = Pattern.compile("^8112(.){1,70}[%\\x1D]");
         Pattern p8112eol = Pattern.compile("^8112(.){1,70}$"); 
         Pattern p8200 = Pattern.compile("^8200(.){1,70}[%\\x1D]");
@@ -177,7 +180,12 @@ public class Parse_Digit_8 extends Pattern_Parser {
                     data.put("title", "GRAI");
                     data.put("element", aiAndData);
                 } else if (aiAndData.substring(3, 4).equals("4")){
-                    //Not sure what to do here lads
+                    giai = aiAndData.substring(4);
+                    data = new LinkedHashMap<>();
+                    data.put("global_ind_asset_id", giai);
+                    data.put("ai", ai);
+                    data.put("title", "GIAI");
+                    data.put("element", aiAndData);    
                 } else if (aiAndData.substring(3, 4).equals("5")){
                     price_per_unit = aiAndData.substring(4);
                     data = new LinkedHashMap<>();
@@ -186,11 +194,9 @@ public class Parse_Digit_8 extends Pattern_Parser {
                     data.put("title", "PRICE PER UNIT");
                     data.put("element", aiAndData);
                 } else if (aiAndData.substring(3, 4).equals("6")){
-                    /*keeps returning a null pointer error, I guess
-                    my substring numbers are wrong*/
-                    gtin = aiAndData.substring(4, 15);
-                    piece_num = aiAndData.substring(15, 17);
-                    total_cnt = aiAndData.substring(17);
+                    gtin = aiAndData.substring(4, 18);
+                    piece_num = aiAndData.substring(18, 20);
+                    total_cnt = aiAndData.substring(20);
                     data = new LinkedHashMap<>();
                     data.put("gtin", gtin);
                     data.put("piece_num", piece_num);
@@ -234,67 +240,63 @@ public class Parse_Digit_8 extends Pattern_Parser {
                     data.put("element", aiAndData);
                 }
             } else if (aiAndData.substring(2, 3).equals("1")){
-                switch (aiAndData.substring(3, 4)) {
-                    case "0":
-                        //another one with variable lengths being split
-                        data = new LinkedHashMap<>();
-                        data.put("ai", ai);
-                        data.put("title", "CPID");
-                        data.put("element", aiAndData);
-                        break;
-                    case "1":
-                        part_id_serial_num = aiAndData.substring(4);
-                        data = new LinkedHashMap<>();
-                        data.put("part_id_serial_num", part_id_serial_num);
-                        data.put("ai", ai);
-                        data.put("title", "CPID SERIAL");
-                        data.put("element", aiAndData);
-                        break;
-                    case "2":
-                        software_ver = aiAndData.substring(4);
-                        data = new LinkedHashMap<>();
-                        data.put("software_ver", software_ver);
-                        data.put("ai", ai);
-                        data.put("title", "");
-                        data.put("element", aiAndData);
-                        break;
-                //another double variable
-                    case "3":
-                        break;
-                    case "7":
-                        comp_prefix = aiAndData.substring(4, 12);
-                        service_ref = aiAndData.substring(12, 21);
-                        check_digit = aiAndData.substring(21);
-                        data = new LinkedHashMap<>();
-                        data.put("comp_prefix", comp_prefix);
-                        data.put("service_ref", service_ref);
-                        data.put("check_digit", check_digit);
-                        data.put("ai", ai);
-                        data.put("title", "GSRN - PROVIDER");
-                        data.put("element", aiAndData);
-                        break;
-                    case "8":
-                        comp_prefix = aiAndData.substring(4, 12);
-                        service_ref = aiAndData.substring(12, 21);
-                        check_digit = aiAndData.substring(21);
-                        data = new LinkedHashMap<>();
-                        data.put("comp_prefix", comp_prefix);
-                        data.put("service_ref", service_ref);
-                        data.put("check_digit", check_digit);
-                        data.put("ai", ai);
-                        data.put("title", "GSRN - RECIPIENT");
-                        data.put("element", aiAndData);
-                        break;
-                    case "9":
-                        service_rel_inst_num = aiAndData.substring(4);
-                        data = new LinkedHashMap<>();
-                        data.put("service_rel_inst_num", service_rel_inst_num);
-                        data.put("ai", ai);
-                        data.put("title", "SRIN");
-                        data.put("element", aiAndData);
-                        break;
-                    default:
-                        break;
+                if(aiAndData.substring(3, 4).equals("0")){
+                    part_id = aiAndData.substring(4);
+                    data = new LinkedHashMap<>();
+                    data.put("part_id", part_id);
+                    data.put("ai", ai);
+                    data.put("title", "CPID");
+                    data.put("element", aiAndData);
+                } else if (aiAndData.substring(3, 4).equals("1")){
+                    part_id_serial_num = aiAndData.substring(4);
+                    data = new LinkedHashMap<>();
+                    data.put("part_id_serial_num", part_id_serial_num);
+                    data.put("ai", ai);
+                    data.put("title", "CPID SERIAL");
+                    data.put("element", aiAndData);
+                } else if (aiAndData.substring(3, 4).equals("2")){
+                    software_ver = aiAndData.substring(4);
+                    data = new LinkedHashMap<>();
+                    data.put("software_ver", software_ver);
+                    data.put("ai", ai);
+                    data.put("title", "VERSION");
+                    data.put("element", aiAndData);
+                } else if (aiAndData.substring(3, 4).equals("3")){
+                    gmn = aiAndData.substring(4);
+                    data = new LinkedHashMap<>();
+                    data.put("global_model_num", gmn);
+                    data.put("ai", ai);
+                    data.put("title", "GMN or BUDI-DI");
+                    data.put("element", aiAndData);
+                } else if (aiAndData.substring(3, 4).equals("7")){
+                    comp_prefix = aiAndData.substring(4, 12);
+                    service_ref = aiAndData.substring(12, 21);
+                    check_digit = aiAndData.substring(21);
+                    data = new LinkedHashMap<>();
+                    data.put("comp_prefix", comp_prefix);
+                    data.put("service_ref", service_ref);
+                    data.put("check_digit", check_digit);
+                    data.put("ai", ai);
+                    data.put("title", "GSRN - PROVIDER");
+                    data.put("element", aiAndData);
+                } else if (aiAndData.substring(3, 4).equals("8")){
+                    comp_prefix = aiAndData.substring(4, 12);
+                    service_ref = aiAndData.substring(12, 21);
+                    check_digit = aiAndData.substring(21);
+                    data = new LinkedHashMap<>();
+                    data.put("comp_prefix", comp_prefix);
+                    data.put("service_ref", service_ref);
+                    data.put("check_digit", check_digit);
+                    data.put("ai", ai);
+                    data.put("title", "GSRN - RECIPIENT");
+                    data.put("element", aiAndData);
+                } else if (aiAndData.substring(3, 4).equals("9")){
+                    service_rel_inst_num = aiAndData.substring(4);
+                    data = new LinkedHashMap<>();
+                    data.put("service_rel_inst_num", service_rel_inst_num);
+                    data.put("ai", ai);
+                    data.put("title", "SRIN");
+                    data.put("element", aiAndData);
                 }
             } else if (aiAndData.substring(2, 3).equals("2")){
                 if(aiAndData.substring(3, 4).equals("0")){
@@ -307,9 +309,9 @@ public class Parse_Digit_8 extends Pattern_Parser {
                 } else if (aiAndData.substring(3, 4).equals("6")){
                     /*keeps returning a null pointer error, I guess
                     my substring numbers are wrong*/
-                    gtin = aiAndData.substring(4, 15);
-                    piece_num = aiAndData.substring(15, 17);
-                    total_cnt = aiAndData.substring(17);
+                    gtin = aiAndData.substring(4, 18);
+                    piece_num = aiAndData.substring(18, 20);
+                    total_cnt = aiAndData.substring(20);
                     data = new LinkedHashMap<>();
                     data.put("gtin", gtin);
                     data.put("piece_num", piece_num);

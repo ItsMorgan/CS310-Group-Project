@@ -13,6 +13,7 @@ import org.json.simple.JSONArray;
 public class Pattern_Parser {
  
     static String code;
+    static ArrayList<String> codes = new ArrayList<>();
     Parse_Digit_0 parse0;
     Parse_Digit_1 parse1;
     Parse_Digit_2 parse2;
@@ -60,6 +61,10 @@ public class Pattern_Parser {
 
         }
         
+        codes.forEach((i) -> {
+            System.out.println(i);
+        });
+        
         return fields;
     }
     
@@ -70,6 +75,7 @@ public class Pattern_Parser {
             Matcher m = p.matcher(code);
             if (m.find()) {
                 Pattern_Parser.code = Pattern_Parser.code.substring(m.end()).trim();
+                codes.add(m.group().replace("%", ""));
                 return m;
             }
         }
@@ -87,4 +93,5 @@ public class Pattern_Parser {
             return new BigDecimal(data);
         }
     }
+    
 }
