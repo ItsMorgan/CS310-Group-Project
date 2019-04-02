@@ -27,7 +27,7 @@ public class Pattern_Parser {
     LinkedHashMap<String, Object> data;
     ArrayList<Pattern> patterns;
 
-    public JSONArray parse(String code) {
+    public JSONArray parse(String code) throws Exception {
         fields = new JSONArray();
         Pattern_Parser.code = code;
         while ( !Pattern_Parser.code.isEmpty() ) {
@@ -61,9 +61,9 @@ public class Pattern_Parser {
 
         }
         
-        codes.forEach((i) -> {
-            System.out.println(i);
-        });
+        if (!isValid()) {
+            throw new Exception("Invalid Code!");
+        }
         
         return fields;
     }
@@ -93,5 +93,49 @@ public class Pattern_Parser {
             return new BigDecimal(data);
         }
     }
-    
+
+    public boolean isValid() {
+        boolean valid = true;        
+        int counter01 = 0;        
+        for (int i = 0; i < codes.size(); i++) {            
+            String code1 = codes.get(i);            
+            for (int j = 0; j < codes.size(); j++) {                
+                String code2 = codes.get(j);                
+                if (code1.startsWith("01") && code2.startsWith("01")) {
+                    counter01++;
+                }                
+                if (code1.startsWith("01") && (code2.startsWith("02") || code2.startsWith("37") || code2.startsWith("255"))) {
+                    return false;
+                }
+                if (code1.startsWith("420") && code2.startsWith("421")){
+                    return false;
+                }
+                if (code1.startsWith("422") || code1.startsWith("423") || code1.startsWith("424") || code1.startsWith("425") && code2.startsWith("426")){
+                    return false;
+                }
+                if (code1.startsWith("390") && code2.startsWith("391") || code2.startsWith("394") || code2.startsWith("8111")){
+                    return false;
+                }
+                if (code1.startsWith("392") && code2.startsWith("393")){
+                    return false;
+                }
+                if (code1.startsWith("394") && code2.startsWith("8111")){
+                    return false;
+                }
+                if (code1.startsWith("8006") && code2.startsWith("01") || code2.startsWith("37")){
+                    return false;
+                }
+                if (code1.startsWith("8018") && code2.startsWith("8017")){
+                    return false;
+                }
+                if (code1.startsWith("8026") && code2.startsWith("02") || code2.startsWith("8006")){
+                    return false;
+                }         
+            }            
+            if (counter01 >= 3) {
+                return false;
+            }            
+        }
+        return valid;
+    }
 }
