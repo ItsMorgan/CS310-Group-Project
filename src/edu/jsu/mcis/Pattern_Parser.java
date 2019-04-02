@@ -151,7 +151,7 @@ public class Pattern_Parser {
                         valid019 = true;
                     }
                 }
-            }         
+            } // End of first for loop
             
             if (counter01 >= 3) {
                 return false;
@@ -166,7 +166,7 @@ public class Pattern_Parser {
             if (!valid019 && exists019) {
                 return false;
             }
-        }
+        } //End of second for loop
         
         return true;
     }
