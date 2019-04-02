@@ -59,7 +59,7 @@ public class Parse_Digit_0 extends Pattern_Parser {
             data.put("gtin_code", GTIN);
         } 
         
-        else if (ai.substring(0).equals("2")) {
+        else if (ai.substring(1).equals("2")) {
             prefix = aiAndData.substring(2,9);
             reference = aiAndData.substring(9,14);
             check = aiAndData.substring(14,15);          

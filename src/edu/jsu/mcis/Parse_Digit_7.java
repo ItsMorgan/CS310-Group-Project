@@ -167,7 +167,7 @@ public class Parse_Digit_7 extends Pattern_Parser {
                             UN_ECE_product_classification = aiAndData.substring(5);
                             data.put("ai", ai);
                             data.put("title", "Meat Cut");
-                            data.put("UN/ECE prod. class.", UN_ECE_product_classification);
+                            data.put("UN\u2215ECE prod. class.", UN_ECE_product_classification);
                             break;
                         case "3":
                             ai = aiAndData.substring(1,5);

@@ -199,7 +199,7 @@ public class Parse_Digit_4 extends Pattern_Parser {
                 GS1_company_prefix = aiAndData.substring(3,9);
                 Location_ref =aiAndData.substring(9,15);
                 check = aiAndData.substring(15);
-                data.put("title", "PROD/SERV LOC");
+                data.put("title", "PROD\u2215SERV LOC");
                 data.put("prefix", GS1_company_prefix);
                 data.put("reference", Location_ref);
                 data.put("check",check);

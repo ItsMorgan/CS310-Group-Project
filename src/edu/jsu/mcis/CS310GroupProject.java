@@ -4,9 +4,9 @@ import org.json.simple.JSONArray;
 
 public class CS310GroupProject {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         
-        String input = "8013123456789012345678901234567890%0112345678901234";
+        String input = "111234568026123456789012345678";
         
         Pattern_Parser patternParser = new Pattern_Parser();
         JSONArray fields;

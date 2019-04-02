@@ -99,11 +99,21 @@ public class Pattern_Parser {
         int counter01 = 0;
         boolean valid010 = false;
         boolean exists010 = false;
-        boolean valid019 = false;
+        boolean valid019_1 = false;
+        boolean valid019_2 = false;
         boolean exists019 = false;
+        boolean valid02_1 = false;
+        boolean valid02_2 = false;
+        boolean exists02 = false;
+        boolean valid029 = false;
+        boolean exists029 = false;
+        boolean valid10 = false;
+        boolean exists10 = false;
+        boolean valid11 = false;
+        boolean exists11 = false;
         for (int i = 0; i < codes.size(); i++) {            
             String code1 = codes.get(i);            
-            for (int j = 0; j < codes.size(); j++) {                
+            for (int j = 0; j < codes.size(); j++) {    
                 String code2 = codes.get(j);                
                 if (code1.startsWith("01") && code2.startsWith("01")) {
                     counter01++;
@@ -114,10 +124,10 @@ public class Pattern_Parser {
                 if (code1.startsWith("420") && code2.startsWith("421")){
                     return false;
                 }
-                if (code1.startsWith("422") || code1.startsWith("423") || code1.startsWith("424") || code1.startsWith("425") && code2.startsWith("426")){
+                if ((code1.startsWith("422") || code1.startsWith("423") || code1.startsWith("424") || code1.startsWith("425")) && code2.startsWith("426")){
                     return false;
                 }
-                if (code1.startsWith("390") && code2.startsWith("391") || code2.startsWith("394") || code2.startsWith("8111")){
+                if (code1.startsWith("390") && (code2.startsWith("391") || code2.startsWith("394") || code2.startsWith("8111"))){
                     return false;
                 }
                 if (code1.startsWith("392") && code2.startsWith("393")){
@@ -126,15 +136,15 @@ public class Pattern_Parser {
                 if (code1.startsWith("394") && code2.startsWith("8111")){
                     return false;
                 }
-                if (code1.startsWith("8006") && code2.startsWith("01") || code2.startsWith("37")){
+                if (code1.startsWith("8006") && (code2.startsWith("01") || code2.startsWith("37"))){
                     return false;
                 }
                 if (code1.startsWith("8018") && code2.startsWith("8017")){
                     return false;
                 }
-                if (code1.startsWith("8026") && code2.startsWith("02") || code2.startsWith("8006")){
+                if (code1.startsWith("8026") && (code2.startsWith("02") || code2.startsWith("8006"))){
                     return false;
-                }         
+                }
                 
                 /* Separator for exclusions (above) and associations (below) */
                 
@@ -146,9 +156,40 @@ public class Pattern_Parser {
                 }
                 
                 if (code1.startsWith("019") || code1.startsWith("029")) {
-                    exists019 = true;
+                    if (code1.startsWith("019")) {
+                        exists019 = true;
+                        if (code2.startsWith("242")) {
+                            valid019_1 = true;
+                        }
+                    } else {
+                        exists029 = true;
+                    }
                     if (code2.startsWith("31") || code2.startsWith("32") || code2.startsWith("35") || code2.startsWith("36") || code2.startsWith("30") || code2.startsWith("8001")) {
-                        valid019 = true;
+                        valid019_2 = true;
+                        valid029 = true;
+                    }
+                }
+                if (code1.startsWith("02")) {
+                    exists02 = true;
+                    if (code2.startsWith("00")) {
+                        valid02_1 = true;
+                    } else if (code2.startsWith("37")) {
+                        valid02_2 = true;
+                    }
+                }
+                
+                if (code1.startsWith("10")) {
+                    exists10 = true;
+                    if (code2.startsWith("01") ^ code2.startsWith("02") ^ code2.startsWith("8006") ^ code2.startsWith("8026")) {
+                        valid10 = true;
+                    }
+                    
+                }
+                
+                if (code1.startsWith("11") || code1.startsWith("13") || code1.startsWith("15") || code1.startsWith("16") || code1.startsWith("17")) {
+                    exists11 = true;
+                    if (code2.startsWith("01") ^ code2.startsWith("02") ^ code2.startsWith("8006") ^ code2.startsWith("8026")) {
+                        valid11 = true;
                     }
                 }
             } // End of first for loop
@@ -159,13 +200,29 @@ public class Pattern_Parser {
             
             /* Separator for exclusions (above) and associations (below) */
             
-            if (!valid010 && exists010) {
+            if (exists010 && !valid010) {
                 return false;
             }
             
-            if (!valid019 && exists019) {
+            if (exists019 && !(valid019_1 && valid019_2)) {
                 return false;
             }
+            if (exists029 && !valid029) {
+                return false;
+            }
+            
+            if (exists02 && !(valid02_1 && valid02_2)) {
+                return false;
+            }
+            
+            if (exists10 && !valid10) {
+                return false;
+            }
+            
+            if (exists11 && !valid11) {
+                return false;
+            }
+            
         } //End of second for loop
         
         return true;
