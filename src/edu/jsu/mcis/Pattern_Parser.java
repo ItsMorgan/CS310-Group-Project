@@ -125,7 +125,13 @@ public class Pattern_Parser {
                 valid710, exists710, valid7020_1, valid7020_2, valid7020_3,
                 exists7020, valid7021_1, valid7021_2, exists7021, valid7022_1, 
                 valid7022_2, valid7022_3, exists7022, valid723_1, valid723_2,
-                exists723;
+                exists723, exists8001, valid8001_1, exists8005, valid8005_1,
+                valid8005_2, exists8007, valid8007_1, valid8007_2, exists8008,
+                valid8008_1, valid8008_2, exists8009, valid8009_1, valid8009_2,
+                exists8011, valid8011_1, exists8012, valid8012_1, valid8012_2,
+                exists8019, valid8019_1, valid8019_2, exists8020, valid8020_1,
+                exists8026, valid8026_1, valid8026_2, exists8111, valid8111_1,
+                exists8200, valid8200_1;
         valid010 = exists010 = valid019_1 = valid019_2 = exists019 = 
                 valid02_1 = valid02_2 = exists02 = valid029 = exists029 = 
                 valid10_1 = valid10_2 = valid10_3 = valid10_4 = exists10 = 
@@ -161,7 +167,14 @@ public class Pattern_Parser {
                 valid710 = exists710 = valid7020_1 = valid7020_2 = valid7020_3 =
                 exists7020 = valid7021_1 = valid7021_2 = exists7021 = 
                 valid7022_1 = valid7022_2 = valid7022_3 = exists7022 = 
-                valid723_1 = valid723_2 = exists723 = false; 
+                valid723_1 = valid723_2 = exists723 = exists8001 = valid8001_1 =
+                exists8005 = valid8005_1 = valid8005_2 = exists8007 = valid8007_1
+                = valid8007_2 = exists8008 = valid8008_1 = valid8008_2 = 
+                exists8009 = valid8009_1 = valid8009_2 = exists8011 =
+                valid8011_1 = exists8012 = valid8012_1 = valid8012_2 = 
+                exists8019 = valid8019_1 = valid8019_2 = exists8020 = valid8020_1 =
+                exists8026 = valid8026_1 = valid8026_2 = exists8111 = valid8111_1 =
+                exists8200 = valid8200_1 = false; 
         
         for (int i = 0; i < codes.size(); i++) {            
             String code1 = codes.get(i);            
@@ -692,6 +705,103 @@ public class Pattern_Parser {
                         valid723_2 = true;
                     }
                 }
+                
+                if (code1.startsWith("8001")) {
+                    exists8001 = true;
+                    if (code2.startsWith("01")) {
+                        valid8001_1 = true;
+                    }
+                }
+                
+                if (code1.startsWith("8005")) {
+                    exists8005 = true;
+                    if (code2.startsWith("01")) {
+                        valid8005_1 = true;
+                    } else if (code2.startsWith("02")) {
+                        valid8005_2 = true;
+                    }
+                }
+                
+                if (code1.startsWith("8007")) {
+                    exists8007 = true;
+                    if (code2.startsWith("8020")) {
+                        valid8007_1 = true;
+                    } else if (code2.startsWith("415")) {
+                        valid8007_2 = true;
+                    }
+                }
+                
+                if (code1.startsWith("8008")) {
+                    exists8008 = true;
+                    if (code2.startsWith("01")) {
+                        valid8008_1 = true;
+                    } else if (code2.startsWith("02")) {
+                        valid8008_2 = true;
+                    }
+                }
+                
+                if (code1.startsWith("8009")) {
+                    exists8009 = true;
+                    if (code2.startsWith("01")) {
+                        valid8009_1 = true;
+                    } else if (code2.startsWith("00")) {
+                        valid8009_2 = true;
+                    }
+                }
+                
+                if (code1.startsWith("8011")) {
+                    exists8011 = true;
+                    if (code2.startsWith("8010")) {
+                        valid8011_1 = true;
+                    }
+                }
+                
+                if (code1.startsWith("8012")) {
+                    exists8012 = true;
+                    if (code2.startsWith("01")) {
+                        valid8012_1 = true;
+                    } else if (code2.startsWith("8006")) {
+                        valid8012_2 = true;
+                    }
+                }
+                
+                if (code1.startsWith("8019")) {
+                    exists8019 = true;
+                    if (code2.startsWith("8017")) {
+                        valid8019_1 = true;
+                    } else if (code2.startsWith("8018")) {
+                        valid8019_2 = true;
+                    }
+                }
+                
+                if (code1.startsWith("8020")) {
+                    exists8020 = true;
+                    if (code2.startsWith("415")) {
+                        valid8020_1 = true;
+                    }
+                }
+                
+                if (code1.startsWith("8026")) {
+                    exists8026 = true;
+                    if (code2.startsWith("00")) {
+                        valid8026_1 = true;
+                    } else if (code2.startsWith("37")) {
+                        valid8026_2 = true;
+                    }
+                }
+                
+                if (code1.startsWith("8111")) {
+                    exists8111 = true;
+                    if (code2.startsWith("255")) {
+                        valid8111_1 = true;
+                    }
+                }
+                
+                if (code1.startsWith("8200")) {
+                    exists8200 = true;
+                    if (code2.startsWith("01")) {
+                        valid8200_1 = true;
+                    }
             } // End of first for loop
             
             if (counter01 >= 3) {
@@ -908,8 +1018,55 @@ public class Pattern_Parser {
                 return false;
             }
             
+            if (exists8001 && !(valid8001_1)) {
+                return false;
+            }
+            
+            if (exists8005 && !(valid8005_1 ^ valid8005_2)) {
+                return false;
+            }
+            
+            if (exists8007 && !(valid8007_1 && valid8007_2)){
+                return false;
+            }
+            
+            if (exists8008 && !(valid8008_1 ^ valid8008_2)){
+                return false;
+            }
+            
+            if (exists8009 && !(valid8009_1 ^ valid8009_2)){
+                return false;
+            }
+            
+            if (exists8011 && !(valid8011_1)) {
+                return false;
+            }
+            
+            if (exists8012 && !(valid8012_1 ^ valid8012_2)) {
+                return false;
+            }
+            
+            if (exists8019 && !(valid8019_1 ^ valid8019_2)){
+                return false;
+            }
+            
+            if (exists8020 && !(valid8020_1)){
+                return false;
+            }
+            
+            if (exists8026 && !(valid8026_1 ^ valid8026_2)){
+                return false;
+            }
+            
+            if (exists8111 && !(valid8111_1)){
+                return false;
+            }
+            
+            if(exists8200 && !(valid8200_1)){
+                return false;
+            }
         } //End of second for-loop
         
         return true;
     }
-}
+} /*Needs a return*/    
