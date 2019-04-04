@@ -47,7 +47,7 @@ public class Parse_Digit_8 extends Pattern_Parser {
     
         ArrayList<Matcher> matches = new ArrayList();
 
-        Pattern p8001 = Pattern.compile("^8001[0-9](.){1,14}"); 
+        Pattern p8001 = Pattern.compile("^8001[0-9](.){1,14}[%\\x1D]"); 
         Pattern p8001eol = Pattern.compile("^8001[0-9](.){1,14}$");  
         Pattern p8002 = Pattern.compile("^8002(.){1,20}[%\\x1D]");  
         Pattern p8002eol = Pattern.compile("^8002(.){1,20}$"); 
@@ -55,19 +55,19 @@ public class Parse_Digit_8 extends Pattern_Parser {
         Pattern p8003eol = Pattern.compile("^8003[0-9]{14}(.){1,16}$"); 
         Pattern p8004 = Pattern.compile("^8004(.){1,30}[%\\x1D]"); 
         Pattern p8004eol = Pattern.compile("^8004(.){1,30}$"); 
-        Pattern p8005 = Pattern.compile("^8005[0-9]{6}");  
+        Pattern p8005 = Pattern.compile("^8005[0-9]{6}[%\\x1D]");  
         Pattern p8005eol = Pattern.compile("^8005[0-9]{6}$");
         Pattern p8006 = Pattern.compile("^8006[0-9]{14}[0-9]{2}[0-9]{2}[%\\x1D]");
         Pattern p8006eol = Pattern.compile("^8006[0-9]{14}[0-9]{2}[0-9]{2}$"); 
         Pattern p8007 = Pattern.compile("^8007(.){1,34}[%\\x1D]"); 
         Pattern p8007eol = Pattern.compile("^8007(.){1,34}$"); 
-        Pattern p8008 = Pattern.compile("^8008[0-9]{8}[0-9]{1,4}"); 
+        Pattern p8008 = Pattern.compile("^8008[0-9]{8}[0-9]{1,4}[%\\x1D]"); 
         Pattern p8008eol = Pattern.compile("^8008[0-9]{8}[0-9]{1,4}$"); 
         Pattern p8009 = Pattern.compile("^8009(.){1,50}[%\\x1D]"); 
         Pattern p8009eol = Pattern.compile("^8009(.){1,50}$");  
         Pattern p8010 = Pattern.compile("^8010(.){1,30}[%\\x1D]");
         Pattern p8010eol = Pattern.compile("^8010(.){1,30}$"); 
-        Pattern p8011 = Pattern.compile("^8011[0-9]{1,12}");  
+        Pattern p8011 = Pattern.compile("^8011[0-9]{1,12}[%\\x1D]");  
         Pattern p8011eol = Pattern.compile("^8011[0-9]{1,12}$");   
         Pattern p8012 = Pattern.compile("^8012(.){1,20}[%\\x1D]");
         Pattern p8012eol = Pattern.compile("^8012(.){1,20}$");

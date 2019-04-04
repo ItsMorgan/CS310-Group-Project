@@ -58,7 +58,8 @@ public class Pattern_Parser {
         }
         
         if (!isValid()) {
-            throw new Exception("Invalid Code!");
+            System.out.println("Invalid");
+            //throw new Exception("Invalid Code!");
         }
         
         return fields;
@@ -72,6 +73,7 @@ public class Pattern_Parser {
             if (m.find()) {
                 Pattern_Parser.code = Pattern_Parser.code.substring(m.end()).trim();
                 codes.add(m.group().replace("%", ""));
+                System.out.println(m.group());
                 return m;
             }
         }
@@ -1063,7 +1065,7 @@ public class Pattern_Parser {
                 return false;
             }
             
-            if(exists8200 && !(valid8200_1)){
+            if (exists8200 && !(valid8200_1)){
                 return false;
             }
         } //End of second for-loop

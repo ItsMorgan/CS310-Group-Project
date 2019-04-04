@@ -40,7 +40,7 @@ public class Parse_Digit_2 extends Pattern_Parser {
         Pattern p240eol = Pattern.compile("^240(.){1,30}$");
         Pattern p241 = Pattern.compile("^241(.){1,30}[%\\x1D]");
         Pattern p241eol = Pattern.compile("^241(.){1,30}}$");
-        Pattern p242 = Pattern.compile("^242[0-9]{1,6}");
+        Pattern p242 = Pattern.compile("^242[0-9]{1,6}[%\\x1D]");
         Pattern p242eol = Pattern.compile("^242[0-9]{1,6}}$");
         Pattern p243 = Pattern.compile("^243(.){1,20}[%\\x1D]"); 
         Pattern p243eol = Pattern.compile("^243(.){1,20}$");     
@@ -51,7 +51,7 @@ public class Parse_Digit_2 extends Pattern_Parser {
         Pattern p253 = Pattern.compile("^253[0-9]{13}(.){1,17}[%\\x1D]");
         Pattern p253eol = Pattern.compile("^253[0-9]{13}(.){1,17}$");
         Pattern p254 = Pattern.compile("^254(.){1,20}[%\\x1D]"); 
-        Pattern p254eol = Pattern.compile("^254(.){1,20}[%\\x1D]"); 
+        Pattern p254eol = Pattern.compile("^254(.){1,20}$"); 
         Pattern p255 = Pattern.compile("^255[0-9]{13}[0-9]{1,12}[%\\x1D]");
         Pattern p255eol = Pattern.compile("^255[0-9]{13}[0-9]{1,12}$"); 
 
@@ -203,6 +203,7 @@ public class Parse_Digit_2 extends Pattern_Parser {
                         data.put("title", "GCN");
                         data.put("check_digit", check_digit);
                         data.put("element", aiAndData);
+                        data.put("ai", ai);
                     default:
                         break;
                 }

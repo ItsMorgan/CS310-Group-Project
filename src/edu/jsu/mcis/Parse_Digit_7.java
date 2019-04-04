@@ -50,20 +50,20 @@ public class Parse_Digit_7 extends Pattern_Parser {
         
     
         Pattern p7001 = Pattern.compile("^7001[0-9]{13}[%\\x1D]");
-        Pattern p7001eol = Pattern.compile("^7001[0-9]{13}[%\\x1D]");
+        Pattern p7001eol = Pattern.compile("^7001[0-9]{13}$");
         Pattern p7002 = Pattern.compile("^7002(.){1,30}[%\\x1D]");
         Pattern p7002eol = Pattern.compile("^7002(.){1,30}$");
         Pattern p7003 = Pattern.compile("^7003[0-9]{10}[%\\x1D]");
         Pattern p7003eol = Pattern.compile("^7003[0-9]{10}$");
         Pattern p723s = Pattern.compile("^723[0-9]{1}(.){2}(.){1,28}[%\\x1D]");
         Pattern p723seol = Pattern.compile("^723[0-9]{1}(.){2}(.){1,28}$");
-        Pattern p7004 = Pattern.compile("^7004[0-9](.){1,4}");
+        Pattern p7004 = Pattern.compile("^7004[0-9](.){1,4}[%\\x1D]");
         Pattern p7004eol = Pattern.compile("^7004[0-9](.){1,4}$");
         Pattern p7005 = Pattern.compile("^7005(.){1,12}[%\\x1D]"); 
         Pattern p7005eol = Pattern.compile("^7005(.){1,12}$"); 
-        Pattern p7006 = Pattern.compile("^7006[0-9](.){1,6}");   
+        Pattern p7006 = Pattern.compile("^7006[0-9](.){1,6}[%\\x1D]");   
         Pattern p7006eol = Pattern.compile("^7006[0-9](.){1,6}$");  
-        Pattern p7007 = Pattern.compile("^7007[0-9](.){6,12}");  
+        Pattern p7007 = Pattern.compile("^7007[0-9](.){6,12}[%\\x1D]");  
         Pattern p7007eol = Pattern.compile("^7007[0-9]{4}(.){6,12}$"); 
         Pattern p7008 = Pattern.compile("^7008(.){1,3}[%\\x1D]");  
         Pattern p7008eol = Pattern.compile("^7008(.){1,3}$"); 
