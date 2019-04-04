@@ -41,7 +41,7 @@ public class Parse_Digit_2 extends Pattern_Parser {
         Pattern p241 = Pattern.compile("^241(.){1,30}[%\\x1D]");
         Pattern p241eol = Pattern.compile("^241(.){1,30}}$");
         Pattern p242 = Pattern.compile("^242[0-9]{1,6}[%\\x1D]");
-        Pattern p242eol = Pattern.compile("^242[0-9]{1,6}}$");
+        Pattern p242eol = Pattern.compile("^242[0-9]{1,6}$");
         Pattern p243 = Pattern.compile("^243(.){1,20}[%\\x1D]"); 
         Pattern p243eol = Pattern.compile("^243(.){1,20}$");     
         Pattern p250 = Pattern.compile("^250(.){1,30}[%\\x1D]"); 
@@ -80,7 +80,7 @@ public class Parse_Digit_2 extends Pattern_Parser {
         patterns.add(p255);
         patterns.add(p255eol);
         
-        String aiAndData = super.parsePattern(patterns).group().replace("%", "");
+        String aiAndData = parsePattern(patterns).group().replace("%", "");
         
         int aiSecondPos = Integer.parseInt(aiAndData.substring(1, 2));
         
@@ -89,7 +89,6 @@ public class Parse_Digit_2 extends Pattern_Parser {
         } else if (aiSecondPos >= 4){
             ai = aiAndData.substring(0, 3);
         }
-        
         switch (ai.substring(1, 2)) {
             case "0":
                 internal_prod_var = aiAndData.substring(2);
