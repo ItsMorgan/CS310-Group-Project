@@ -148,6 +148,7 @@ public class Parse_Digit_2 extends Pattern_Parser {
                         data.put("ai", ai);
                         data.put("title", "PCN");
                         data.put("element", aiAndData);
+                        break;
                     default:
                         break;
                 }   break;
@@ -160,6 +161,7 @@ public class Parse_Digit_2 extends Pattern_Parser {
                         data.put("ai", ai);
                         data.put("title", "SECONDARY SERIAL");
                         data.put("element", aiAndData);
+                        break;
                     case "1":
                         ref_to_source = aiAndData.substring(3);
                         data = new LinkedHashMap<>();
@@ -167,6 +169,7 @@ public class Parse_Digit_2 extends Pattern_Parser {
                         data.put("ai", ai);
                         data.put("title", "REF. TO SOURCE");
                         data.put("element", aiAndData);
+                        break;
                     case "3":
                         gdti = aiAndData.substring(3);
                         company_prefix = aiAndData.substring(3, 9);
@@ -182,6 +185,7 @@ public class Parse_Digit_2 extends Pattern_Parser {
                         data.put("title", "GDTI");
                         data.put("check_digit", check_digit);
                         data.put("element", aiAndData);
+                        break;
                     case "4":
                         gln_ext_comp = aiAndData.substring(3);
                         data = new LinkedHashMap<>();
@@ -189,6 +193,7 @@ public class Parse_Digit_2 extends Pattern_Parser {
                         data.put("ai", ai);
                         data.put("title", "GLN EXTENSION COMPONENT");
                         data.put("element", aiAndData);
+                        break;
                     case "5":
                         gcn = aiAndData.substring(3);
                         company_prefix = aiAndData.substring(3, 9);
@@ -204,6 +209,7 @@ public class Parse_Digit_2 extends Pattern_Parser {
                         data.put("check_digit", check_digit);
                         data.put("element", aiAndData);
                         data.put("ai", ai);
+                        break;
                     default:
                         break;
                 }

@@ -52,13 +52,13 @@ public class Pattern_Parser {
                     break;
                 case 9:
                     parse9 = new Parse_Digit_9();
-                break;
+                    break;
             }
 
         }
         
         if (!isValid()) {
-            throw new Exception("Invalid Code!");
+            //throw new Exception("Invalid Code!");
         }
         
         return fields;
@@ -67,9 +67,9 @@ public class Pattern_Parser {
     public Matcher parsePattern(ArrayList<Pattern> patterns) {
 
         for (Pattern p : patterns) {
-
             Matcher m = p.matcher(code);
             if (m.find()) {
+                System.out.println(m.group());
                 Pattern_Parser.code = Pattern_Parser.code.substring(m.end()).trim();
                 codes.add(m.group().replace("%", ""));
                 return m;
