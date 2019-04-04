@@ -6,7 +6,7 @@ public class CS310GroupProject {
 
     public static void main(String[] args) throws Exception {
         
-        String input = "01912345678912343012345678%242123456";
+        String input = "0191234567891234321512345624212345";
         
         Pattern_Parser patternParser = new Pattern_Parser();
         JSONArray fields;
