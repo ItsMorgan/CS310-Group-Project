@@ -58,8 +58,7 @@ public class Pattern_Parser {
         }
         
         if (!isValid()) {
-            System.out.println("Invalid");
-            //throw new Exception("Invalid Code!");
+            throw new Exception("Invalid Code!");
         }
         
         return fields;
@@ -168,13 +167,14 @@ public class Pattern_Parser {
                 exists7020 = valid7021_1 = valid7021_2 = exists7021 = 
                 valid7022_1 = valid7022_2 = valid7022_3 = exists7022 = 
                 valid723_1 = valid723_2 = exists723 = exists8001 = valid8001_1 =
-                exists8005 = valid8005_1 = valid8005_2 = exists8007 = valid8007_1
-                = valid8007_2 = exists8008 = valid8008_1 = valid8008_2 = 
-                exists8009 = valid8009_1 = valid8009_2 = exists8011 =
-                valid8011_1 = exists8012 = valid8012_1 = valid8012_2 = 
-                exists8019 = valid8019_1 = valid8019_2 = exists8020 = valid8020_1 =
-                exists8026 = valid8026_1 = valid8026_2 = exists8111 = valid8111_1 =
-                exists8200 = valid8200_1 = false; 
+                exists8005 = valid8005_1 = valid8005_2 = exists8007 = 
+                valid8007_1 = valid8007_2 = exists8008 = valid8008_1 = 
+                valid8008_2 = exists8009 = valid8009_1 = valid8009_2 = 
+                exists8011 = valid8011_1 = exists8012 = valid8012_1 = 
+                valid8012_2 = exists8019 = valid8019_1 = valid8019_2 = 
+                exists8020 = valid8020_1 = exists8026 = valid8026_1 = 
+                valid8026_2 = exists8111 = valid8111_1 = exists8200 = 
+                valid8200_1 = false; 
         
         for (int i = 0; i < codes.size(); i++) {            
             String code1 = codes.get(i);            
@@ -802,6 +802,7 @@ public class Pattern_Parser {
                     if (code2.startsWith("01")) {
                         valid8200_1 = true;
                     }
+                }
             } // End of first for loop
             
             if (counter01 >= 3) {
@@ -1034,7 +1035,7 @@ public class Pattern_Parser {
                 return false;
             }
             
-            if (exists8009 && !(valid8009_1 ^ valid8009_2)){
+            if (exists8009 && !(valid8009_1 || valid8009_2)){
                 return false;
             }
             
@@ -1054,7 +1055,7 @@ public class Pattern_Parser {
                 return false;
             }
             
-            if (exists8026 && !(valid8026_1 ^ valid8026_2)){
+            if (exists8026 && !(valid8026_1 && valid8026_2)){
                 return false;
             }
             
