@@ -45,7 +45,7 @@ public class Parse_Digit_1 extends Pattern_Parser {
             batchNum = aiAndData.substring(2);
             data.put("number", batchNum);
             data.put("ai", ai);
-            data.put("title", "BATCH/LOT");
+            data.put("title", "BATCH\u2215LOT");
             data.put("element", aiAndData);
         } else {
             year = aiAndData.substring(2, 4);
@@ -60,14 +60,11 @@ public class Parse_Digit_1 extends Pattern_Parser {
             } if (day.startsWith("0")) {
                 day = day.substring(1);
             }
-            
             data.put("month", month);
             data.put("year", year);
             data.put("ai", ai);
             data.put("exp_date", expiration);
-            
             int secondDigitAi = Integer.parseInt(aiAndData.substring(1, 2));
-            
             switch (secondDigitAi) {
                 case 1:
                     data.put("title", "PROD DATE");
@@ -91,8 +88,8 @@ public class Parse_Digit_1 extends Pattern_Parser {
             
             data.put("day", day);
             data.put("element", aiAndData);
-                        
-            fields.add(data);
-        }
+        }    
+        
+        fields.add(data);
     }
 }

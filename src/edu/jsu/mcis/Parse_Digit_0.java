@@ -35,9 +35,9 @@ public class Parse_Digit_0 extends Pattern_Parser {
         
         if (ai.substring(1).equals("0")) {
             extension = aiAndData.substring(2, 3);
-            prefix = aiAndData.substring(3, 11);
-            serial = aiAndData.substring(11,18);
-            check = aiAndData.substring(18,19);    
+            prefix = aiAndData.substring(3, 12);
+            serial = aiAndData.substring(12, 18);
+            check = aiAndData.substring(19, 20);    
             SSCC = extension + prefix + serial + check;
             data.put("title", "SSCC");
             data.put("ai", ai);
@@ -47,9 +47,9 @@ public class Parse_Digit_0 extends Pattern_Parser {
             data.put("sscc_code", SSCC);
         } 
         else if (ai.substring(1).equals("1")) {
-            prefix = aiAndData.substring(2,9);
-            reference = aiAndData.substring(9,14);
-            check = aiAndData.substring(14,15);   
+            prefix = aiAndData.substring(2,10);
+            reference = aiAndData.substring(10,15);
+            check = aiAndData.substring(15,16);   
             GTIN = prefix + reference + check;
             data.put("title", "GTIN");
             data.put("ai", ai);
@@ -59,10 +59,10 @@ public class Parse_Digit_0 extends Pattern_Parser {
             data.put("gtin_code", GTIN);
         } 
         
-        else if (ai.substring(0).equals("2")) {
-            prefix = aiAndData.substring(2,9);
-            reference = aiAndData.substring(9,14);
-            check = aiAndData.substring(14,15);          
+        else if (ai.substring(1).equals("2")) {
+            prefix = aiAndData.substring(2,10);
+            reference = aiAndData.substring(9,15);
+            check = aiAndData.substring(15,16);          
             GTIN = prefix + reference + check;
             data.put("title", "GTIN");
             data.put("ai", ai);
@@ -71,6 +71,7 @@ public class Parse_Digit_0 extends Pattern_Parser {
             data.put("check", check);
             data.put("gtin_code", GTIN);
         }
+        data.put("element", aiAndData);
         fields.add(data);
     }
 }
