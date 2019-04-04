@@ -43,4 +43,9 @@ public class NewEmptyJUnitTest {
     //
     // @Test
     // public void hello() {}
+    
+    @Test
+    public void run() throws Exception {
+        CS310GroupProject.main(new String[] {"0100614141999996"});
+    }
 }
