@@ -6,14 +6,24 @@ public class CS310GroupProject {
 
     public static void main(String[] args) throws Exception {
         
-        String input = "010061414199999610123ABC%211234567890%3012345678";
-        Pattern_Parser patternParser = new Pattern_Parser();
-        JSONArray fields;
+        String input = "0109501101530003";
         
-        fields = patternParser.parse(input);
-                
+        if (args.length > 0) {
+            input = args[0];
+        }
+        
+        parse(input);
+    }
+    
+    public static String parse(String input) throws Exception {
+        
+        Pattern_Parser patternParser = new Pattern_Parser();
+        
+        JSONArray fields = patternParser.parse(input);
+        
         System.out.println(fields.toJSONString());
         
+        return fields.toJSONString();
     }
     
 }
