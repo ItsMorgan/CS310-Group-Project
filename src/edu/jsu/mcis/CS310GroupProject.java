@@ -6,7 +6,7 @@ public class CS310GroupProject {
 
     public static void main(String[] args) throws Exception {
         
-        String input = "0109501101530003";
+        String input = "0109501101530003";//
         
         if (args.length > 0) {
             input = args[0];
