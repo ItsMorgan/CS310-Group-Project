@@ -52,14 +52,13 @@ public class Pattern_Parser {
                     break;
                 case 9:
                     parse9 = new Parse_Digit_9();
-                break;
+                    break;
             }
 
         }
         
         if (!isValid()) {
-            System.out.println("Invalid");
-            //throw new Exception("Invalid Code!");
+            throw new Exception("Invalid Code!");
         }
         
         return fields;
@@ -68,12 +67,10 @@ public class Pattern_Parser {
     public Matcher parsePattern(ArrayList<Pattern> patterns) {
 
         for (Pattern p : patterns) {
-
             Matcher m = p.matcher(code);
             if (m.find()) {
                 Pattern_Parser.code = Pattern_Parser.code.substring(m.end()).trim();
                 codes.add(m.group().replace("%", ""));
-                System.out.println(m.group());
                 return m;
             }
         }
@@ -412,7 +409,7 @@ public class Pattern_Parser {
                 
                 if (code1.startsWith("33") || code1.startsWith("34") || code1.startsWith("35") || code1.startsWith("36")) {
                     exists33 = true;
-                    if (code2.startsWith("01") || code2.startsWith("02")) {
+                    if (code2.startsWith("00") || code2.startsWith("01")) {
                         valid33 = true;
                     }
                 }
@@ -591,9 +588,9 @@ public class Pattern_Parser {
                 
                 if (code1.startsWith("7004")) {
                     exists7004 = true;
-                    if (code2.startsWith("10")) {
+                    if (code2.startsWith("01")) {
                         valid7004_1 = true;
-                    } else if (code2.startsWith("02")) {
+                    } else if (code2.startsWith("10")) {
                         valid7004_2 = true;
                     }
                 }
@@ -965,11 +962,11 @@ public class Pattern_Parser {
                 return false;
             }
             
-            if (exists7003 && !(valid7003_1 && valid7003_2)) {
+            if (exists7003 && !(valid7003_1 ^ valid7003_2)) {
                 return false;
             }
             
-            if (exists7004 && !(valid7004_1 ^ valid7004_2)) {
+            if (exists7004 && !(valid7004_1 && valid7004_2)) {
                 return false;
             }
             
