@@ -13,6 +13,7 @@ public class Parse_Digit_3 extends Pattern_Parser {
         String ai = "";
         String element = "";
         String count = "";
+        String datafield = "";
         double value;
         
         matches = new ArrayList();
@@ -161,12 +162,14 @@ public class Parse_Digit_3 extends Pattern_Parser {
         switch (aiAndData.substring(1, 2)) {
             case "0":
                 ai = aiAndData.substring(0, 2);
+                datafield = aiAndData.substring(2);
                 count = aiAndData.substring(2);
                 data.put("var_count", count);
                 data.put("title", "VAR. COUNT");
                 break;
             case "1":
                 ai = aiAndData.substring(0, 4);
+                datafield = aiAndData.substring(4);
                 switch (ai.substring(2, 3)) {
                     case "0":
                         data.put("title", "NET WEIGHT (kg)");
@@ -195,6 +198,7 @@ public class Parse_Digit_3 extends Pattern_Parser {
                 break;
             case "2":
                 ai = aiAndData.substring(0, 4);
+                datafield = aiAndData.substring(4);
                 switch (ai.substring(2, 3)) {
                     case "0":
                         data.put("title", "NET WEIGHT (lb)");
@@ -232,6 +236,7 @@ public class Parse_Digit_3 extends Pattern_Parser {
                 break;
             case "3":
                 ai = aiAndData.substring(0, 4);
+                datafield = aiAndData.substring(4);
                 switch (ai.substring(2, 3)) {
                     case "0":
                         data.put("title", "GROSS WEIGHT (kg)");
@@ -263,6 +268,7 @@ public class Parse_Digit_3 extends Pattern_Parser {
                 break;
             case "4":
                 ai = aiAndData.substring(0, 4);
+                datafield = aiAndData.substring(4);
                 switch (ai.substring(2, 3)) {
                     case "0":
                         data.put("title", "GROSS WEIGHT (lb)");
@@ -300,6 +306,7 @@ public class Parse_Digit_3 extends Pattern_Parser {
                 break;
             case "5":
                 ai = aiAndData.substring(0, 4);
+                datafield = aiAndData.substring(4);
                 switch (ai.substring(2, 3)) {
                     case "0":
                         data.put("title", "AREA (i\u00B2)");
@@ -331,6 +338,7 @@ public class Parse_Digit_3 extends Pattern_Parser {
                 break;
             case "6":
                 ai = aiAndData.substring(0, 4);
+                datafield = aiAndData.substring(4);
                 data.put("value", aiAndData.substring(4, 8));
                 switch (ai.substring(2, 3)) {
                     case "0":
@@ -369,12 +377,14 @@ public class Parse_Digit_3 extends Pattern_Parser {
                 break;
             case "7":
                 ai = aiAndData.substring(0, 2);
+                datafield = aiAndData.substring(2);
                 count = aiAndData.substring(2);
                 data.put("count", count);
                 data.put("title", "COUNT");
                 break;
             case "9":
                 ai = aiAndData.substring(0, 4);
+                datafield = aiAndData.substring(4);
                 switch (ai.substring(2, 3)) {
                     case "0":
                         data.put("title", "AMOUNT");
@@ -406,6 +416,7 @@ public class Parse_Digit_3 extends Pattern_Parser {
         }
         data.put("ai", ai);
         data.put("element", aiAndData);
+        data.put("datafield", datafield);
         fields.add(data);
     }
 

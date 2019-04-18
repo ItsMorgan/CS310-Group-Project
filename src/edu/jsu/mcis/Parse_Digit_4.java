@@ -21,6 +21,7 @@ public class Parse_Digit_4 extends Pattern_Parser {
     String Postal_code ="";
     String ISO_country_code ="";
     String ISO_subdivision_code="";
+    String datafield = "";
     
     ArrayList<Matcher> matches = new ArrayList();
     
@@ -92,7 +93,9 @@ public class Parse_Digit_4 extends Pattern_Parser {
     String aiAndData = parsePattern(patterns).group();
     
     ai = aiAndData.substring(0, 3);
+    datafield = aiAndData.substring(3);
     data = new LinkedHashMap();
+    data.put("datafield", datafield);
     
         switch (ai.substring(1,3)) {
             case "00":

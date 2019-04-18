@@ -18,6 +18,7 @@ public class Parse_Digit_0 extends Pattern_Parser {
         String reference = "";
         String SSCC = "";
         String GTIN = "";
+        String datafield = "";
                
         Pattern p00 = Pattern.compile("^00[0-9]{18}");         
         Pattern p01 = Pattern.compile("^01[0-9]{14}");          
@@ -31,6 +32,7 @@ public class Parse_Digit_0 extends Pattern_Parser {
         String aiAndData = parsePattern(patterns).group().replace("%", "");
         
         ai = aiAndData.substring(0, 2);
+        datafield = aiAndData.substring(2);
         data = new LinkedHashMap();
         
         if (ai.substring(1).equals("0")) {
@@ -72,6 +74,7 @@ public class Parse_Digit_0 extends Pattern_Parser {
             data.put("gtin_code", GTIN);
         }
         data.put("element", aiAndData);
+        data.put("datafield", datafield);
         fields.add(data);
     }
 }

@@ -46,8 +46,7 @@ public class Parse_Digit_7 extends Pattern_Parser {
         String Country_code = "";
         String Number_of_processor = "";
         String Certification_scheme = "";
-        String Certification_reference = "";
-        
+        String Certification_reference = "";        
     
         Pattern p7001 = Pattern.compile("^7001[0-9]{13}[%\\x1D]");
         Pattern p7001eol = Pattern.compile("^7001[0-9]{13}$");
@@ -91,6 +90,8 @@ public class Parse_Digit_7 extends Pattern_Parser {
         Pattern p714eol = Pattern.compile("^714[!\"&'()*+,\\-./0-9:;<=>?A-Z_a-z]{1,20}$");
         Pattern p723s = Pattern.compile("^723[0-9]{1}[!\"&'()*+,\\-./0-9:;<=>?A-Z_a-z]{2}[!\"&'()*+,\\-./0-9:;<=>?A-Z_a-z]{1,28}[%\\x1D]");
         Pattern p723seol = Pattern.compile("^723[0-9]{1}[!\"&'()*+,\\-./0-9:;<=>?A-Z_a-z]{2}[!\"&'()*+,\\-./0-9:;<=>?A-Z_a-z]{1,28}$");
+        
+        patterns = new ArrayList<>();
         
         patterns.add(p7001);
         patterns.add(p7001eol);
@@ -139,233 +140,186 @@ public class Parse_Digit_7 extends Pattern_Parser {
         patterns.add(p714);
         patterns.add(p714eol);
         
-        patterns = new ArrayList<>();
         data = new LinkedHashMap<>();
-        
         
         String aiAndData = parsePattern(patterns).group().replace("%", "");
         ai = aiAndData.substring(1,2);
         thirdpos = aiAndData.substring(2,3);
-        fourthpos = aiAndData.substring(3,4);
         switch (ai){
             case "0":
-                if (thirdpos.equals("0")){
-                    switch (fourthpos) {
-                        case "1":
-                            ai = aiAndData.substring(1,5);
-                            NATO_supply_class = aiAndData.substring(5,9);
-                            Assign_country = aiAndData.substring(9,11);
-                            Sequential_number = aiAndData.substring(9,16);
-                            data.put("ai", ai);
-                            data.put("NATO Supply Class", NATO_supply_class);
-                            data.put("title", "NATO Stock Number");
-                            data.put("Assigning Country", Assign_country);
-                            data.put("Sequential Number", Sequential_number);
-                            break;
-                        case "2":
-                            ai = aiAndData.substring(1,5);
-                            UN_ECE_product_classification = aiAndData.substring(5);
-                            data.put("ai", ai);
-                            data.put("title", "Meat Cut");
-                            data.put("UN\u2215ECE prod. class.", UN_ECE_product_classification);
-                            break;
-                        case "3":
-                            ai = aiAndData.substring(1,5);
-                            year = aiAndData.substring(5,7);
-                            month = aiAndData.substring(7,9);
-                            day = aiAndData.substring(9,11);
-                            hour = aiAndData.substring(11,13);
-                            minute = aiAndData.substring(13,15);
-                            Expiration_d_a_t = year + ":" + month + ":" + day + ":" + hour + ":" + minute;
-                            data.put("ai", ai);
-                            data.put("year", year);
-                            data.put("month", month);
-                            data.put("day", day);
-                            data.put("hour", hour);
-                            data.put("minute", minute);
-                            data.put("Exp date", Expiration_d_a_t);
-                            data.put("title","Expiry Time");
-                            break;
-                        case "4":
-                            ai = aiAndData.substring(1,5);
-                            Active_potency = aiAndData.substring(5);
-                            data.put("ai", ai);
-                            data.put("Active potency", Active_potency);
-                            data.put("title", "Active Potency") ;
-                            break;
-                        case "5":
-                            ai = aiAndData.substring(1,5);
-                            Catch_area = aiAndData.substring(5);
-                            data.put("ai", ai);
-                            data.put("catch area", Catch_area);
-                            data.put("title", "Catch Area");
-                            break;
-                        case "6":
-                            ai = aiAndData.substring(1,5);
-                            year = aiAndData.substring(5,7);
-                            month = aiAndData.substring(7,9);
-                            day = aiAndData.substring(9,11);
-                            First_freeze_date = year + ":" + month + ":" + day;
-                            data.put("ai", ai);
-                            data.put("year", year);
-                            data.put("month", month);
-                            data.put("day", day);
-                            data.put("first freeze date", First_freeze_date);
-                            data.put("title", "First Freeze Date");    
-                            break;
-                        case "7":
-                            ai = aiAndData.substring(1,5);
-                            year = aiAndData.substring(5,7);
-                            month = aiAndData.substring(7,9);
-                            day = aiAndData.substring(9,11);
-                            year_2 = aiAndData.substring(11,13);
-                            month_2 = aiAndData.substring(13,15);
-                            day_2 = aiAndData.substring(15,17);
-                            Harvest_start_date = year + ":" + month + ":" + day;
-                            Harvest_end_date = year_2 + ":" + month_2 + ":" + day_2;
-                            data.put("ai", ai);
-                            data.put("year", year);
-                            data.put("month", month);
-                            data.put("day", day);
-                            data.put("End year", year_2);
-                            data.put("End month", month_2);
-                            data.put("End day", day_2);
-                            data.put("Harvest start date", Harvest_start_date);
-                            data.put("Harvest end date", Harvest_end_date);
-                            data.put("title", "harvest date");                   
-                            break;
-                        case "8":
-                            ai = aiAndData.substring(1,5);
-                            Fishery_species = aiAndData.substring(5);
-                            data.put("ai", ai);
-                            data.put("species for fishery purposes code", Fishery_species);
-                            data.put("title", "aquatic species");
-                            break;
-                        case "9":
-                            ai = aiAndData.substring(1,5);
-                            Fishing_gear_type = aiAndData.substring(5);
-                            data.put("ai", ai);
-                            data.put("fishing gear type", Fishing_gear_type);
-                            data.put("title", "fishing gear type");
-                            break;
-                        default:
-                            break;
-                    }
-}
-                else if (thirdpos.equals("1")){
-                    if (fourthpos.equals("0")){
-                        ai = aiAndData.substring(1,5);
-                        Production_method = aiAndData.substring(5);
-                        data.put("ai", ai);
+                switch(thirdpos){
+                    case "0":
+                        ai = aiAndData.substring(0,4);
+                        fourthpos = aiAndData.substring(3,4);
+                        switch (fourthpos) {
+                            case "1":
+                                NATO_supply_class = aiAndData.substring(4,8);
+                                Assign_country = aiAndData.substring(8,10);
+                                Sequential_number = aiAndData.substring(10);
+                                data.put("NATO Supply Class", NATO_supply_class);
+                                data.put("title", "NATO Stock Number");
+                                data.put("Assigning Country", Assign_country);
+                                data.put("Sequential Number", Sequential_number);
+                                break;
+                            case "2":
+                                UN_ECE_product_classification = aiAndData.substring(4);
+                                data.put("title", "Meat Cut");
+                                data.put("UN\u2215ECE prod. class.", UN_ECE_product_classification);
+                                break;
+                            case "3":
+                                year = aiAndData.substring(4,6);
+                                month = aiAndData.substring(6,8);
+                                day = aiAndData.substring(8,10);
+                                hour = aiAndData.substring(10,12);
+                                minute = aiAndData.substring(12,14);
+                                Expiration_d_a_t = year + ":" + month + ":" + day + ":" + hour + ":" + minute;
+                                data.put("year", year);
+                                data.put("month", month);
+                                data.put("day", day);
+                                data.put("hour", hour);
+                                data.put("minute", minute);
+                                data.put("Exp date", Expiration_d_a_t);
+                                data.put("title","Expiry Time");
+                                break;
+                            case "4":
+                                Active_potency = aiAndData.substring(4);
+                                data.put("Active potency", Active_potency);
+                                data.put("title", "Active Potency") ;
+                                break;
+                            case "5":
+                                Catch_area = aiAndData.substring(4);
+                                data.put("catch area", Catch_area);
+                                data.put("title", "Catch Area");
+                                break;
+                            case "6":
+                                year = aiAndData.substring(4,6);
+                                month = aiAndData.substring(6,8);
+                                day = aiAndData.substring(8,10);
+                                First_freeze_date = year + ":" + month + ":" + day;
+                                data.put("year", year);
+                                data.put("month", month);
+                                data.put("day", day);
+                                data.put("first freeze date", First_freeze_date);
+                                data.put("title", "First Freeze Date");    
+                                break;
+                            case "7":
+                                year = aiAndData.substring(4,6);
+                                month = aiAndData.substring(6,8);
+                                day = aiAndData.substring(8,10);
+                                year_2 = aiAndData.substring(10,12);
+                                month_2 = aiAndData.substring(12,14);
+                                day_2 = aiAndData.substring(14,16);
+                                Harvest_start_date = year + ":" + month + ":" + day;
+                                Harvest_end_date = year_2 + ":" + month_2 + ":" + day_2;
+                                data.put("year", year);
+                                data.put("month", month);
+                                data.put("day", day);
+                                data.put("End year", year_2);
+                                data.put("End month", month_2);
+                                data.put("End day", day_2);
+                                data.put("Harvest start date", Harvest_start_date);
+                                data.put("Harvest end date", Harvest_end_date);
+                                data.put("title", "harvest date");                   
+                                break;
+                            case "8":
+                                Fishery_species = aiAndData.substring(4);
+                                data.put("species for fishery purposes code", Fishery_species);
+                                data.put("title", "aquatic species");
+                                break;
+                            case "9":
+                                Fishing_gear_type = aiAndData.substring(4);
+                                data.put("fishing gear type", Fishing_gear_type);
+                                data.put("title", "fishing gear type");
+                                break;
+                        }
+                        break;
+                    case "1":
+                        ai = aiAndData.substring(0,4);
+                        Production_method = aiAndData.substring(4);
                         data.put("Production method", Production_method);
                         data.put("title", "Prod Method");
-                    }             
-                }
-                else if (thirdpos.equals("2")){
-                    if(fourthpos.equals("0")){
-                        ai = aiAndData.substring(1,5);
-                        Refurb_lot = aiAndData.substring(5);
-                        data.put("ai", ai);
-                        data.put("Refurb lot Id", Refurb_lot);
-                        data.put("title", "Refurb Lot");
+                        break;
+                    case "2":
+                        ai = aiAndData.substring(0,4);
+                        fourthpos = aiAndData.substring(3,4);
+                        switch(fourthpos) {
+                            case "0":
+                                Refurb_lot = aiAndData.substring(4);
+                                data.put("Refurb lot Id", Refurb_lot);
+                                data.put("title", "Refurb Lot");
+                                break;
+                            case "1":
+                                Functional_status = aiAndData.substring(4);
+                                data.put("Functional status", Functional_status);
+                                data.put("title", "Func Stat");
+                                break;
+                            case "2":
+                                Revision_status = aiAndData.substring(4);
+                                data.put("Revision status", Revision_status);
+                                data.put("title", "Rev Stat");     
+                                break;
+                            case "3":
+                                Prefix = aiAndData.substring(4,8);
+                                Ind_asset_ref = aiAndData.substring(8);
+                                GIAI = Prefix + Ind_asset_ref;
+                                data.put("Company Prefix", Prefix);
+                                data.put("Individual asset reference", Ind_asset_ref);
+                                data.put("GIAI", GIAI);
+                                data.put("title", "GIAI-Assembly");      
+                                break;
+                            }
+                        break;
+                    case "3":
+                        fourthpos = aiAndData.substring(3,4);
+                        ai = aiAndData.substring(0,4);
+                        Country_code = aiAndData.substring(4,7);
+                        Number_of_processor = aiAndData.substring(7);
+                        Sequence_identifier = fourthpos;
+                        data.put("Country Code", Country_code);
+                        data.put("Number of Processors", Number_of_processor);
+                        data.put("Sequence Identifier", Sequence_identifier);
+                        data.put("title", "Processor #'s");
+                        break;
                     }
-                    else if(fourthpos.equals("1")){
-                        ai = aiAndData.substring(1,5);
-                        Functional_status = aiAndData.substring(5);
-                        data.put("ai", ai);
-                        data.put("Functional status", Functional_status);
-                        data.put("title", "Func Stat");                        
-                    }
-                    else if(fourthpos.equals("2")){
-                        ai = aiAndData.substring(1,5);
-                        Revision_status = aiAndData.substring(5);
-                        data.put("ai", ai);
-                        data.put("Revision status", Revision_status);
-                        data.put("title", "Rev Stat");                        
-                    }
-                    else if(fourthpos.equals("3")){
-                        ai = aiAndData.substring(1,5);
-                        Prefix = aiAndData.substring(5,9);
-                        Ind_asset_ref = aiAndData.substring(9);
-                        GIAI = Prefix + Ind_asset_ref;
-                        data.put("ai", ai);
-                        data.put("Company Prefix", Prefix);
-                        data.put("Individual asset reference", Ind_asset_ref);
-                        data.put("GIAI", GIAI);
-                        data.put("title", "GIAI-Assembly");                        
-                    }     
-            }
-                else if (thirdpos.equals("3")){
-                    ai = aiAndData.substring(1,5);
-                    Country_code = aiAndData.substring(5,8);
-                    Number_of_processor = aiAndData.substring(8);
-                    Sequence_identifier = fourthpos;
-                    data.put("ai", ai);
-                    data.put("Country Code", Country_code);
-                    data.put("Number of Processors", Number_of_processor);
-                    data.put("Sequence Identifier", Sequence_identifier);
-                    data.put("title", "Processor #'s");
+                break;
+            case "1":
+                ai = aiAndData.substring(0,3);
+                National_Healthcare_reimburse_num = aiAndData.substring(3);
+                switch(thirdpos) {
+                    case "0":
+                        Organisation = "Gernmany IFA";  
+                        break;
+                    case "1": 
+                        Organisation = "France CIP"; 
+                        break;
+                    case "2":
+                        Organisation = "Spain National Code"; 
+                        break;
+                    case "3":
+                        Organisation = "Brazil ANVISA";
+                        break;
+                    case "4":
+                        Organisation = "Porutgal Infarmed";
+                        break;
                 }
-            case"1":
-                if(ai.equals("1")&&thirdpos.equals("0")){
-                    ai = aiAndData.substring(1,4);
-                    National_Healthcare_reimburse_num = aiAndData.substring(4);
-                    Organisation = "Gernmany IFA";
-                    data.put("ai", ai);
-                    data.put("National Healthcare Reiumbursement Number", National_Healthcare_reimburse_num);
-                    data.put("Organisation", Organisation);
-                    data.put("title", "National Healthcare Reiumbursement");          
-                }
-                if(ai.equals("1")&&thirdpos.equals("1")){
-                    ai = aiAndData.substring(1,4);
-                    National_Healthcare_reimburse_num = aiAndData.substring(4);
-                    Organisation = "France CIP";
-                    data.put("ai", ai);
-                    data.put("National Healthcare Reiumbursement Number", National_Healthcare_reimburse_num);
-                    data.put("Organisation", Organisation);
-                    data.put("title", "National Healthcare Reiumbursement");  
-                }
-                if(ai.equals("1")&&thirdpos.equals("2")){
-                    ai = aiAndData.substring(1,4);
-                    National_Healthcare_reimburse_num = aiAndData.substring(4);
-                    Organisation = "Spain National Code";
-                    data.put("ai", ai);
-                    data.put("National Healthcare Reiumbursement Number", National_Healthcare_reimburse_num);
-                    data.put("Organisation", Organisation);
-                    data.put("title", "National Healthcare Reiumbursement"); 
-                }
-                if(ai.equals("1")&&thirdpos.equals("3")){
-                    ai = aiAndData.substring(1,4);
-                    National_Healthcare_reimburse_num = aiAndData.substring(4);
-                    Organisation = "Brazil ANVISA";
-                    data.put("ai", ai);
-                    data.put("National Healthcare Reiumbursement Number", National_Healthcare_reimburse_num);
-                    data.put("Organisation", Organisation);
-                    data.put("title", "National Healthcare Reiumbursement"); 
-                }
-                if(ai.equals("1")&&thirdpos.equals("4")){
-                    ai = aiAndData.substring(1,4);
-                    National_Healthcare_reimburse_num = aiAndData.substring(4);
-                    Organisation = "Porutgal Infarmed";
-                    data.put("ai", ai);
-                    data.put("National Healthcare Reiumbursement Number", National_Healthcare_reimburse_num);
-                    data.put("Organisation", Organisation);
-                    data.put("title", "National Healthcare Reiumbursement"); 
-                }
-            case"2":
-                ai = aiAndData.substring(1,5);
+                data.put("National Healthcare Reiumbursement Number", National_Healthcare_reimburse_num);
+                data.put("Organisation", Organisation);
+                data.put("title", "National Healthcare Reiumbursement");
+                break;
+            case "2":
+                ai = aiAndData.substring(0,4);
                 Sequence_identifier = fourthpos;
-                Certification_scheme = aiAndData.substring(5,7);
-                Certification_reference = aiAndData.substring(7);
-                data.put("ai", ai);
-                data.put("Sequence Identiifier", Sequence_identifier);
+                Certification_scheme = aiAndData.substring(4,6);
+                Certification_reference = aiAndData.substring(6);
+                data.put("Sequence Identifier", Sequence_identifier);
                 data.put("Certification scheme", Certification_scheme);
                 data.put("Certification reference", Certification_reference);
                 data.put("title", "Cert #'s");
-                
-                
-}
+                break;
+        }
+        data.put("ai", ai);
         data.put("element", aiAndData);
+        data.put("datafield", aiAndData.substring(ai.length()));
         fields.add(data);
-}
+    }
 }

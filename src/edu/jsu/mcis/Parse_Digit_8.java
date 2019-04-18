@@ -138,6 +138,8 @@ public class Parse_Digit_8 extends Pattern_Parser {
         patterns.add(p8200);
         patterns.add(p8200eol);
     
+        data = new LinkedHashMap<>();
+        
         String aiAndData = parsePattern(patterns).group().replace("%", "");
         
         String ai = aiAndData.substring(0, 4);
@@ -150,67 +152,46 @@ public class Parse_Digit_8 extends Pattern_Parser {
                     core_diameter_mil = aiAndData.substring(13, 16);
                     winding_dir = aiAndData.substring(16, 17);
                     num_splices = aiAndData.substring(17);
-                    data = new LinkedHashMap<>();
                     data.put("slit_width_mil", slit_width_mil);
                     data.put("actual_length_metres", actual_length_metres);
                     data.put("core_diameter_mil", core_diameter_mil);
                     data.put("winding_dir", winding_dir);
                     data.put("num_splices", num_splices);
-                    data.put("ai", ai);
                     data.put("title", "DIMENSIONS");
-                    data.put("element", aiAndData);
                 } else if (aiAndData.substring(3, 4).equals("2")){
                     serial_num = aiAndData.substring(4);
-                    data = new LinkedHashMap<>();
                     data.put("serial_num", serial_num);
-                    data.put("ai", ai);
                     data.put("title", "CMT No");
-                    data.put("element", aiAndData);
                 } else if (aiAndData.substring(3, 4).equals("3")){
                     comp_prefix = "0" + aiAndData.substring(4, 10);
                     asset_type = aiAndData.substring(10, 16);
                     check_digit = aiAndData.substring(16, 17);
                     serial_num = aiAndData.substring(17);
-                    data = new LinkedHashMap<>();
                     data.put("comp_prefix", comp_prefix);
                     data.put("asset_type", asset_type);
                     data.put("check_digit", check_digit);
                     data.put("serial_comp", serial_num);
-                    data.put("ai", ai);
                     data.put("title", "GRAI");
-                    data.put("element", aiAndData);
                 } else if (aiAndData.substring(3, 4).equals("4")){
                     giai = aiAndData.substring(4);
-                    data = new LinkedHashMap<>();
                     data.put("global_ind_asset_id", giai);
-                    data.put("ai", ai);
                     data.put("title", "GIAI");
-                    data.put("element", aiAndData);    
                 } else if (aiAndData.substring(3, 4).equals("5")){
                     price_per_unit = aiAndData.substring(4);
-                    data = new LinkedHashMap<>();
                     data.put("price_per_unit", price_per_unit);
-                    data.put("ai", ai);
                     data.put("title", "PRICE PER UNIT");
-                    data.put("element", aiAndData);
                 } else if (aiAndData.substring(3, 4).equals("6")){
                     gtin = aiAndData.substring(4, 18);
                     piece_num = aiAndData.substring(18, 20);
                     total_cnt = aiAndData.substring(20);
-                    data = new LinkedHashMap<>();
                     data.put("gtin", gtin);
                     data.put("piece_num", piece_num);
                     data.put("total_cnt", total_cnt);
-                    data.put("ai", ai);
                     data.put("title", "ITIP or GCTIN");
-                    data.put("element", aiAndData);
                 } else if (aiAndData.substring(3, 4).equals("7")){
                     int_bank_acc_num = aiAndData.substring(4);
-                    data = new LinkedHashMap<>();
                     data.put("int_bank_acc_num", int_bank_acc_num);
-                    data.put("ai", ai);
                     data.put("title", "IBAN");
-                    data.put("element", aiAndData);
                 } else if (aiAndData.substring(3, 4).equals("8")){
                     year = aiAndData.substring(4, 6);
                     month = aiAndData.substring(6, 8);
@@ -220,7 +201,6 @@ public class Parse_Digit_8 extends Pattern_Parser {
                     sec = aiAndData.substring(14, 16);
                     date_and_time_of_prod = year + "-" + month + "-" + day
                         + " " + hour + ":" + min + ":" + sec + ":";
-                    data = new LinkedHashMap<>();
                     data.put("date_and_time_of_prod", date_and_time_of_prod);
                     data.put("year", year);
                     data.put("month", month);
@@ -228,130 +208,91 @@ public class Parse_Digit_8 extends Pattern_Parser {
                     data.put("hour", hour);
                     data.put("min", min);
                     data.put("sec", sec);
-                    data.put("ai", ai);
                     data.put("title", "PROD TIME");
-                    data.put("element", aiAndData);
                 } else if (aiAndData.substring(3, 4).equals("9")){
                     sensor_instrct_param = aiAndData.substring(4);
-                    data = new LinkedHashMap<>();
                     data.put("sensor_instrct_param", sensor_instrct_param);
-                    data.put("ai", ai);
                     data.put("title", "OPTSEN");
-                    data.put("element", aiAndData);
                 }
             } else if (aiAndData.substring(2, 3).equals("1")){
                 if(aiAndData.substring(3, 4).equals("0")){
                     part_id = aiAndData.substring(4);
-                    data = new LinkedHashMap<>();
                     data.put("part_id", part_id);
-                    data.put("ai", ai);
                     data.put("title", "CPID");
-                    data.put("element", aiAndData);
                 } else if (aiAndData.substring(3, 4).equals("1")){
                     part_id_serial_num = aiAndData.substring(4);
-                    data = new LinkedHashMap<>();
                     data.put("part_id_serial_num", part_id_serial_num);
-                    data.put("ai", ai);
                     data.put("title", "CPID SERIAL");
-                    data.put("element", aiAndData);
                 } else if (aiAndData.substring(3, 4).equals("2")){
                     software_ver = aiAndData.substring(4);
-                    data = new LinkedHashMap<>();
                     data.put("software_ver", software_ver);
-                    data.put("ai", ai);
                     data.put("title", "VERSION");
-                    data.put("element", aiAndData);
                 } else if (aiAndData.substring(3, 4).equals("3")){
                     gmn = aiAndData.substring(4);
-                    data = new LinkedHashMap<>();
                     data.put("global_model_num", gmn);
-                    data.put("ai", ai);
                     data.put("title", "GMN or BUDI-DI");
-                    data.put("element", aiAndData);
                 } else if (aiAndData.substring(3, 4).equals("7")){
                     comp_prefix = aiAndData.substring(4, 12);
                     service_ref = aiAndData.substring(12, 21);
                     check_digit = aiAndData.substring(21);
-                    data = new LinkedHashMap<>();
                     data.put("comp_prefix", comp_prefix);
                     data.put("service_ref", service_ref);
                     data.put("check_digit", check_digit);
-                    data.put("ai", ai);
                     data.put("title", "GSRN - PROVIDER");
-                    data.put("element", aiAndData);
                 } else if (aiAndData.substring(3, 4).equals("8")){
                     comp_prefix = aiAndData.substring(4, 12);
                     service_ref = aiAndData.substring(12, 21);
                     check_digit = aiAndData.substring(21);
-                    data = new LinkedHashMap<>();
                     data.put("comp_prefix", comp_prefix);
                     data.put("service_ref", service_ref);
                     data.put("check_digit", check_digit);
-                    data.put("ai", ai);
                     data.put("title", "GSRN - RECIPIENT");
-                    data.put("element", aiAndData);
                 } else if (aiAndData.substring(3, 4).equals("9")){
                     service_rel_inst_num = aiAndData.substring(4);
-                    data = new LinkedHashMap<>();
                     data.put("service_rel_inst_num", service_rel_inst_num);
-                    data.put("ai", ai);
                     data.put("title", "SRIN");
-                    data.put("element", aiAndData);
                 }
             } else if (aiAndData.substring(2, 3).equals("2")){
                 if(aiAndData.substring(3, 4).equals("0")){
                     pymnt_slip_ref_num = aiAndData.substring(4);
-                    data = new LinkedHashMap<>();
                     data.put("pymnt_slip_ref_num", pymnt_slip_ref_num);
-                    data.put("ai", ai);
                     data.put("title", "REF No");
-                    data.put("element", aiAndData);
                 } else if (aiAndData.substring(3, 4).equals("6")){
                     /*keeps returning a null pointer error, I guess
                     my substring numbers are wrong*/
                     gtin = aiAndData.substring(4, 18);
                     piece_num = aiAndData.substring(18, 20);
                     total_cnt = aiAndData.substring(20);
-                    data = new LinkedHashMap<>();
                     data.put("gtin", gtin);
                     data.put("piece_num", piece_num);
                     data.put("total_cnt", total_cnt);
-                    data.put("ai", ai);
                     data.put("title", "ITIP CONTENT");
-                    data.put("element", aiAndData);
                 }
             }
         } else if (aiAndData.substring(1, 2).equals("1")){
             if(aiAndData.substring(2, 3).equals("1")){
                 if(aiAndData.substring(3, 4).equals("0")){
                     asag = aiAndData.substring(4);
-                    data = new LinkedHashMap<>();
                     data.put("format_according_to_NA_coupon_app_guidline_using_GS1", asag);
-                    data.put("ai", ai);
                     data.put("title", "-");
-                    data.put("element", aiAndData);
                 } else if (aiAndData.substring(3, 4).equals("1")){
                     loyalty_points = aiAndData.substring(4);
-                    data = new LinkedHashMap<>();
                     data.put("loyalty_points", loyalty_points);
-                    data.put("ai", ai);
                     data.put("title", "POINTS");
-                    data.put("element", aiAndData);
                 }
             }
         } else if (aiAndData.substring(1, 2).equals("2")){
             if(aiAndData.substring(2, 3).equals("0")){
                 if(aiAndData.substring(3, 4).equals("0")){
                     url = aiAndData.substring(4);
-                    data = new LinkedHashMap<>();
                     data.put("brand_owner_authorised_url", url);
-                    data.put("ai", ai);
                     data.put("title", "PRODUCT URL");
-                    data.put("element", aiAndData);
                 }
             }
         }
-        
+        data.put("datafield", aiAndData.substring(ai.length()));
+        data.put("ai", ai);
+        data.put("element", aiAndData);
         fields.add(data);
         
     }

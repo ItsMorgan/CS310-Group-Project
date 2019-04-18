@@ -16,6 +16,7 @@ public class Parse_Digit_1 extends Pattern_Parser {
         String day = "00";
         String ai = "";
         String expiration = "";
+        String datafield = "";
 
         Pattern p10 = Pattern.compile("^10[!\"&'()*+,\\-./0-9:;<=>?A-Z_a-z]{1,20}[%\\x1D]"); 
         Pattern p10eol = Pattern.compile("^10[!\"&'()*+,\\-./0-9:;<=>?A-Z_a-z]{1,20}$");     
@@ -40,6 +41,7 @@ public class Parse_Digit_1 extends Pattern_Parser {
         data = new LinkedHashMap<>();
         
         ai = aiAndData.substring(0, 2);
+        datafield = aiAndData.substring(2);
         
         if (ai.substring(1).equals("0")) {
             batchNum = aiAndData.substring(2);
@@ -88,6 +90,7 @@ public class Parse_Digit_1 extends Pattern_Parser {
             
             data.put("day", day);
             data.put("element", aiAndData);
+            data.put("datafield", datafield);
         }    
         
         fields.add(data);

@@ -61,92 +61,68 @@ public class Parse_Digit_9 extends Pattern_Parser {
         
         String aiAndData = super.parsePattern(patterns).group().replace("%", "");
         
+        data = new LinkedHashMap<>();
+        
         ai = aiAndData.substring(0, 2);
         
         switch (ai.substring(1, 2)) {
             case "0":
                 data_field = aiAndData.substring(2);
-                data = new LinkedHashMap<>();
                 data.put("information_mutually_agreed_b\u2215w_trading_partners", data_field);
-                data.put("ai", ai);
                 data.put("title", "INTERNAL");
-                data.put("element", aiAndData);
                 break;
             case "1":
                 data_field = aiAndData.substring(2);
-                data = new LinkedHashMap<>();
                 data.put("company_internal_info", data_field);
-                data.put("ai", ai);
                 data.put("title", "INTERNAL");
-                data.put("element", aiAndData);
                 break;
             case "2":
                 data_field = aiAndData.substring(2);
-                data = new LinkedHashMap<>();
                 data.put("company_internal_info", data_field);
-                data.put("ai", ai);
                 data.put("title", "INTERNAL");
-                data.put("element", aiAndData);
                 break;
             case "3":
                 data_field = aiAndData.substring(2);
-                data = new LinkedHashMap<>();
                 data.put("company_internal_info", data_field);
-                data.put("ai", ai);
                 data.put("title", "INTERNAL");
-                data.put("element", aiAndData);
                 break;
             case "4":
                 data_field = aiAndData.substring(2);
-                data = new LinkedHashMap<>();
                 data.put("company_internal_info", data_field);
-                data.put("ai", ai);
                 data.put("title", "INTERNAL");
-                data.put("element", aiAndData);
                 break;
             case "5":
                 data_field = aiAndData.substring(2);
-                data = new LinkedHashMap<>();
                 data.put("company_internal_info", data_field);
-                data.put("ai", ai);
                 data.put("title", "INTERNAL");
-                data.put("element", aiAndData);
                 break;
             case "6":
                 data_field = aiAndData.substring(2);
-                data = new LinkedHashMap<>();
                 data.put("company_internal_info", data_field);
-                data.put("ai", ai);
                 data.put("title", "INTERNAL");
-                data.put("element", aiAndData);
                 break;
             case "7":
                 data_field = aiAndData.substring(2);
-                data = new LinkedHashMap<>();
                 data.put("company_internal_info", data_field);
-                data.put("ai", ai);
                 data.put("title", "INTERNAL");
-                data.put("element", aiAndData);
                 break;
             case "8":
                 data_field = aiAndData.substring(2);
-                data = new LinkedHashMap<>();
                 data.put("company_internal_info", data_field);
-                data.put("ai", ai);
                 data.put("title", "INTERNAL");
-                data.put("element", aiAndData);
                 break;
             case "9":
                 data_field = aiAndData.substring(2);
-                data = new LinkedHashMap<>();
                 data.put("company_internal_info", data_field);
-                data.put("ai", ai);
                 data.put("title", "INTERNAL");
-                data.put("element", aiAndData);
                 break;
             default:
                 break;
         }
+        
+        data.put("ai", ai);
+        data.put("element", aiAndData);
+        data.put("datafield", aiAndData.substring(ai.length()));
         
         fields.add(data);
     

@@ -58,7 +58,7 @@ public class Pattern_Parser {
         }
         
         if (!isValid()) {
-            throw new Exception("Invalid Code!");
+            //throw new Exception("Invalid Code!");
         }
         
         return fields;

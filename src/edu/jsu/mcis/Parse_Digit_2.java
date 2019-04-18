@@ -80,6 +80,8 @@ public class Parse_Digit_2 extends Pattern_Parser {
         patterns.add(p255);
         patterns.add(p255eol);
         
+        data = new LinkedHashMap<>();
+
         String aiAndData = parsePattern(patterns).group().replace("%", "");
         
         int aiSecondPos = Integer.parseInt(aiAndData.substring(1, 2));
@@ -89,64 +91,46 @@ public class Parse_Digit_2 extends Pattern_Parser {
         } else if (aiSecondPos >= 4){
             ai = aiAndData.substring(0, 3);
         }
+        data.put("ai", ai);
+        data.put("element", aiAndData);
+        data.put("datafield", aiAndData.substring(ai.length()));
         switch (ai.substring(1, 2)) {
             case "0":
                 internal_prod_var = aiAndData.substring(2);
-                data = new LinkedHashMap<>();
                 data.put("internal_prod_var", internal_prod_var);
-                data.put("ai", ai);
                 data.put("title", "VARIANT");
-                data.put("element", aiAndData);
                 break;
             case "1":
                 serial_num = aiAndData.substring(2);
-                data = new LinkedHashMap<>();
                 data.put("serial_num", serial_num);
-                data.put("ai", ai);
                 data.put("title", "SERIAL");
-                data.put("element", aiAndData);
                 break;
             case "2":
                 con_product_var = aiAndData.substring(2);
-                data = new LinkedHashMap<>();
                 data.put("consumer_prod_var", con_product_var);
-                data.put("ai", ai);
                 data.put("title", "CPV");
-                data.put("element", aiAndData);
                 break;
             case "4":
                 switch (ai.substring(2, 3)) {
                     case "0":
                         add_item_ident = aiAndData.substring(3);
-                        data = new LinkedHashMap<>();
                         data.put("additional_item_id", add_item_ident);
-                        data.put("ai", ai);
                         data.put("title", "ADDITIONAL ID");
-                        data.put("element", aiAndData);
                         break;
                     case "1":
                         cust_part_num = aiAndData.substring(3);
-                        data = new LinkedHashMap<>();
                         data.put("customer_part_num", cust_part_num);
-                        data.put("ai", ai);
                         data.put("title", "CUST. PART NO.");
-                        data.put("element", aiAndData);
                         break;
                     case "2":
                         madeToOrder_var_num = aiAndData.substring(3);
-                        data = new LinkedHashMap<>();
                         data.put("made-to-order_var_num", madeToOrder_var_num);
-                        data.put("ai", ai);
                         data.put("title", "MTO VARIANT");
-                        data.put("element", aiAndData);
                         break;
                     case "3":
                         pack_comp_num = aiAndData.substring(3);
-                        data = new LinkedHashMap<>();
                         data.put("pack_comp_num", pack_comp_num);
-                        data.put("ai", ai);
                         data.put("title", "PCN");
-                        data.put("element", aiAndData);
                         break;
                     default:
                         break;
@@ -155,19 +139,14 @@ public class Parse_Digit_2 extends Pattern_Parser {
                 switch (ai.substring(2, 3)) {
                     case "0":
                         second_serial_num = aiAndData.substring(3);
-                        data = new LinkedHashMap<>();
                         data.put("secondary_serial_num", second_serial_num);
-                        data.put("ai", ai);
                         data.put("title", "SECONDARY SERIAL");
-                        data.put("element", aiAndData);
                         break;
                     case "1":
                         ref_to_source = aiAndData.substring(3);
                         data = new LinkedHashMap<>();
                         data.put("ref_to_source_entity", ref_to_source);
-                        data.put("ai", ai);
                         data.put("title", "REF. TO SOURCE");
-                        data.put("element", aiAndData);
                         break;
                     case "3":
                         gdti = aiAndData.substring(3);
@@ -180,18 +159,14 @@ public class Parse_Digit_2 extends Pattern_Parser {
                         data.put("company_prefix", company_prefix);
                         data.put("doc_type", doc_type);
                         data.put("serial_comp", serial_comp);
-                        data.put("ai", ai);
                         data.put("title", "GDTI");
                         data.put("check_digit", check_digit);
-                        data.put("element", aiAndData);
                         break;
                     case "4":
                         gln_ext_comp = aiAndData.substring(3);
                         data = new LinkedHashMap<>();
                         data.put("gln_ext_comp", gln_ext_comp);
-                        data.put("ai", ai);
                         data.put("title", "GLN EXTENSION COMPONENT");
-                        data.put("element", aiAndData);
                         break;
                     case "5":
                         gcn = aiAndData.substring(3);
@@ -206,14 +181,13 @@ public class Parse_Digit_2 extends Pattern_Parser {
                         data.put("serial_comp", serial_comp);
                         data.put("title", "GCN");
                         data.put("check_digit", check_digit);
-                        data.put("element", aiAndData);
-                        data.put("ai", ai);
                         break;
                     default:
                         break;
                 }
             default:
                 break;
+                
         }
         
         fields.add(data);
