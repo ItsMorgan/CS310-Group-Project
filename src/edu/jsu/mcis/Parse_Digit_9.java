@@ -13,6 +13,7 @@ public class Parse_Digit_9 extends Pattern_Parser {
         
         String ai = "";
         String data_field = "";
+        String aiAndData = "";
     
         ArrayList<Matcher> matches = new ArrayList();
 
@@ -59,7 +60,13 @@ public class Parse_Digit_9 extends Pattern_Parser {
         patterns.add(p99);
         patterns.add(p99eol);
         
-        String aiAndData = super.parsePattern(patterns).group().replace("%", "");
+        Matcher m = parsePattern(patterns);
+        
+        if (m.pattern().toString().endsWith("]")) {
+            aiAndData = m.group().substring(0, m.group().length() - 1);
+        } else {
+            aiAndData = m.group();
+        }
         
         data = new LinkedHashMap<>();
         

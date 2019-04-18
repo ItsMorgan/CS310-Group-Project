@@ -22,6 +22,7 @@ public class Parse_Digit_4 extends Pattern_Parser {
     String ISO_country_code ="";
     String ISO_subdivision_code="";
     String datafield = "";
+    String aiAndData = "";
     
     ArrayList<Matcher> matches = new ArrayList();
     
@@ -90,7 +91,13 @@ public class Parse_Digit_4 extends Pattern_Parser {
     patterns.add(p427);
     patterns.add(p427eol);
     
-    String aiAndData = parsePattern(patterns).group();
+    Matcher m = parsePattern(patterns);
+        
+    if (m.pattern().toString().endsWith("]")) {
+        aiAndData = m.group().substring(0, m.group().length() - 1);
+    } else {
+        aiAndData = m.group();
+    }
     
     ai = aiAndData.substring(0, 3);
     datafield = aiAndData.substring(3);

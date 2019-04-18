@@ -17,6 +17,7 @@ public class Parse_Digit_1 extends Pattern_Parser {
         String ai = "";
         String expiration = "";
         String datafield = "";
+        String aiAndData = "";
 
         Pattern p10 = Pattern.compile("^10[!\"&'()*+,\\-./0-9:;<=>?A-Z_a-z]{1,20}[%\\x1D]"); 
         Pattern p10eol = Pattern.compile("^10[!\"&'()*+,\\-./0-9:;<=>?A-Z_a-z]{1,20}$");     
@@ -37,7 +38,14 @@ public class Parse_Digit_1 extends Pattern_Parser {
         patterns.add(p16);
         patterns.add(p17);
 
-        String aiAndData = parsePattern(patterns).group().replace("%", "");
+        Matcher m = parsePattern(patterns);
+        
+        if (m.pattern().toString().endsWith("]")) {
+            aiAndData = m.group().substring(0, m.group().length() - 1);
+        } else {
+            aiAndData = m.group();
+        }
+        
         data = new LinkedHashMap<>();
         
         ai = aiAndData.substring(0, 2);
@@ -88,11 +96,13 @@ public class Parse_Digit_1 extends Pattern_Parser {
                     break;
             }
             
-            data.put("day", day);
-            data.put("element", aiAndData);
-            data.put("datafield", datafield);
+            
         }    
         
+        data.put("day", day);
+        data.put("element", aiAndData);
+        data.put("datafield", datafield);
+            
         fields.add(data);
     }
 }

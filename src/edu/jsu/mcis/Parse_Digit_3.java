@@ -15,6 +15,7 @@ public class Parse_Digit_3 extends Pattern_Parser {
         String count = "";
         String datafield = "";
         double value;
+        String aiAndData = "";
         
         matches = new ArrayList();
         patterns = new ArrayList<>();
@@ -157,7 +158,13 @@ public class Parse_Digit_3 extends Pattern_Parser {
         patterns.add(p394neol);
         
         data = new LinkedHashMap<>();
-        String aiAndData = parsePattern(patterns).group().replace("%", "");
+        Matcher m = parsePattern(patterns);
+        
+        if (m.pattern().toString().endsWith("]")) {
+            aiAndData = m.group().substring(0, m.group().length() - 1);
+        } else {
+            aiAndData = m.group();
+        }
         
         switch (aiAndData.substring(1, 2)) {
             case "0":

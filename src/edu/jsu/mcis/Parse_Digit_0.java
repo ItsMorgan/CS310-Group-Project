@@ -29,7 +29,7 @@ public class Parse_Digit_0 extends Pattern_Parser {
         patterns.add(p01);
         patterns.add(p02);
         
-        String aiAndData = parsePattern(patterns).group().replace("%", "");
+        String aiAndData = parsePattern(patterns).group();
         
         ai = aiAndData.substring(0, 2);
         datafield = aiAndData.substring(2);

@@ -70,7 +70,11 @@ public class Pattern_Parser {
             Matcher m = p.matcher(code);
             if (m.find()) {
                 Pattern_Parser.code = Pattern_Parser.code.substring(m.end()).trim();
-                codes.add(m.group().replace("%", ""));
+                if (m.pattern().toString().endsWith("]")) {
+                    codes.add(m.group().substring(0, m.group().length() - 1));
+                } else {
+                    codes.add(m.group());
+                }
                 return m;
             }
         }

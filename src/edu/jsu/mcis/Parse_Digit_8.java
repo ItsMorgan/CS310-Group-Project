@@ -43,6 +43,7 @@ public class Parse_Digit_8 extends Pattern_Parser {
         String giai = "";
         String part_id = "";
         String gmn = "";
+        String aiAndData = "";
         
     
         ArrayList<Matcher> matches = new ArrayList();
@@ -140,7 +141,13 @@ public class Parse_Digit_8 extends Pattern_Parser {
     
         data = new LinkedHashMap<>();
         
-        String aiAndData = parsePattern(patterns).group().replace("%", "");
+        Matcher m = parsePattern(patterns);
+        
+        if (m.pattern().toString().endsWith("]")) {
+            aiAndData = m.group().substring(0, m.group().length() - 1);
+        } else {
+            aiAndData = m.group();
+        }
         
         String ai = aiAndData.substring(0, 4);
         

@@ -28,6 +28,7 @@ public class Parse_Digit_2 extends Pattern_Parser {
         String gdti = "";
         String gln_ext_comp = "";
         String gcn = "";
+        String aiAndData = "";
 
         ArrayList<Matcher> matches = new ArrayList();
 
@@ -82,7 +83,13 @@ public class Parse_Digit_2 extends Pattern_Parser {
         
         data = new LinkedHashMap<>();
 
-        String aiAndData = parsePattern(patterns).group().replace("%", "");
+        Matcher m = parsePattern(patterns);
+        
+        if (m.pattern().toString().endsWith("]")) {
+            aiAndData = m.group().substring(0, m.group().length() - 1);
+        } else {
+            aiAndData = m.group();
+        }
         
         int aiSecondPos = Integer.parseInt(aiAndData.substring(1, 2));
         

@@ -46,7 +46,8 @@ public class Parse_Digit_7 extends Pattern_Parser {
         String Country_code = "";
         String Number_of_processor = "";
         String Certification_scheme = "";
-        String Certification_reference = "";        
+        String Certification_reference = ""; 
+        String aiAndData = "";
     
         Pattern p7001 = Pattern.compile("^7001[0-9]{13}[%\\x1D]");
         Pattern p7001eol = Pattern.compile("^7001[0-9]{13}$");
@@ -142,7 +143,14 @@ public class Parse_Digit_7 extends Pattern_Parser {
         
         data = new LinkedHashMap<>();
         
-        String aiAndData = parsePattern(patterns).group().replace("%", "");
+        Matcher m = parsePattern(patterns);
+        
+        if (m.pattern().toString().endsWith("]")) {
+            aiAndData = m.group().substring(0, m.group().length() - 1);
+        } else {
+            aiAndData = m.group();
+        }
+        
         ai = aiAndData.substring(1,2);
         thirdpos = aiAndData.substring(2,3);
         switch (ai){
